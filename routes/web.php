@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\AgendaRapatController;
 use App\Http\Controllers\Admin\KodePokjaController;
 use App\Http\Controllers\Admin\PokjaController;
 use App\Http\Controllers\Admin\CekPersonilController;
+use App\Http\Controllers\Admin\DataTenderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,6 +70,15 @@ Route::middleware(['auth', 'verified', 'admin'])->group(function () {
     Route::put('/admin/cek_personils/{cekPersonil}', [CekPersonilController::class, 'update'])->name('admin.cek_personils.update');
     Route::delete('/admin/cek_personils/{cekPersonil}', [CekPersonilController::class, 'destroy'])->name('admin.cek_personils.destroy');
     Route::post('/admin/pokjas/get-members', [PokjaController::class, 'getMembers'])->name('admin.pokjas.get-members');
+
+    // Rute untuk Data Tender
+    Route::get('/admin/data_tenders', [DataTenderController::class, 'index'])->name('admin.data_tenders.index');
+    Route::get('/admin/data_tenders/create', [DataTenderController::class, 'create'])->name('admin.data_tenders.create');
+    Route::post('/admin/data_tenders', [DataTenderController::class, 'store'])->name('admin.data_tenders.store');
+    Route::get('/admin/data_tenders/{id}', [DataTenderController::class, 'show'])->name('admin.data_tenders.show');
+    Route::get('/admin/data_tenders/{id}/edit', [DataTenderController::class, 'edit'])->name('admin.data_tenders.edit');
+    Route::put('/admin/data_tenders/{id}', [DataTenderController::class, 'update'])->name('admin.data_tenders.update');
+    Route::delete('/admin/data_tenders/{id}', [DataTenderController::class, 'destroy'])->name('admin.data_tenders.destroy');
 
 });
 
