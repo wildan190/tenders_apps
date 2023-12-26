@@ -34,15 +34,16 @@
                             <input type="text" class="form-control" id="link_web" name="link_web" placeholder="Contoh: http://www.tenderweb.com">
                         </div>
 
-                        <!-- Kode Pokja -->
+                        <!-- Di dalam form pada create.blade.php -->
                         <div class="form-group col-md-6">
                             <label for="kode_pokja">Kode Pokja:</label>
                             <select class="form-control" id="kode_pokja" name="kode_pokja" required>
                                 @foreach($kodePokjas as $kodePokja)
-                                    <option value="{{ $kodePokja->id }}">{{ $kodePokja->kode_pokja }} - {{ $kodePokja->keterangan }}</option>
+                                <option value="{{ $kodePokja->id }}">{{ $kodePokja->kode_pokja }} - {{ $kodePokja->keterangan }}</option>
                                 @endforeach
                             </select>
                         </div>
+
                     </div>
 
                     <div class="row">

@@ -18,13 +18,18 @@
    
 
     <!-- Divider -->
-    <hr class="sidebar-divider">
+    <hr class="sidebar-divider"> Master Data
     <x-my-nav-link :active="request()->routeIs('admin.pokjas.index')" :name="'Pokja'" :href="route('admin.pokjas.index')">
         <i class="fas fa-people-arrows"></i>
     </x-my-nav-link>
     <x-my-nav-link :active="request()->routeIs('admin.kode_pokjas.index')" :name="'Kode Pokja'" :href="route('admin.kode_pokjas.index')">
         <i class="fab fa-adn"></i>
     </x-my-nav-link>
+    <x-my-nav-link :active="request()->routeIs('admin.data_tenders.index')" :name="'Data Tender'" :href="route('admin.data_tenders.index')">
+        <i class="fab fa-adn"></i>
+    </x-my-nav-link>
+    <!-- Divider -->
+    <hr class="sidebar-divider">
     <x-my-nav-link :active="request()->routeIs('admin.cek_personils.index')" :name="'Cek Personil'" :href="route('admin.cek_personils.index')">
         <i class="fas fa-users"></i>
     </x-my-nav-link>

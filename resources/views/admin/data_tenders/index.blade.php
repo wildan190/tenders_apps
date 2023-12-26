@@ -53,7 +53,7 @@
                                 <td>{{ $dataTender->kd_tender }}</td>
                                 <td>{{ $dataTender->nama_paket }}</td>
                                 <td>{{ $dataTender->link_web }}</td>
-                                <td>{{ $dataTender->kode_pokja->kode_pokja }}</td>
+                                <td>{{ $dataTender->kode_pokja }}</td>
                                 <td>{{ $dataTender->pagu }}</td>
                                 <td>{{ $dataTender->hps }}</td>
                                 <td>{{ $dataTender->satuan_kerja }}</td>
@@ -74,7 +74,7 @@
                                     <form action="{{ route('admin.data_tenders.destroy', $dataTender->id) }}" method="POST" style="display: inline;">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data tender ini?')">
+                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')" style="color: #fff; background-color: #dc3545; border-color: #dc3545;">
                                             <i class="fas fa-trash-alt"></i> Hapus
                                         </button>
                                     </form>

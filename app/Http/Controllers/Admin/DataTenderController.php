@@ -15,7 +15,7 @@ class DataTenderController extends Controller
 {
     public function index()
     {
-        $dataTenders = DataTender::all();
+        $dataTenders = DataTender::with('kodePokja')->get();
         return view('admin.data_tenders.index', compact('dataTenders'));
     }
 
