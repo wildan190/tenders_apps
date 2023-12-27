@@ -26,7 +26,7 @@
         <i class="fab fa-adn"></i>
     </x-my-nav-link>
     <x-my-nav-link :active="request()->routeIs('admin.data_tenders.index')" :name="'Data Tender'" :href="route('admin.data_tenders.index')">
-        <i class="fab fa-adn"></i>
+        <i class="fab fa-r-project"></i>
     </x-my-nav-link>
     <!-- Divider -->
     <hr class="sidebar-divider">

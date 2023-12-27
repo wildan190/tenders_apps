@@ -14,7 +14,7 @@
                     <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
                     <!-- Split Button for Adding Data -->
                     <div class="btn-group">
-                        <button type="button" class="btn btn-primary">Tambah Data</button>
+                    <a href="{{ route('admin.data_tenders.create') }}" class="btn btn-primary">Tambah Data</a>
                         <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="sr-only">Toggle Dropdown</span>
                         </button>
@@ -32,7 +32,6 @@
                             <tr>
                                 <th>Kode Tender</th>
                                 <th>Nama Paket</th>
-                                <th>Link Web</th>
                                 <th>Kode Pokja</th>
                                 <th>Pagu</th>
                                 <th>HPS</th>
@@ -52,8 +51,7 @@
                             <tr>
                                 <td>{{ $dataTender->kd_tender }}</td>
                                 <td>{{ $dataTender->nama_paket }}</td>
-                                <td>{{ $dataTender->link_web }}</td>
-                                <td>{{ $dataTender->kode_pokja }}</td>
+                                <td><a href="{{ $dataTender->link_web }}" target="_blank">{{ $dataTender->kode_pokja }}</td>
                                 <td>{{ $dataTender->pagu }}</td>
                                 <td>{{ $dataTender->hps }}</td>
                                 <td>{{ $dataTender->satuan_kerja }}</td>
