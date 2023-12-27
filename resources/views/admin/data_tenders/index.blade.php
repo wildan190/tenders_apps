@@ -53,7 +53,7 @@
                                 <td>{{ $dataTender->kd_tender }}</td>
                                 <td>{{ $dataTender->nama_paket }}</td>
                                 <td>{{ $dataTender->link_web }}</td>
-                                <td>{{ $dataTender->kode_pokja }}</td>
+                                <td><a href="{{ $dataTender->link_web }}" target="_blank">{{ $dataTender->kode_pokja }}</td>
                                 <td>{{ $dataTender->pagu }}</td>
                                 <td>{{ $dataTender->hps }}</td>
                                 <td>{{ $dataTender->satuan_kerja }}</td>
