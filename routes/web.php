@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\PokjaController;
 use App\Http\Controllers\Admin\CekPersonilController;
 use App\Http\Controllers\Admin\DataTenderController;
 use App\Http\Controllers\Admin\CekDataTenderController;
+use App\Http\Controllers\Admin\CekPeralatanController;
 
 
 Route::get('/', function () {
@@ -77,6 +78,15 @@ Route::middleware(['auth', 'verified', 'admin'])->group(function () {
     Route::get('/admin/cek_data_tenders/{id}/edit', [CekDataTenderController::class, 'edit'])->name('admin.cek_data_tenders.edit');
     Route::put('/admin/cek_data_tenders/{id}', [CekDataTenderController::class, 'update'])->name('admin.cek_data_tenders.update');
     Route::delete('/admin/cek_data_tenders/{id}', [CekDataTenderController::class, 'destroy'])->name('admin.cek_data_tenders.destroy');
+
+    // Rute untuk Cek Peralatan
+    Route::get('/admin/cek_peralatans', [CekPeralatanController::class, 'index'])->name('admin.cek_peralatans.index');
+    Route::get('/admin/cek_peralatans/create', [CekPeralatanController::class, 'create'])->name('admin.cek_peralatans.create');
+    Route::post('/admin/cek_peralatans', [CekPeralatanController::class, 'store'])->name('admin.cek_peralatans.store');
+    Route::get('/admin/cek_peralatans/{id}', [CekPeralatanController::class, 'show'])->name('admin.cek_peralatans.show');
+    Route::get('/admin/cek_peralatans/{id}/edit', [CekPeralatanController::class, 'edit'])->name('admin.cek_peralatans.edit');
+    Route::put('/admin/cek_peralatans/{id}', [CekPeralatanController::class, 'update'])->name('admin.cek_peralatans.update');
+    Route::delete('/admin/cek_peralatans/{id}', [CekPeralatanController::class, 'destroy'])->name('admin.cek_peralatans.destroy');
 });
 
 Route::middleware('auth')->group(function () {
