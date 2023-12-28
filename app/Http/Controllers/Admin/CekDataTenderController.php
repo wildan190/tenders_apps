@@ -1,7 +1,5 @@
 <?php
 
-// app/Http/Controllers/Admin/CekDataTenderController.php
-
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
@@ -73,13 +71,13 @@ class CekDataTenderController extends Controller
         $cekDataTender = CekDataTender::findOrFail($id);
 
         $validatedData = $request->validate([
-            'cek_personil_id' => 'required|exists:cek_personils,id',
-            'data_tender_id' => 'required|exists:data_tenders,id',
+            /*'cek_personil_id' => 'required|exists:cek_personils,id',
+            'data_tender_id' => 'required|exists:data_tenders,id',*/
         ]);
 
         $cekDataTender->update($validatedData);
 
-        $cekDataTender->update($request->all());
+        // Update status
         $this->updateStatus($cekDataTender);
 
         Alert::success('Success', 'Data cek data tender berhasil diperbarui.');
@@ -95,58 +93,27 @@ class CekDataTenderController extends Controller
         return redirect()->route('admin.cek_data_tenders.index');
     }
 
-
     private function updateStatus(CekDataTender $cekDataTender)
-{
-    $dataTender = $cekDataTender->dataTender;
-
-    // Menggunakan Carbon untuk manipulasi tanggal
-    $now = Carbon::now();
-    $tanggalPenetapan = Carbon::parse($dataTender->tanggal_penetapan);
-    $tanggalKontrak = Carbon::parse($dataTender->tanggal_kontrak);
-
-    // Logika untuk update status
-    dd([
-        'now' => $now,
-        'tanggalPenetapan' => $tanggalPenetapan,
-        'tanggalKontrak' => $tanggalKontrak,
-    ]);
-
-    if ($now->greaterThanOrEqualTo($tanggalKontrak->endOfDay())) {
-        $cekDataTender->status = 'SELESAI';
-    } elseif ($now->greaterThanOrEqualTo($tanggalKontrak->startOfDay())) {
-        $cekDataTender->status = 'DIKERJAKAN';
-    } elseif ($now->greaterThanOrEqualTo($tanggalPenetapan->startOfDay())) {
-        $cekDataTender->status = 'DITETAPKAN';
-    }
-
-    $cekDataTender->save();
-}
-
-
-
-    private function parseWaktuPelaksanaan($waktuPelaksanaan)
     {
-        // Pisahkan angka dan satuan (contoh: "12 bulan")
-        preg_match('/(\d+)\s*(\w+)/', $waktuPelaksanaan, $matches);
+        $dataTender = $cekDataTender->dataTender;
 
-        // Ambil angka dan satuan
-        $jumlah = (int)$matches[1];
-        $satuan = strtolower($matches[2]);
+        // Menggunakan Carbon untuk manipulasi tanggal
+        $now = Carbon::now();
+        $tanggalPenetapan = Carbon::parse($dataTender->tanggal_penetapan);
+        $tanggalKontrak = Carbon::parse($dataTender->tanggal_kontrak);
 
-        // Konversi satuan ke bulan
-        switch ($satuan) {
-            case 'bulan':
-                return $jumlah;
-            case 'minggu':
-                return $jumlah * 4; // Anggap 1 bulan = 4 minggu
-            case 'tahun':
-                return $jumlah * 12; // Anggap 1 tahun = 12 bulan
-                // Tambahkan case lain sesuai kebutuhan (hari, dll.)
-                // ...
-
-            default:
-                return 0;
+        // Logika untuk update status
+        if ($now->greaterThanOrEqualTo($tanggalKontrak->endOfDay())) {
+            $cekDataTender->status = 'SELESAI';
+        } elseif ($now->greaterThanOrEqualTo($tanggalKontrak->startOfDay())) {
+            $cekDataTender->status = 'DIKERJAKAN';
+        } elseif ($now->greaterThanOrEqualTo($tanggalPenetapan->startOfDay())) {
+            $cekDataTender->status = 'DITETAPKAN';
+        } else {
+            // Jika tidak ada kondisi yang terpenuhi, berikan nilai default null
+            $cekDataTender->status = null;
         }
+
+        $cekDataTender->save();
     }
 }

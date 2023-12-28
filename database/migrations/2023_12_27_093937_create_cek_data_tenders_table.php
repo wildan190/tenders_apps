@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('cek_personil_id')->constrained();
             $table->foreignId('data_tender_id')->constrained();
-            $table->enum('status', ['DITETAPKAN', 'DIKERJAKAN', 'SELESAI'])->nullable();
+            $table->enum('status', ['DITETAPKAN', 'DIKERJAKAN', 'SELESAI'])->nullable()->default(null);
             $table->timestamps();
         });
     }

@@ -18,7 +18,7 @@
    
 
     <!-- Divider -->
-    <hr class="sidebar-divider"> Master Data
+    <hr class="sidebar-divider"> 
     <x-my-nav-link :active="request()->routeIs('admin.pokjas.index')" :name="'Pokja'" :href="route('admin.pokjas.index')">
         <i class="fas fa-people-arrows"></i>
     </x-my-nav-link>
@@ -34,6 +34,15 @@
         <i class="fas fa-users"></i>
     </x-my-nav-link>
     <x-my-nav-link :active="request()->routeIs('admin.cek_data_tenders.index')" :name="'Cek Data Tender'" :href="route('admin.cek_data_tenders.index')">
+        <i class="fas fa-file-alt"></i>
+    </x-my-nav-link>
+    <x-my-nav-link :active="request()->routeIs('admin.cek_data_tenders.index')" :name="'Cek Peralatan'" :href="route('admin.cek_data_tenders.index')">
+        <i class="fas fa-file-alt"></i>
+    </x-my-nav-link>
+    <x-my-nav-link :active="request()->routeIs('admin.cek_data_tenders.index')" :name="'Surat Keputusan'" :href="route('admin.cek_data_tenders.index')">
+        <i class="fas fa-file-alt"></i>
+    </x-my-nav-link>
+    <x-my-nav-link :active="request()->routeIs('admin.cek_data_tenders.index')" :name="'SPT Peneliti'" :href="route('admin.cek_data_tenders.index')">
         <i class="fas fa-file-alt"></i>
     </x-my-nav-link>
     <x-my-nav-link :active="request()->routeIs('admin.agenda.index')" :name="'Agenda Rapat'" :href="route('admin.agenda.index')">
