@@ -26,12 +26,15 @@
         <i class="fab fa-adn"></i>
     </x-my-nav-link>
     <x-my-nav-link :active="request()->routeIs('admin.data_tenders.index')" :name="'Data Tender'" :href="route('admin.data_tenders.index')">
-        <i class="fab fa-r-project"></i>
+        <i class="fas fa-project-diagram"></i>
     </x-my-nav-link>
     <!-- Divider -->
     <hr class="sidebar-divider">
     <x-my-nav-link :active="request()->routeIs('admin.cek_personils.index')" :name="'Cek Personil'" :href="route('admin.cek_personils.index')">
         <i class="fas fa-users"></i>
+    </x-my-nav-link>
+    <x-my-nav-link :active="request()->routeIs('admin.cek_data_tenders.index')" :name="'Cek Data Tender'" :href="route('admin.cek_data_tenders.index')">
+        <i class="fas fa-file-alt"></i>
     </x-my-nav-link>
     <x-my-nav-link :active="request()->routeIs('admin.agenda.index')" :name="'Agenda Rapat'" :href="route('admin.agenda.index')">
         <i class="fas fa-calendar-alt"></i>

@@ -7,18 +7,7 @@ use App\Http\Controllers\Admin\KodePokjaController;
 use App\Http\Controllers\Admin\PokjaController;
 use App\Http\Controllers\Admin\CekPersonilController;
 use App\Http\Controllers\Admin\DataTenderController;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
+use App\Http\Controllers\Admin\CekDataTenderController;
 
 
 Route::get('/', function () {
@@ -80,6 +69,14 @@ Route::middleware(['auth', 'verified', 'admin'])->group(function () {
     Route::put('/admin/data_tenders/{id}', [DataTenderController::class, 'update'])->name('admin.data_tenders.update');
     Route::delete('/admin/data_tenders/{id}', [DataTenderController::class, 'destroy'])->name('admin.data_tenders.destroy');
 
+    // Rute untuk Cek Data Tender
+    Route::get('/admin/cek_data_tenders', [CekDataTenderController::class, 'index'])->name('admin.cek_data_tenders.index');
+    Route::get('/admin/cek_data_tenders/create', [CekDataTenderController::class, 'create'])->name('admin.cek_data_tenders.create');
+    Route::post('/admin/cek_data_tenders', [CekDataTenderController::class, 'store'])->name('admin.cek_data_tenders.store');
+    Route::get('/admin/cek_data_tenders/{id}', [CekDataTenderController::class, 'show'])->name('admin.cek_data_tenders.show');
+    Route::get('/admin/cek_data_tenders/{id}/edit', [CekDataTenderController::class, 'edit'])->name('admin.cek_data_tenders.edit');
+    Route::put('/admin/cek_data_tenders/{id}', [CekDataTenderController::class, 'update'])->name('admin.cek_data_tenders.update');
+    Route::delete('/admin/cek_data_tenders/{id}', [CekDataTenderController::class, 'destroy'])->name('admin.cek_data_tenders.destroy');
 });
 
 Route::middleware('auth')->group(function () {
