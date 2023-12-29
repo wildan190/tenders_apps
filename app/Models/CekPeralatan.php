@@ -17,6 +17,7 @@ class CekPeralatan extends Model
         'tahun_anggaran',
         'pemenang',
         'spmk',
+        'spmk_selesai',
         'peralatan_syarat',
         'peralatan_ditawarkan',
     ];

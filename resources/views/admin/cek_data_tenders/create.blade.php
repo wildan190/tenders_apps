@@ -28,7 +28,7 @@
                         <label for="nama_personil">Nama Personil:</label>
                         <select class="form-control" id="cek_personil_id" name="cek_personil_id" required>
                             @foreach($cekPersonils as $cekPersonil)
-                                <option value="{{ $cekPersonil->id }}">{{ $cekPersonil->nama_personil }}</option>
+                            <option value="{{ $cekPersonil->id }}">{{ $cekPersonil->nama_personil }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -38,15 +38,19 @@
                         <label for="data_tender_id">Data Tender:</label>
                         <select class="form-control" id="data_tender_id" name="data_tender_id" required>
                             @foreach($dataTenders as $dataTender)
-                                <option value="{{ $dataTender->id }}">{{ $dataTender->kd_tender }} - {{ $dataTender->nama_paket }}</option>
+                            <option value="{{ $dataTender->id }}">{{ $dataTender->kd_tender }} - {{ $dataTender->nama_paket }}</option>
                             @endforeach
                         </select>
                     </div>
 
                     <!-- Tombol Simpan -->
-                    <div class="d-flex justify-content-end">
-                        <button type="submit" class="btn btn-primary">Simpan</button>
-                        <a href="{{ route('admin.cek_data_tenders.index') }}" class="btn btn-secondary ml-2">Batal</a>
+                    <div class="flex justify-between">
+                        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md focus:outline-none focus:shadow-outline-blue active:bg-blue-800">
+                            Simpan
+                        </button>
+                        <a href="{{ route('admin.cek_data_tenders.index') }}" class="bg-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-400 focus:outline-none focus:shadow-outline-gray active:bg-gray-500">
+                            Batal
+                        </a>
                     </div>
                 </form>
             </div>

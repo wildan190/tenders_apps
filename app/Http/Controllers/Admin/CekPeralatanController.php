@@ -34,7 +34,8 @@ class CekPeralatanController extends Controller
             'nama_paket' => 'required|string|max:255',
             'tahun_anggaran' => 'required|string|max:255',
             'pemenang' => 'required|string|max:255',
-            'spmk' => 'required|string|max:255',
+            'spmk' => 'required|date',
+            'spmk_selesai' => 'required|date', // Tambahkan ini
             'peralatan_syarat' => 'required|string|max:255',
             'peralatan_ditawarkan' => 'required|string|max:255',
         ]);
@@ -48,7 +49,9 @@ class CekPeralatanController extends Controller
     public function show($id)
     {
         $cekPeralatan = CekPeralatan::findOrFail($id);
-        return view('admin.cek_peralatans.show', compact('cekPeralatan'));
+        $dataTender = $cekPeralatan->dataTender; // Pastikan hubungan model telah didefinisikan dengan benar
+
+        return view('admin.cek_peralatans.show', compact('cekPeralatan', 'dataTender'));
     }
 
     public function edit($id)
@@ -69,6 +72,7 @@ class CekPeralatanController extends Controller
             'tahun_anggaran' => 'required|string|max:255',
             'pemenang' => 'required|string|max:255',
             'spmk' => 'required|string|max:255',
+            'spmk_selesai' => 'required|string|max:255',
             'peralatan_syarat' => 'required|string|max:255',
             'peralatan_ditawarkan' => 'required|string|max:255',
         ]);

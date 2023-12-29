@@ -62,8 +62,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="spmk">Tanggal Selesai</label>
-                        <input type="date" class="form-control" id="spmk" name="spmk" required>
+                        <label for="spmk_selesai">Tanggal Selesai</label>
+                        <input type="date" class="form-control" id="spmk_selesai" name="spmk_selesai" required>
                     </div>
 
                     <div class="form-group">
@@ -74,23 +74,33 @@
                         <label for="peralatan_ditawarkan">Peralatan Ditawarkan</label>
                         <input type="text" class="form-control" id="peralatan_ditawarkan" name="peralatan_ditawarkan" placeholder="Masukkan Peralatan Ditawarkan" required>
                     </div>
-                    <div class="d-flex justify-content-end">
-                        <a href="{{ route('admin.cek_peralatans.index') }}" class="btn btn-secondary mr-2">Batal</a>
-                        <button type="submit" class="btn btn-primary">Simpan</button>
-                    </div>
+                    <div class="flex justify-between">
+                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md focus:outline-none focus:shadow-outline-blue active:bg-blue-800">
+                        Simpan
+                    </button>
+                    <a href="{{ route('admin.cek_peralatans.index') }}" class="bg-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-400 focus:outline-none focus:shadow-outline-gray active:bg-gray-500">
+                        Batal
+                    </a>
+                </div>
                 </form>
             </div>
         </div>
     </div>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            flatpickr("#spmk", {
-                mode: "range",
-                dateFormat: "Y-m-d",
-                // tambahkan opsi atau konfigurasi lain sesuai kebutuhan
-            });
+    document.addEventListener('DOMContentLoaded', function() {
+        flatpickr("#spmk", {
+            mode: "range",
+            dateFormat: "Y-m-d",
+            // tambahkan opsi atau konfigurasi lain sesuai kebutuhan
         });
-    </script>
+
+        flatpickr("#spmk_selesai", {
+            dateFormat: "Y-m-d",
+            // tambahkan opsi atau konfigurasi lain sesuai kebutuhan
+        });
+    });
+</script>
+
 
 
 </x-app-layout>

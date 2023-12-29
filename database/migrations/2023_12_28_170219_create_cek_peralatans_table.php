@@ -22,6 +22,7 @@ class CreateCekPeralatansTable extends Migration
             $table->string('tahun_anggaran');
             $table->string('pemenang');
             $table->string('spmk');
+            $table->date('spmk_selesai');
             $table->string('peralatan_syarat');
             $table->string('peralatan_ditawarkan');
             $table->timestamps();

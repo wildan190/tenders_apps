@@ -43,32 +43,32 @@
                         </thead>
                         <tbody>
                             @foreach($cekPeralatans as $cekPeralatan)
-                                <tr>
-                                    <td>{{ $cekPeralatan->id }}</td>
-                                    <td>{{ $cekPeralatan->kode_pokja }}</td>
-                                    <td>{{ $cekPeralatan->nama_paket }}</td>
-                                    <td>{{ $cekPeralatan->tahun_anggaran }}</td>
-                                    <td>{{ $cekPeralatan->pemenang }}</td>
-                                    <td>{{ $cekPeralatan->spmk }}</td>
-                                    <td>{{ $cekPeralatan->peralatan_syarat }}</td>
-                                    <td>{{ $cekPeralatan->peralatan_ditawarkan }}</td>
-                                    <td>
-                                        <a href="{{ route('admin.cek_peralatans.show', $cekPeralatan->id) }}" class="btn btn-info btn-sm">
-                                            <i class="fas fa-eye"></i> Lihat
-                                        </a>
-                                        <a href="{{ route('admin.cek_peralatans.edit', $cekPeralatan->id) }}" class="btn btn-warning btn-sm">
-                                            <i class="fas fa-edit"></i> Edit
-                                        </a>
-                                        <form action="{{ route('admin.cek_peralatans.destroy', $cekPeralatan->id) }}" method="POST" class="d-inline">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
-                                                <i class="fas fa-trash"></i> Hapus
-                                            </button>
-                                        </form>
-                                        <!-- Tambahkan tombol-tombol lain sesuai kebutuhan -->
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td>{{ $cekPeralatan->id }}</td>
+                                <td>{{ $cekPeralatan->kode_pokja }}</td>
+                                <td>{{ $cekPeralatan->nama_paket }}</td>
+                                <td>{{ $cekPeralatan->tahun_anggaran }}</td>
+                                <td>{{ $cekPeralatan->pemenang }}</td>
+                                <td>{{ $cekPeralatan->spmk }} s/d {{ $cekPeralatan->spmk_selesai }}</td>
+                                <td>{{ $cekPeralatan->peralatan_syarat }}</td>
+                                <td>{{ $cekPeralatan->peralatan_ditawarkan }}</td>
+                                <td>
+                                    <a href="{{ route('admin.cek_peralatans.show', $cekPeralatan->id) }}" class="btn btn-info btn-sm">
+                                        <i class="fas fa-eye"></i> Lihat
+                                    </a>
+                                    <a href="{{ route('admin.cek_peralatans.edit', $cekPeralatan->id) }}" class="btn btn-warning btn-sm">
+                                        <i class="fas fa-edit"></i> Edit
+                                    </a>
+                                    <form action="{{ route('admin.cek_peralatans.destroy', $cekPeralatan->id) }}" method="POST" class="d-inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')" style="color: #fff; background-color: #dc3545; border-color: #dc3545;">
+                                            <i class="fas fa-trash-alt"></i> Hapus
+                                        </button>
+                                    </form>
+                                    <!-- Tambahkan tombol-tombol lain sesuai kebutuhan -->
+                                </td>
+                            </tr>
                             @endforeach
                         </tbody>
                     </table>
