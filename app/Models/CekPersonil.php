@@ -25,4 +25,11 @@ class CekPersonil extends Model
     {
         return $this->belongsToMany(Pokja::class, 'cek_personil_pokja', 'cek_personil_id', 'pokja_id');
     }
+
+    // app/Models/CekPersonil.php
+
+    public function dataSuratKeputusan()
+    {
+        return $this->hasOne(DataSuratKeputusan::class);
+    }
 }
