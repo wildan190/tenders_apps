@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\CekPersonilController;
 use App\Http\Controllers\Admin\DataTenderController;
 use App\Http\Controllers\Admin\CekDataTenderController;
 use App\Http\Controllers\Admin\CekPeralatanController;
+use App\Http\Controllers\Admin\DataSuratKeputusanController;
 
 
 Route::get('/', function () {
@@ -87,6 +88,15 @@ Route::middleware(['auth', 'verified', 'admin'])->group(function () {
     Route::get('/admin/cek_peralatans/{id}/edit', [CekPeralatanController::class, 'edit'])->name('admin.cek_peralatans.edit');
     Route::put('/admin/cek_peralatans/{id}', [CekPeralatanController::class, 'update'])->name('admin.cek_peralatans.update');
     Route::delete('/admin/cek_peralatans/{id}', [CekPeralatanController::class, 'destroy'])->name('admin.cek_peralatans.destroy');
+
+    // Rute untuk Data Surat Keputusan
+    Route::get('/admin/data_surat_keputusans', [DataSuratKeputusanController::class, 'index'])->name('admin.data_surat_keputusans.index');
+    Route::get('/admin/data_surat_keputusans/create', [DataSuratKeputusanController::class, 'create'])->name('admin.data_surat_keputusans.create');
+    Route::post('/admin/data_surat_keputusans', [DataSuratKeputusanController::class, 'store'])->name('admin.data_surat_keputusans.store');
+    Route::get('/admin/data_surat_keputusans/{dataSuratKeputusan}', [DataSuratKeputusanController::class, 'show'])->name('admin.data_surat_keputusans.show');
+    Route::get('/admin/data_surat_keputusans/{dataSuratKeputusan}/edit', [DataSuratKeputusanController::class, 'edit'])->name('admin.data_surat_keputusans.edit');
+    Route::put('/admin/data_surat_keputusans/{dataSuratKeputusan}', [DataSuratKeputusanController::class, 'update'])->name('admin.data_surat_keputusans.update');
+    Route::delete('/admin/data_surat_keputusans/{dataSuratKeputusan}', [DataSuratKeputusanController::class, 'destroy'])->name('admin.data_surat_keputusans.destroy');
 });
 
 Route::middleware('auth')->group(function () {
