@@ -107,6 +107,7 @@ Route::middleware(['auth', 'verified', 'admin'])->group(function () {
     Route::get('/admin/spt_penelitis/{id}/edit', [SptPenelitiController::class, 'edit'])->name('admin.spt_penelitis.edit');
     Route::put('/admin/spt_penelitis/{id}', [SptPenelitiController::class, 'update'])->name('admin.spt_penelitis.update');
     Route::delete('/admin/spt_penelitis/{id}', [SptPenelitiController::class, 'destroy'])->name('admin.spt_penelitis.destroy');
+    Route::get('/admin/spt_penelitis/{id}/export_pdf', [SptPenelitiController::class, 'exportPDF'])->name('admin.spt_penelitis.export_pdf');
 });
 
 Route::middleware('auth')->group(function () {

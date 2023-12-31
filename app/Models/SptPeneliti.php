@@ -14,6 +14,6 @@ class SptPeneliti extends Model
 
     public function dataTender()
     {
-        return $this->belongsTo(DataTender::class, 'kd_tender', 'kd_tender');
+        return $this->belongsTo(DataTender::class, 'kd_tender');
     }
 }

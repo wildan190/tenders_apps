@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\SptPeneliti;
 use App\Models\DataTender;
 use Illuminate\Http\Request;
+use PDF;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class SptPenelitiController extends Controller
@@ -45,10 +46,11 @@ class SptPenelitiController extends Controller
     }
 
     public function show($id)
-    {
-        $sptPeneliti = SptPeneliti::findOrFail($id);
-        return view('admin.spt_penelitis.show', compact('sptPeneliti'));
-    }
+{
+    $sptPeneliti = SptPeneliti::with('dataTender')->findOrFail($id);
+    return view('admin.spt_penelitis.show', compact('sptPeneliti'));
+}
+
 
     public function edit($id)
     {
@@ -76,6 +78,15 @@ class SptPenelitiController extends Controller
 
         Alert::success('Success', 'SPT Peneliti has been updated successfully!');
         return redirect()->route('admin.spt_penelitis.index');
+    }
+
+    public function exportPDF($id)
+    {
+        $sptPeneliti = SptPeneliti::findOrFail($id);
+
+        $pdf = PDF::loadView('admin.spt_penelitis.export_pdf', compact('sptPeneliti'));
+
+        return $pdf->download('spt_peneliti_'.$sptPeneliti->id.'.pdf');
     }
 
     public function destroy($id)
