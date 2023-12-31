@@ -11,7 +11,6 @@ use App\Http\Controllers\Admin\CekDataTenderController;
 use App\Http\Controllers\Admin\CekPeralatanController;
 use App\Http\Controllers\Admin\DataSuratKeputusanController;
 
-
 Route::get('/', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -97,6 +96,7 @@ Route::middleware(['auth', 'verified', 'admin'])->group(function () {
     Route::get('/admin/data_surat_keputusans/{dataSuratKeputusan}/edit', [DataSuratKeputusanController::class, 'edit'])->name('admin.data_surat_keputusans.edit');
     Route::put('/admin/data_surat_keputusans/{dataSuratKeputusan}', [DataSuratKeputusanController::class, 'update'])->name('admin.data_surat_keputusans.update');
     Route::delete('/admin/data_surat_keputusans/{dataSuratKeputusan}', [DataSuratKeputusanController::class, 'destroy'])->name('admin.data_surat_keputusans.destroy');
+    Route::get('/admin/data_surat_keputusans/{id}/export_pdf', [DataSuratKeputusanController::class, 'exportPDF'])->name('admin.data_surat_keputusans.export_pdf');
 });
 
 Route::middleware('auth')->group(function () {

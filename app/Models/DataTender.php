@@ -33,10 +33,4 @@ class DataTender extends Model
     {
         return $this->belongsTo(KodePokja::class, 'kode_pokja');
     }
-    // app/Models/DataTender.php
-
-    public function dataSuratKeputusan()
-    {
-        return $this->hasOne(DataSuratKeputusan::class);
-    }
 }

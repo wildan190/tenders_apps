@@ -1,102 +1,114 @@
 <?php
 
-// app/Http/Controllers/Admin/DataSuratKeputusanController.php
-
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Models\DataSuratKeputusan;
 use App\Models\DataTender;
 use App\Models\CekPersonil;
-use App\Models\KodePokja;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use PDF;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class DataSuratKeputusanController extends Controller
 {
     public function index()
     {
-        $dataSuratKeputusans = DataSuratKeputusan::with('dataTender', 'cekPersonil', 'kodePokja')->paginate(10);
-        return view('admin.data_surat_keputusans.index', compact('dataSuratKeputusans'));
+        $dataSuratKeputusan = DataSuratKeputusan::with(['dataTender', 'namaPersonil'])->get();
+        return view('admin.data_surat_keputusan.index', compact('dataSuratKeputusan'));
     }
 
     public function create()
     {
         $dataTenders = DataTender::all();
         $cekPersonils = CekPersonil::all();
-        $kodePokjas = KodePokja::all();
-        return view('admin.data_surat_keputusans.create', compact('dataTenders', 'cekPersonils', 'kodePokjas'));
+        return view('admin.data_surat_keputusan.create', compact('dataTenders', 'cekPersonils'));
     }
 
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'data_tender_id' => 'required|exists:data_tenders,id',
-            'cek_personil_id' => 'required|exists:cek_personils,id',
-            'kode_pokja_id' => 'required|exists:kode_pokjas,id',
-            'nomor_sk' => 'required|integer',
+        $validator = Validator::make($request->all(), [
+            'kd_tender' => 'required|exists:data_tenders,id',
+            'nomor_sk' => 'required|string',
+            'nomor_surat' => 'required|string',
             'tahun' => 'required|integer',
-            'nama_pembuat_komitmen' => 'required|string|max:255',
-            'nomor_surat' => 'required|string|max:255',
-            'satuan_kerja' => 'required|string|max:255',
             'tanggal_terbit' => 'required|date',
-            'nama_personil' => 'required|string|max:255',
-            'nip_personil' => 'required|string|max:255',
-            'nama_paket' => 'required|string|max:255',
-            'pagu' => 'required|numeric',
+            'pembuat_komitmen' => 'required|string',
         ]);
 
-        DataSuratKeputusan::create($validatedData);
+        if ($validator->fails()) {
+            return redirect()->route('admin.data_surat_keputusan.create')
+                ->withErrors($validator)
+                ->withInput();
+        }
 
-        Alert::success('Success', 'Data Surat Keputusan added successfully!');
+        DataSuratKeputusan::create($request->all());
+
+        Alert::success('Success', 'Data Surat Keputusan berhasil ditambahkan.');
 
         return redirect()->route('admin.data_surat_keputusans.index');
     }
 
-    public function show(DataSuratKeputusan $dataSuratKeputusan)
+    public function edit($id)
     {
-        return view('admin.data_surat_keputusans.show', compact('dataSuratKeputusan'));
-    }
-
-    public function edit(DataSuratKeputusan $dataSuratKeputusan)
-    {
+        $dataSuratKeputusan = DataSuratKeputusan::findOrFail($id);
         $dataTenders = DataTender::all();
         $cekPersonils = CekPersonil::all();
-        $kodePokjas = KodePokja::all();
-        return view('admin.data_surat_keputusans.edit', compact('dataSuratKeputusan', 'dataTenders', 'cekPersonils', 'kodePokjas'));
+        return view('admin.data_surat_keputusan.edit', compact('dataSuratKeputusan', 'dataTenders', 'cekPersonils'));
     }
 
-    public function update(Request $request, DataSuratKeputusan $dataSuratKeputusan)
+    public function update(Request $request, $id)
     {
-        $validatedData = $request->validate([
-            'data_tender_id' => 'required|exists:data_tenders,id',
-            'cek_personil_id' => 'required|exists:cek_personils,id',
-            'kode_pokja_id' => 'required|exists:kode_pokjas,id',
-            'nomor_sk' => 'required|integer',
+        $validator = Validator::make($request->all(), [
+            'kd_tender' => 'required|exists:data_tenders,id',
+            'nomor_sk' => 'required|string',
+            'nomor_surat' => 'required|string',
             'tahun' => 'required|integer',
-            'nama_pembuat_komitmen' => 'required|string|max:255',
-            'nomor_surat' => 'required|string|max:255',
-            'satuan_kerja' => 'required|string|max:255',
             'tanggal_terbit' => 'required|date',
-            'nama_personil' => 'required|string|max:255',
-            'nip_personil' => 'required|string|max:255',
-            'nama_paket' => 'required|string|max:255',
-            'pagu' => 'required|numeric',
+            'pembuat_komitmen' => 'required|string',
         ]);
 
-        $dataSuratKeputusan->update($validatedData);
+        if ($validator->fails()) {
+            return redirect()->route('admin.data_surat_keputusan.edit', $id)
+                ->withErrors($validator)
+                ->withInput();
+        }
 
-        Alert::success('Success', 'Data Surat Keputusan updated successfully!');
+        $dataSuratKeputusan = DataSuratKeputusan::findOrFail($id);
+        $dataSuratKeputusan->update($request->all());
+
+        Alert::success('Success', 'Data Surat Keputusan berhasil diperbarui.');
 
         return redirect()->route('admin.data_surat_keputusans.index');
     }
 
-    public function destroy(DataSuratKeputusan $dataSuratKeputusan)
+    public function show($id)
     {
+        // Ambil data surat keputusan berdasarkan ID
+        $dataSuratKeputusan = DataSuratKeputusan::with('dataTender')->findOrFail($id);
+
+        // Tampilkan halaman show dengan data surat keputusan
+        return view('admin.data_surat_keputusan.show', compact('dataSuratKeputusan'));
+    }
+
+    public function destroy($id)
+    {
+        $dataSuratKeputusan = DataSuratKeputusan::findOrFail($id);
         $dataSuratKeputusan->delete();
 
-        Alert::success('Success', 'Data Surat Keputusan deleted successfully!');
+        Alert::success('Success', 'Data Surat Keputusan berhasil dihapus.');
 
         return redirect()->route('admin.data_surat_keputusans.index');
+    }
+
+
+    public function exportPDF($id)
+    {
+        $dataSuratKeputusan = DataSuratKeputusan::findOrFail($id);
+
+        $pdf = PDF::loadView('admin.data_surat_keputusan.export_pdf', compact('dataSuratKeputusan'));
+
+        return $pdf->stream('surat_keputusan.pdf');
     }
 }
