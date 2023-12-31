@@ -43,7 +43,10 @@
         <i class="fas fa-mail-bulk"></i>
     </x-my-nav-link>
     <x-my-nav-link :active="request()->routeIs('admin.spt_penelitis.index')" :name="'SPT Peneliti'" :href="route('admin.spt_penelitis.index')">
-        <i class="fas fa-file-alt"></i>
+        <i class="fab fa-researchgate"></i>
+    </x-my-nav-link>
+    <x-my-nav-link :active="request()->routeIs('admin.spt_penelitis.index')" :name="'Surat Penyampaian'" :href="route('admin.spt_penelitis.index')">
+        <i class="	fas fa-concierge-bell"></i>
     </x-my-nav-link>
     <x-my-nav-link :active="request()->routeIs('admin.agenda.index')" :name="'Agenda Rapat'" :href="route('admin.agenda.index')">
         <i class="fas fa-calendar-alt"></i>
