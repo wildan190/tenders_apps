@@ -117,9 +117,13 @@
                     </div>
 
                     <!-- Tombol Simpan -->
-                    <div class="d-flex justify-content-end">
-                        <button type="submit" class="btn btn-primary">Simpan</button>
-                        <a href="{{ route('admin.data_tenders.index') }}" class="btn btn-secondary ml-2">Batal</a>
+                    <div class="flex justify-between">
+                        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md focus:outline-none focus:shadow-outline-blue active:bg-blue-800">
+                            Simpan
+                        </button>
+                        <a href="{{ route('admin.data_tenders.index') }}" class="bg-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-400 focus:outline-none focus:shadow-outline-gray active:bg-gray-500">
+                            Batal
+                        </a>
                     </div>
                 </form>
             </div>
