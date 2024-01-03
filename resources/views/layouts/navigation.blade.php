@@ -39,8 +39,8 @@
     <x-my-nav-link :active="request()->routeIs('admin.cek_peralatans.index')" :name="'Cek Peralatan'" :href="route('admin.cek_peralatans.index')">
         <i class="fas fa-tools"></i>
     </x-my-nav-link>
-    <x-my-nav-link :active="request()->routeIs('admin.cek_data_tenders.index')" :name="'Surat Keputusan'" :href="route('admin.cek_data_tenders.index')">
-        <i class="fas fa-file-alt"></i>
+    <x-my-nav-link :active="request()->routeIs('admin.data_surat_keputusans.index')" :name="'Surat Keputusan'" :href="route('admin.data_surat_keputusans.index')">
+        <i class="fas fa-mail-bulk"></i>
     </x-my-nav-link>
     <x-my-nav-link :active="request()->routeIs('admin.cek_data_tenders.index')" :name="'SPT Peneliti'" :href="route('admin.cek_data_tenders.index')">
         <i class="fas fa-file-alt"></i>

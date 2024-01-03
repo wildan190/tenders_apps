@@ -1,6 +1,6 @@
 <?php
 
-// app/Models/DataSuratKeputusan.php
+// File: app/Models/DataSuratKeputusan.php
 
 namespace App\Models;
 
@@ -12,33 +12,23 @@ class DataSuratKeputusan extends Model
     use HasFactory;
 
     protected $fillable = [
-        'data_tender_id',
-        'cek_personil_id',
-        'kode_pokja_id',
+        'kd_tender',
         'nomor_sk',
-        'tahun',
-        'nama_pembuat_komitmen',
         'nomor_surat',
-        'satuan_kerja',
+        'tahun',
         'tanggal_terbit',
-        'nama_personil',
-        'nip_personil',
-        'nama_paket',
-        'pagu',
+        'pembuat_komitmen',
     ];
 
+    // Relationship with DataTender
     public function dataTender()
     {
-        return $this->belongsTo(DataTender::class);
+        return $this->belongsTo(DataTender::class, 'kd_tender');
     }
 
-    public function cekPersonil()
+    // Relationship with CekPersonil
+    public function namaPersonil()
     {
-        return $this->belongsTo(CekPersonil::class);
-    }
-
-    public function kodePokja()
-    {
-        return $this->belongsTo(KodePokja::class);
+        return $this->belongsTo(CekPersonil::class, 'id');
     }
 }
