@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\DataTenderController;
 use App\Http\Controllers\Admin\CekDataTenderController;
 use App\Http\Controllers\Admin\CekPeralatanController;
 use App\Http\Controllers\Admin\DataSuratKeputusanController;
+use App\Http\Controllers\Admin\SptPenelitiController;
 
 Route::get('/', function () {
     return view('dashboard');
@@ -97,6 +98,16 @@ Route::middleware(['auth', 'verified', 'admin'])->group(function () {
     Route::put('/admin/data_surat_keputusans/{dataSuratKeputusan}', [DataSuratKeputusanController::class, 'update'])->name('admin.data_surat_keputusans.update');
     Route::delete('/admin/data_surat_keputusans/{dataSuratKeputusan}', [DataSuratKeputusanController::class, 'destroy'])->name('admin.data_surat_keputusans.destroy');
     Route::get('/admin/data_surat_keputusans/{id}/export_pdf', [DataSuratKeputusanController::class, 'exportPDF'])->name('admin.data_surat_keputusans.export_pdf');
+
+    // Rute untuk Spt Peneliti
+    Route::get('/admin/spt_penelitis', [SptPenelitiController::class, 'index'])->name('admin.spt_penelitis.index');
+    Route::get('/admin/spt_penelitis/create', [SptPenelitiController::class, 'create'])->name('admin.spt_penelitis.create');
+    Route::post('/admin/spt_penelitis', [SptPenelitiController::class, 'store'])->name('admin.spt_penelitis.store');
+    Route::get('/admin/spt_penelitis/{id}', [SptPenelitiController::class, 'show'])->name('admin.spt_penelitis.show');
+    Route::get('/admin/spt_penelitis/{id}/edit', [SptPenelitiController::class, 'edit'])->name('admin.spt_penelitis.edit');
+    Route::put('/admin/spt_penelitis/{id}', [SptPenelitiController::class, 'update'])->name('admin.spt_penelitis.update');
+    Route::delete('/admin/spt_penelitis/{id}', [SptPenelitiController::class, 'destroy'])->name('admin.spt_penelitis.destroy');
+    Route::get('/admin/spt_penelitis/{id}/export_pdf', [SptPenelitiController::class, 'exportPDF'])->name('admin.spt_penelitis.export_pdf');
 });
 
 Route::middleware('auth')->group(function () {

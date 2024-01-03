@@ -42,7 +42,7 @@
     <x-my-nav-link :active="request()->routeIs('admin.data_surat_keputusans.index')" :name="'Surat Keputusan'" :href="route('admin.data_surat_keputusans.index')">
         <i class="fas fa-mail-bulk"></i>
     </x-my-nav-link>
-    <x-my-nav-link :active="request()->routeIs('admin.cek_data_tenders.index')" :name="'SPT Peneliti'" :href="route('admin.cek_data_tenders.index')">
+    <x-my-nav-link :active="request()->routeIs('admin.spt_penelitis.index')" :name="'SPT Peneliti'" :href="route('admin.spt_penelitis.index')">
         <i class="fas fa-file-alt"></i>
     </x-my-nav-link>
     <x-my-nav-link :active="request()->routeIs('admin.agenda.index')" :name="'Agenda Rapat'" :href="route('admin.agenda.index')">
