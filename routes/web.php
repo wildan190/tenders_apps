@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\CekDataTenderController;
 use App\Http\Controllers\Admin\CekPeralatanController;
 use App\Http\Controllers\Admin\DataSuratKeputusanController;
 use App\Http\Controllers\Admin\SptPenelitiController;
+use App\Http\Controllers\Admin\SuratPenyampaianController;
 
 Route::get('/', function () {
     return view('dashboard');
@@ -108,6 +109,16 @@ Route::middleware(['auth', 'verified', 'admin'])->group(function () {
     Route::put('/admin/spt_penelitis/{id}', [SptPenelitiController::class, 'update'])->name('admin.spt_penelitis.update');
     Route::delete('/admin/spt_penelitis/{id}', [SptPenelitiController::class, 'destroy'])->name('admin.spt_penelitis.destroy');
     Route::get('/admin/spt_penelitis/{id}/export_pdf', [SptPenelitiController::class, 'exportPDF'])->name('admin.spt_penelitis.export_pdf');
+
+    // Rute untuk Surat Penyampaian
+    Route::get('/admin/surat_penyampaians', [SuratPenyampaianController::class, 'index'])->name('admin.surat_penyampaians.index');
+    Route::get('/admin/surat_penyampaians/create', [SuratPenyampaianController::class, 'create'])->name('admin.surat_penyampaians.create');
+    Route::post('/admin/surat_penyampaians', [SuratPenyampaianController::class, 'store'])->name('admin.surat_penyampaians.store');
+    Route::get('/admin/surat_penyampaians/{id}', [SuratPenyampaianController::class, 'show'])->name('admin.surat_penyampaians.show');
+    Route::get('/admin/surat_penyampaians/{id}/edit', [SuratPenyampaianController::class, 'edit'])->name('admin.surat_penyampaians.edit');
+    Route::put('/admin/surat_penyampaians/{id}', [SuratPenyampaianController::class, 'update'])->name('admin.surat_penyampaians.update');
+    Route::delete('/admin/surat_penyampaians/{id}', [SuratPenyampaianController::class, 'destroy'])->name('admin.surat_penyampaians.destroy');
+    Route::get('/admin/surat_penyampaians/{id}/export_pdf', [SuratPenyampaianController::class, 'exportPDF'])->name('admin.surat_penyampaians.export_pdf');
 });
 
 Route::middleware('auth')->group(function () {
