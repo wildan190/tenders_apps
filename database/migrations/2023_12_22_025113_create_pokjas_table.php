@@ -16,7 +16,7 @@ class CreatePokjasTable extends Migration
             $table->string('jabatan');
             $table->string('golongan');
             $table->string('nik');
-            $table->string('npwp');
+            //$table->string('npwp');
             $table->string('email');
             $table->string('telepon');
             $table->timestamps();

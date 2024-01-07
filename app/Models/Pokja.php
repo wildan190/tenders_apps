@@ -16,7 +16,7 @@ class Pokja extends Model
         'jabatan',
         'golongan',
         'nik',
-        'npwp',
+        //'npwp',
         'email',
         'telepon',
     ];

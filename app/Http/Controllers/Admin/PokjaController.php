@@ -89,7 +89,7 @@ class PokjaController extends Controller
             'jabatan' => $request->input('jabatan'),
             'golongan' => $request->input('golongan'),
             'nik' => $request->input('nik'),
-            'npwp' => $request->input('npwp'),
+            //'npwp' => $request->input('npwp'),
             'email' => $request->input('email'),
             'telepon' => $request->input('telepon'),
         ];
@@ -122,14 +122,14 @@ class PokjaController extends Controller
             'jabatan' => 'required',
             'golongan' => 'required',
             'nik' => 'required|unique:pokjas,nik,' . $id,
-            'npwp' => 'required|unique:pokjas,npwp,' . $id,
+            //'npwp' => 'required|unique:pokjas,npwp,' . $id,
             'email' => 'required|email|unique:pokjas,email,' . $id,
             'telepon' => 'required',
         ];
 
         $messages = [
             'nik.unique' => 'NIK sudah digunakan.',
-            'npwp.unique' => 'NPWP sudah digunakan.',
+            //'npwp.unique' => 'NPWP sudah digunakan.',
             'email.unique' => 'Email sudah digunakan.',
         ];
 
