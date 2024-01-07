@@ -15,7 +15,7 @@ class PokjaImport implements ToModel, WithHeadingRow
             'jabatan' => $row['jabatan'],
             'golongan' => $row['golongan'],
             'nik' => $row['nik'],
-            'npwp' => $row['npwp'],
+            //'npwp' => $row['npwp'],
             'email' => $row['email'],
             'telepon' => $row['telepon'],
         ]);

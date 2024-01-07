@@ -34,7 +34,6 @@
                                 <th>Jabatan</th>
                                 <th>Golongan</th>
                                 <th>NIK</th>
-                                <th>NPWP</th>
                                 <th>Email</th>
                                 <th>Telepon</th>
                                 <th>Aksi</th>
@@ -47,7 +46,6 @@
                                 <td>{{ $pokja->jabatan }}</td>
                                 <td>{{ $pokja->golongan }}</td>
                                 <td>{{ $pokja->nik }}</td>
-                                <td>{{ $pokja->npwp }}</td>
                                 <td>{{ $pokja->email }}</td>
                                 <td>{{ $pokja->telepon }}</td>
                                 <td>

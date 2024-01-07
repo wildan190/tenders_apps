@@ -45,11 +45,6 @@
                 </div>
 
                 <div class="mb-4 flex">
-                    <div class="w-1/2 pr-2">
-                        <label for="npwp" class="block text-sm font-medium text-gray-600">NPWP:</label>
-                        <input type="text" class="mt-1 p-2 w-full border rounded-md" id="npwp" name="npwp" required placeholder="Masukkan NPWP">
-                    </div>
-
                     <div class="w-1/2 pl-2">
                         <label for="email" class="block text-sm font-medium text-gray-600">Email:</label>
                         <input type="email" class="mt-1 p-2 w-full border rounded-md" id="email" name="email" required placeholder="Masukkan Email">
