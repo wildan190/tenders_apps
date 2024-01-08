@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use App\Models\Pokja;
 use Faker\Factory as Faker;
 
 class PokjaSeeder extends Seeder
@@ -20,7 +19,7 @@ class PokjaSeeder extends Seeder
 
         // Seed multiple Pokja records using Faker
         for ($i = 0; $i < 10; $i++) {
-            Pokja::create([
+            DB::table('pokjas')->insert([
                 'nama' => $faker->name,
                 'jabatan' => $faker->jobTitle,
                 'golongan' => $faker->randomElement(['A', 'B', 'C']),

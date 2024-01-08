@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use App\Models\KodePokja;
 use Faker\Factory as Faker;
 
 class KodePokjaSeeder extends Seeder
@@ -20,7 +19,7 @@ class KodePokjaSeeder extends Seeder
 
         // Seed multiple KodePokja records using Faker
         for ($i = 0; $i < 5; $i++) {
-            KodePokja::create([
+            DB::table('kode_pokjas')->insert([
                 'kode_pokja' => $faker->unique()->randomNumber(4),
                 'keterangan' => $faker->sentence,
             ]);
