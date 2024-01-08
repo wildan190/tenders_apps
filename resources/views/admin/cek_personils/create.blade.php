@@ -52,15 +52,6 @@
                         <input type="text" class="form-control" id="telepon_personil" name="telepon_personil" required placeholder="Masukkan Telepon Personil">
                     </div>
 
-                    <div class="form-group">
-                        <label for="pokja_id">Pilih Pokja:</label>
-                        <select class="form-control" id="pokja_id" name="pokja_id[]" multiple>
-                            @foreach($pokjas as $pokja)
-                            <option value="{{ $pokja->id }}">{{ $pokja->nama }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-
                     <div class="d-flex justify-content-between">
                         <button type="submit" class="btn btn-primary">Simpan</button>
                         <a href="{{ route('admin.cek_personils.index') }}" class="btn btn-secondary">Batal</a>

@@ -14,25 +14,16 @@ class CreateCekPersonilsTable extends Migration
             $table->id();
             $table->string('nama_personil');
             $table->string('jabatan_personil');
-            //$table->string('golongan_personil');
             $table->string('nik_personil');
             $table->string('npwp_personil');
             $table->string('email_personil')->unique();
             $table->string('telepon_personil');
             $table->timestamps();
         });
-
-        Schema::create('cek_personil_pokja', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('cek_personil_id')->constrained('cek_personils')->onDelete('cascade');
-            $table->foreignId('pokja_id')->constrained('pokjas')->onDelete('cascade');
-            $table->timestamps();
-        });
     }
 
     public function down()
     {
-        Schema::dropIfExists('cek_personil_pokja');
         Schema::dropIfExists('cek_personils');
     }
 }

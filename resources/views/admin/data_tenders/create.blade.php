@@ -120,6 +120,15 @@
                             <label for="tahun">Tahun:</label>
                             <input type="text" class="form-control" id="tahun" name="tahun" placeholder="Contoh: 2024">
                         </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="pokja_id">Pilih Pokja:</label>
+                            <select class="form-control" id="pokja_id" name="pokja_id[]" multiple>
+                                @foreach($pokjas as $pokja)
+                                <option value="{{ $pokja->id }}">{{ $pokja->nama }} - {{ $pokja->jabatan }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
 
                     <!-- Tombol Simpan -->
