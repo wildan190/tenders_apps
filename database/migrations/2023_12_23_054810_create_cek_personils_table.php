@@ -14,7 +14,7 @@ class CreateCekPersonilsTable extends Migration
             $table->id();
             $table->string('nama_personil');
             $table->string('jabatan_personil');
-            $table->string('golongan_personil');
+            //$table->string('golongan_personil');
             $table->string('nik_personil');
             $table->string('npwp_personil');
             $table->string('email_personil')->unique();

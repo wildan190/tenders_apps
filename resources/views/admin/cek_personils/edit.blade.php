@@ -35,11 +35,6 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="golongan_personil">Golongan Personil:</label>
-                        <input type="text" class="form-control" id="golongan_personil" name="golongan_personil" required value="{{ $cekPersonil->golongan_personil }}">
-                    </div>
-
-                    <div class="form-group">
                         <label for="nik_personil">NIK Personil:</label>
                         <input type="text" class="form-control" id="nik_personil" name="nik_personil" required value="{{ $cekPersonil->nik_personil }}">
                     </div>

@@ -14,7 +14,7 @@ class CekPersonil extends Model
     protected $fillable = [
         'nama_personil',
         'jabatan_personil',
-        'golongan_personil',
+        //'golongan_personil',
         'nik_personil',
         'npwp_personil',
         'email_personil',

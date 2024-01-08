@@ -15,15 +15,11 @@
                     <tbody>
                         <tr>
                             <th scope="row" class="w-25">Kode Tender</th>
-                            <td>{{ $dataTender->kd_tender }}</td>
+                            <td><a href="{{ $dataTender->link_web }}" target="_blank">{{ $dataTender->kd_tender }}</a></td>
                         </tr>
                         <tr>
                             <th scope="row">Nama Paket</th>
                             <td>{{ $dataTender->nama_paket }}</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Link Web</th>
-                            <td><a href="{{ $dataTender->link_web }}" target="_blank">{{ $dataTender->link_web }}</a></td>
                         </tr>
                         <tr>
                             <th scope="row">Kode Pokja</th>

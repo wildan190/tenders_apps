@@ -31,7 +31,6 @@
                             <tr>
                                 <th>Nama Personil</th>
                                 <th>Jabatan Personil</th>
-                                <th>Golongan Personil</th>
                                 <th>NIK Personil</th>
                                 <th>NPWP Personil</th>
                                 <th>Email Personil</th>
@@ -45,7 +44,6 @@
                             <tr>
                                 <td>{{ $cekPersonil->nama_personil }}</td>
                                 <td>{{ $cekPersonil->jabatan_personil }}</td>
-                                <td>{{ $cekPersonil->golongan_personil }}</td>
                                 <td>{{ $cekPersonil->nik_personil }}</td>
                                 <td>{{ $cekPersonil->npwp_personil }}</td>
                                 <td>{{ $cekPersonil->email_personil }}</td>
