@@ -121,7 +121,7 @@
                         </tr>
                         <tr>
                             <th>Pokja</th>
-                            <td>{{ $cekDataTender->cekPersonil->pokjas->implode('nama', ', ') }}</td>
+                            <td>{{ $cekDataTender->dataTender->pokjas->implode('nama', ', ') }}</td>
                         </tr>
                         <!-- Tambahkan informasi lain sesuai kebutuhan -->
                     </tbody>
