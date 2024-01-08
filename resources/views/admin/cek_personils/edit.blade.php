@@ -54,17 +54,6 @@
                         <input type="text" class="form-control" id="telepon_personil" name="telepon_personil" required value="{{ $cekPersonil->telepon_personil }}">
                     </div>
 
-                    <div class="form-group">
-                        <label for="pokja_id">Pokja:</label>
-                        <select class="form-control" id="pokja_id" name="pokja_id[]" multiple required>
-                            @foreach($pokjas as $pokja)
-                            <option value="{{ $pokja->id }}" {{ in_array($pokja->id, $cekPersonil->pokjas->pluck('id')->toArray()) ? 'selected' : '' }}>
-                                {{ $pokja->nama }}
-                            </option>
-                            @endforeach
-                        </select>
-                    </div>
-
                     <div class="d-flex justify-content-between">
                         <button type="submit" class="btn btn-primary">Simpan</button>
                         <a href="{{ route('admin.cek_personils.index') }}" class="btn btn-secondary">Batal</a>

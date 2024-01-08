@@ -48,7 +48,11 @@ class DataTenderController extends Controller
             'pokja_id' => 'required|array',
         ]);
 
-        DataTender::create($validatedData);
+        $dataTenders = DataTender::create($validatedData);
+
+        foreach ($request->input('pokja_id') as $pokjaId) {
+            $dataTenders->pokjas()->attach($pokjaId);
+        }
 
         Alert::success('Success', 'Data tender berhasil disimpan.');
         return redirect()->route('admin.data_tenders.index');
@@ -72,7 +76,8 @@ class DataTenderController extends Controller
     public function show($id)
     {
         $dataTender = DataTender::findOrFail($id);
-        return view('admin.data_tenders.show', compact('dataTender'));
+        $pokjas = Pokja::all();
+        return view('admin.data_tenders.show', compact('dataTender', 'pokjas'));
     }
 
     public function edit($id)

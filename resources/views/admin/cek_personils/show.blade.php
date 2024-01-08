@@ -35,10 +35,6 @@
                         <dt class="font-semibold text-gray-600">Telepon Personil:</dt>
                         <dd>{{ $cekPersonil->telepon_personil }}</dd>
                     </div>
-                    <div class="mb-2">
-                        <dt class="font-semibold text-gray-600">Pokja:</dt>
-                        <dd>{{ $cekPersonil->pokjas->implode('nama', ', ') }}</dd>
-                    </div>
                 </dl>
             </div>
         </div>

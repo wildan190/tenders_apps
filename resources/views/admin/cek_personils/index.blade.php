@@ -35,7 +35,6 @@
                                 <th>NPWP Personil</th>
                                 <th>Email Personil</th>
                                 <th>Telepon Personil</th>
-                                <th>Pokja</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -48,7 +47,6 @@
                                 <td>{{ $cekPersonil->npwp_personil }}</td>
                                 <td>{{ $cekPersonil->email_personil }}</td>
                                 <td>{{ $cekPersonil->telepon_personil }}</td>
-                                <td>{{ $cekPersonil->pokjas->implode('nama', ', ') }}</td>
                                 <td>
                                     <a href="{{ route('admin.cek_personils.show', $cekPersonil->id) }}" class="btn btn-info btn-sm">
                                         <i class="fas fa-eye"></i> Lihat
