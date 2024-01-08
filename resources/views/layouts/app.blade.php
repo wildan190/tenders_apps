@@ -16,8 +16,7 @@
 
     <!-- Custom styles for this template-->
     <link href="{{ asset('backend/css/sb-admin-2.min.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('path/to/flatpickr.min.css') }}">
-    <script src="{{ asset('path/to/flatpickr.min.js') }}"></script>
+    
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
