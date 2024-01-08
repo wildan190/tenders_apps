@@ -33,11 +33,6 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="golongan_personil">Golongan Personil:</label>
-                        <input type="text" class="form-control" id="golongan_personil" name="golongan_personil" required placeholder="Masukkan Golongan Personil">
-                    </div>
-
-                    <div class="form-group">
                         <label for="nik_personil">NIK Personil:</label>
                         <input type="text" class="form-control" id="nik_personil" name="nik_personil" required placeholder="Masukkan NIK Personil">
                     </div>

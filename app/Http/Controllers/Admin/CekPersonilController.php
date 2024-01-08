@@ -30,7 +30,7 @@ class CekPersonilController extends Controller
         $validatedData = $request->validate([
             'nama_personil' => 'required|string|max:255',
             'jabatan_personil' => 'required|string|max:255',
-            'golongan_personil' => 'required|string|max:255',
+            //'golongan_personil' => 'required|string|max:255',
             'nik_personil' => 'required|string|max:255',
             'npwp_personil' => 'required|string|max:255',
             'email_personil' => 'required|email|max:255',
@@ -84,7 +84,7 @@ class CekPersonilController extends Controller
         $request->validate([
             'nama_personil' => 'required',
             'jabatan_personil' => 'required',
-            'golongan_personil' => 'required',
+            //'golongan_personil' => 'required',
             'nik_personil' => [
                 'required',
                 Rule::unique('cek_personils')->ignore($cekPersonil->id),

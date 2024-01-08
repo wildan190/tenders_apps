@@ -49,9 +49,9 @@
                         <tbody>
                             @foreach($dataTenders as $dataTender)
                             <tr>
-                                <td>{{ $dataTender->kd_tender }}</td>
+                                <td><a href="{{ $dataTender->link_web }}" target="_blank">{{ $dataTender->kd_tender }}</a></td>
                                 <td>{{ $dataTender->nama_paket }}</td>
-                                <td><a href="{{ $dataTender->link_web }}" target="_blank">{{ $dataTender->kode_pokja }}</td>
+                                <td>{{ $dataTender->kode_pokja }}</td>
                                 <td>{{ $dataTender->pagu }}</td>
                                 <td>{{ $dataTender->hps }}</td>
                                 <td>{{ $dataTender->satuan_kerja }}</td>

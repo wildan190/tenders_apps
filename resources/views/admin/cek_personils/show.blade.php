@@ -20,10 +20,6 @@
                         <dd>{{ $cekPersonil->jabatan_personil }}</dd>
                     </div>
                     <div class="mb-2">
-                        <dt class="font-semibold text-gray-600">Golongan Personil:</dt>
-                        <dd>{{ $cekPersonil->golongan_personil }}</dd>
-                    </div>
-                    <div class="mb-2">
                         <dt class="font-semibold text-gray-600">NIK Personil:</dt>
                         <dd>{{ $cekPersonil->nik_personil }}</dd>
                     </div>
