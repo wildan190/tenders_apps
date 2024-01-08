@@ -13,6 +13,16 @@
                 <form method="POST" action="{{ route('admin.data_tenders.store') }}">
                     @csrf
 
+                    @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
+
                     <div class="row">
                         <!-- Kode Tender -->
                         <div class="form-group col-md-6">

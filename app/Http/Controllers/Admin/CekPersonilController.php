@@ -35,14 +35,9 @@ class CekPersonilController extends Controller
             'npwp_personil' => 'required|string|max:255',
             'email_personil' => 'required|email|max:255',
             'telepon_personil' => 'required|string|max:255',
-            'pokja_id' => 'required|array',
         ]);
 
-        $cekPersonil = CekPersonil::create($validatedData);
-
-        foreach ($request->input('pokja_id') as $pokjaId) {
-            $cekPersonil->pokjas()->attach($pokjaId);
-        }
+        CekPersonil::create($validatedData);
 
         Alert::success('Success', 'Data cek personil berhasil disimpan.');
         return redirect()->route('admin.cek_personils.index');
@@ -84,7 +79,6 @@ class CekPersonilController extends Controller
                 Rule::unique('cek_personils')->ignore($cekPersonil->id),
             ],
             'telepon_personil' => 'required',
-            //'pokja_id' => 'required|exists:pokjas,id',
         ]);
 
         $cekPersonil->update($request->all());

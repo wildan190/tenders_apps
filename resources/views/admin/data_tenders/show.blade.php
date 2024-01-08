@@ -5,7 +5,7 @@
 
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">Detail Data Tender</h1>
-        <p class="mb-4">Informasi detail mengenai data tender.</p>
+        <p class="mb-4 text-primary">Informasi detail mengenai data tender.</p>
 
         <!-- DataTender Info -->
         <div class="card shadow mb-4">
@@ -71,10 +71,22 @@
                         </tr>
                     </tbody>
                 </table>
+                <p class="mb-4 text-primary">Informasi detail mengenai data tender.</p>
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <th>Pokja:</th>
+                            <td>{{ $dataTender->pokjas->implode('nama', ', ') }}</td>
+                            <th>jabatan:</th>
+                            <td>{{ $dataTender->pokjas->implode('jabatan', ', ') }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
 
                 <!-- Tombol Kembali -->
                 <div class="d-flex justify-content-end">
-                    <a href="{{ route('admin.data_tenders.index') }}" class="btn btn-secondary">Kembali</a>
+                    <a href="{{ route('admin.data_tenders.index') }}" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Kembali</a>
                 </div>
             </div>
         </div>

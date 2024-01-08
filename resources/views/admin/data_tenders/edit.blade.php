@@ -99,9 +99,20 @@
                     </div>
 
                     <!-- tahun -->
-                    <div class="form-group col-md-6">
+                    <div class="form-group">
                         <label for="tahun">Tahun:</label>
                         <input type="text" class="form-control" id="tahun" name="tahun" value="{{ $dataTender->tahun }}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pokja_id">Pokja:</label>
+                        <select class="form-control" id="pokja_id" name="pokja_id[]" multiple required>
+                            @foreach($pokjas as $pokja)
+                            <option value="{{ $pokja->id }}" {{ in_array($pokja->id, $dataTender->pokjas->pluck('id')->toArray()) ? 'selected' : '' }}>
+                                {{ $pokja->nama }}
+                            </option>
+                            @endforeach
+                        </select>
                     </div>
 
                     <!-- Tombol Update -->

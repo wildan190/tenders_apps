@@ -30,7 +30,7 @@ class CreateDataTendersTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('data_tenders_pokja', function (Blueprint $table) {
+        Schema::create('data_tender_pokja', function (Blueprint $table) {
             $table->id();
             $table->foreignId('data_tender_id')->constrained('data_tenders')->onDelete('cascade');
             $table->foreignId('pokja_id')->constrained('pokjas')->onDelete('cascade');
