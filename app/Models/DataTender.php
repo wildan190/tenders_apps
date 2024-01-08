@@ -29,6 +29,11 @@ class DataTender extends Model
         'tahun',
     ];
 
+    public function pokjas()
+    {
+        return $this->belongsToMany(Pokja::class, 'data_tender_pokja', 'data_tender_id', 'pokja_id');
+    }
+
     // Relationship with KodePokja
     public function kodePokja()
     {

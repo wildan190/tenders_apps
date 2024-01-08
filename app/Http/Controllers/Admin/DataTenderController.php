@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\DataTender;
 use App\Models\KodePokja;
+use App\Models\Pokja;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Validation\Rule;
@@ -22,7 +23,8 @@ class DataTenderController extends Controller
     public function create()
     {
         $kodePokjas = KodePokja::all();
-        return view('admin.data_tenders.create', compact('kodePokjas'));
+        $pokjas = Pokja::all();
+        return view('admin.data_tenders.create', compact('kodePokjas', 'pokjas'));
     }
 
     public function store(Request $request)
@@ -43,12 +45,28 @@ class DataTenderController extends Controller
             'tanggal_kontrak' => 'required|date',
             'waktu_pelaksanaan' => 'required|string|max:255',
             'tahun' => 'required|string|max:255',
+            'pokja_id' => 'required|array',
         ]);
 
         DataTender::create($validatedData);
 
         Alert::success('Success', 'Data tender berhasil disimpan.');
         return redirect()->route('admin.data_tenders.index');
+    }
+
+    public function getMembers(Request $request)
+    {
+        $pokjaId = $request->input('pokja_id');
+
+        $pokja = Pokja::find($pokjaId);
+
+        if (!$pokja) {
+            return response()->json(['error' => 'Pokja not found'], 404);
+        }
+
+        $members = $pokja->anggota->pluck('nama', 'id');
+
+        return response()->json($members);
     }
 
     public function show($id)
@@ -61,7 +79,8 @@ class DataTenderController extends Controller
     {
         $dataTender = DataTender::findOrFail($id);
         $kodePokjas = KodePokja::all();
-        return view('admin.data_tenders.edit', compact('dataTender', 'kodePokjas'));
+        $pokjas = Pokja::all();
+        return view('admin.data_tenders.edit', compact('dataTender', 'kodePokjas', 'pokjas'));
     }
 
     public function update(Request $request, $id)
@@ -84,6 +103,7 @@ class DataTenderController extends Controller
             'tanggal_kontrak' => 'required|date',
             'waktu_pelaksanaan' => 'required|string|max:255',
             'tahun' => 'required|string|max:255',
+            'pokja_id' => 'required|exists:pokjas,id',
         ]);
 
         $dataTender->update($validatedData);

@@ -29,10 +29,18 @@ class CreateDataTendersTable extends Migration
             $table->string('tahun');
             $table->timestamps();
         });
+
+        Schema::create('data_tenders_pokja', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('data_tender_id')->constrained('data_tenders')->onDelete('cascade');
+            $table->foreignId('pokja_id')->constrained('pokjas')->onDelete('cascade');
+            $table->timestamps();
+        });
     }
 
     public function down()
     {
+        Schema::dropIfExists('data_tender_pokja');
         Schema::dropIfExists('data_tenders');
     }
 }

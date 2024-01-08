@@ -51,30 +51,15 @@ class CekPersonilController extends Controller
     public function show($id)
     {
         $cekPersonil = CekPersonil::findOrFail($id);
-        $pokjas = Pokja::all();
-        return view('admin.cek_personils.show', compact('cekPersonil', 'pokjas'));
-    }
-
-    public function getMembers(Request $request)
-    {
-        $pokjaId = $request->input('pokja_id');
-
-        $pokja = Pokja::find($pokjaId);
-
-        if (!$pokja) {
-            return response()->json(['error' => 'Pokja not found'], 404);
-        }
-
-        $members = $pokja->anggota->pluck('nama', 'id');
-
-        return response()->json($members);
+        //$pokjas = Pokja::all();
+        return view('admin.cek_personils.show', compact('cekPersonil'));
     }
 
     public function edit($id)
     {
         $cekPersonil = CekPersonil::findOrFail($id);
-        $pokjas = Pokja::all();
-        return view('admin.cek_personils.edit', compact('cekPersonil', 'pokjas'));
+        //$pokjas = Pokja::all();
+        return view('admin.cek_personils.edit', compact('cekPersonil'));
     }
 
     public function update(Request $request, $id)
@@ -99,7 +84,7 @@ class CekPersonilController extends Controller
                 Rule::unique('cek_personils')->ignore($cekPersonil->id),
             ],
             'telepon_personil' => 'required',
-            'pokja_id' => 'required|exists:pokjas,id',
+            //'pokja_id' => 'required|exists:pokjas,id',
         ]);
 
         $cekPersonil->update($request->all());
