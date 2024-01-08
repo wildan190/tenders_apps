@@ -14,6 +14,16 @@
                     @csrf
                     @method('PUT')
 
+                    @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
+
                     <!-- Kode Tender -->
                     <div class="form-group">
                         <label for="kd_tender">Kode Tender:</label>
@@ -102,6 +112,12 @@
                     <div class="form-group">
                         <label for="tahun">Tahun:</label>
                         <input type="text" class="form-control" id="tahun" name="tahun" value="{{ $dataTender->tahun }}">
+                    </div>
+
+                    <!-- tahun -->
+                    <div class="form-group">
+                        <label for="tahun">Waktu Pelaksanaan:</label>
+                        <input type="text" class="form-control" id="waktu_pelaksanaan" name="waktu_pelaksanaan" value="{{ $dataTender->waktu_pelaksanaan }}">
                     </div>
 
                     <div class="form-group">
