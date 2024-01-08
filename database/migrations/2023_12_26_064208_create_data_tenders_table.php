@@ -26,6 +26,7 @@ class CreateDataTendersTable extends Migration
             $table->decimal('nilai_kontrak', 15, 2);
             $table->date('tanggal_kontrak');
             $table->string('waktu_pelaksanaan');
+            $table->string('tahun');
             $table->timestamps();
         });
     }

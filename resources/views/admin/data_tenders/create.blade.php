@@ -114,6 +114,12 @@
                             <label for="waktu_pelaksanaan">Waktu Pelaksanaan:</label>
                             <input type="text" class="form-control" id="waktu_pelaksanaan" name="waktu_pelaksanaan" placeholder="Contoh: 12 bulan">
                         </div>
+
+                        <!-- tahun -->
+                        <div class="form-group col-md-6">
+                            <label for="tahun">Tahun:</label>
+                            <input type="text" class="form-control" id="tahun" name="tahun" placeholder="Contoh: 2024">
+                        </div>
                     </div>
 
                     <!-- Tombol Simpan -->

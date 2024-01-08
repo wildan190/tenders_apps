@@ -26,6 +26,7 @@ class DataTender extends Model
         'nilai_kontrak',
         'tanggal_kontrak',
         'waktu_pelaksanaan',
+        'tahun',
     ];
 
     // Relationship with KodePokja

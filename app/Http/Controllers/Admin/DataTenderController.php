@@ -42,6 +42,7 @@ class DataTenderController extends Controller
             'nilai_kontrak' => 'required|numeric',
             'tanggal_kontrak' => 'required|date',
             'waktu_pelaksanaan' => 'required|string|max:255',
+            'tahun' => 'required|string|max:255',
         ]);
 
         DataTender::create($validatedData);
@@ -82,6 +83,7 @@ class DataTenderController extends Controller
             'nilai_kontrak' => 'required|numeric',
             'tanggal_kontrak' => 'required|date',
             'waktu_pelaksanaan' => 'required|string|max:255',
+            'tahun' => 'required|string|max:255',
         ]);
 
         $dataTender->update($validatedData);

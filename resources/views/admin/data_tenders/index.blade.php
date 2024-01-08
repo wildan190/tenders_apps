@@ -43,6 +43,7 @@
                                 <th>Nilai Kontrak</th>
                                 <th>Tanggal Kontrak</th>
                                 <th>Waktu Pelaksanaan</th>
+                                <th>Tahun</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -62,6 +63,7 @@
                                 <td>{{ $dataTender->nilai_kontrak }}</td>
                                 <td>{{ $dataTender->tanggal_kontrak }}</td>
                                 <td>{{ $dataTender->waktu_pelaksanaan }}</td>
+                                <td>{{ $dataTender->tahun }}</td>
                                 <td>
                                     <a href="{{ route('admin.data_tenders.show', $dataTender->id) }}" class="btn btn-info btn-sm">
                                         <i class="fas fa-eye"></i> Lihat

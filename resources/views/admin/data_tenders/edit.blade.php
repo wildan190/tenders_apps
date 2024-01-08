@@ -98,10 +98,10 @@
                         <input type="date" class="form-control" id="tanggal_kontrak" name="tanggal_kontrak" value="{{ $dataTender->tanggal_kontrak }}">
                     </div>
 
-                    <!-- Waktu Pelaksanaan -->
-                    <div class="form-group">
-                        <label for="waktu_pelaksanaan">Waktu Pelaksanaan:</label>
-                        <input type="text" class="form-control" id="waktu_pelaksanaan" name="waktu_pelaksanaan" value="{{ $dataTender->waktu_pelaksanaan }}">
+                    <!-- tahun -->
+                    <div class="form-group col-md-6">
+                        <label for="tahun">Tahun:</label>
+                        <input type="text" class="form-control" id="tahun" name="tahun" value="{{ $dataTender->tahun }}">
                     </div>
 
                     <!-- Tombol Update -->
