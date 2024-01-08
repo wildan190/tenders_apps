@@ -65,6 +65,10 @@
                             <th scope="row">Waktu Pelaksanaan</th>
                             <td>{{ $dataTender->waktu_pelaksanaan }}</td>
                         </tr>
+                        <tr>
+                            <th scope="row">Tahun</th>
+                            <td>{{ $dataTender->tahun }}</td>
+                        </tr>
                     </tbody>
                 </table>
 
