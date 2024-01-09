@@ -88,7 +88,7 @@
                         @csrf
 
                         <div class="mb-3">
-                            <a href="{{ route('admin.pokjas.export-template') }}" class="btn btn-outline-primary">Unduh Template</a>
+                            <a href="{{ route('admin.pokjas.export-template') }}" class="btn btn-outline-success">Unduh Template</a>
                         </div>
 
                         <div class="mb-3">

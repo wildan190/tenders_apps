@@ -71,8 +71,7 @@ class CekDataTenderController extends Controller
         $cekDataTender = CekDataTender::findOrFail($id);
 
         $validatedData = $request->validate([
-            /*'cek_personil_id' => 'required|exists:cek_personils,id',
-            'data_tender_id' => 'required|exists:data_tenders,id',*/
+            // Tambahkan validasi jika diperlukan
         ]);
 
         $cekDataTender->update($validatedData);
@@ -93,6 +92,16 @@ class CekDataTenderController extends Controller
         return redirect()->route('admin.cek_data_tenders.index');
     }
 
+    public function updateStatusAutomatically()
+    {
+        $cekDataTenders = CekDataTender::all();
+
+        foreach ($cekDataTenders as $cekDataTender) {
+            // Lakukan pembaruan status
+            $this->updateStatus($cekDataTender);
+        }
+    }
+
     private function updateStatus(CekDataTender $cekDataTender)
     {
         $dataTender = $cekDataTender->dataTender;
@@ -103,17 +112,15 @@ class CekDataTenderController extends Controller
         $tanggalKontrak = Carbon::parse($dataTender->tanggal_kontrak);
 
         // Logika untuk update status
+        $status = null;
         if ($now->greaterThanOrEqualTo($tanggalKontrak->endOfDay())) {
-            $cekDataTender->status = 'SELESAI';
+            $status = 'SELESAI';
         } elseif ($now->greaterThanOrEqualTo($tanggalKontrak->startOfDay())) {
-            $cekDataTender->status = 'DIKERJAKAN';
+            $status = 'DIKERJAKAN';
         } elseif ($now->greaterThanOrEqualTo($tanggalPenetapan->startOfDay())) {
-            $cekDataTender->status = 'DITETAPKAN';
-        } else {
-            // Jika tidak ada kondisi yang terpenuhi, berikan nilai default null
-            $cekDataTender->status = null;
+            $status = 'DITETAPKAN';
         }
 
-        $cekDataTender->save();
+        $cekDataTender->update(['status' => $status]);
     }
 }

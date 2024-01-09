@@ -5,125 +5,42 @@
 
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">Edit Cek Data Tender</h1>
-        <p class="mb-4">Edit informasi cek data tender.</p>
+        <p class="mb-4">Edit formulir di bawah ini untuk mengubah data cek data tender.</p>
 
-        <!-- Form untuk Edit Data Tender -->
+        <!-- Form untuk Edit Cek Data Tender -->
         <div class="card shadow mb-4">
             <div class="card-body">
                 <form method="POST" action="{{ route('admin.cek_data_tenders.update', $cekDataTender->id) }}">
                     @csrf
                     @method('PUT')
 
-                    <!-- Informasi Data Tender -->
-                    <h5 class="card-title">Informasi Data Tender</h5>
-                    <!-- Tampilkan data-data tender sesuai kebutuhan -->
-                    <table class="table table-bordered">
-                        <tbody>
-                            <tr>
-                                <th>Kode Tender</th>
-                                <td>{{ $cekDataTender->dataTender->kd_tender }}</td>
-                            </tr>
-                            <tr>
-                                <th>Nama Paket</th>
-                                <td>{{ $cekDataTender->dataTender->nama_paket }}</td>
-                            </tr>
-                            <tr>
-                                <th>Link Web</th>
-                                <td>{{ $cekDataTender->dataTender->link_web }}</td>
-                            </tr>
-                            <tr>
-                                <th>Kode Pokja</th>
-                                <td>{{ $cekDataTender->dataTender->kodePokja->kode_pokja }} - {{ $cekDataTender->dataTender->kodePokja->keterangan }}</td>
-                            </tr>
-                            <tr>
-                                <th>Pagu</th>
-                                <td>{{ $cekDataTender->dataTender->pagu }}</td>
-                            </tr>
-                            <tr>
-                                <th>Satuan Kerja</th>
-                                <td>{{ $cekDataTender->dataTender->satuan_kerja }}</td>
-                            </tr>
-                            <tr>
-                                <th>PPK</th>
-                                <td>{{ $cekDataTender->dataTender->ppk }}</td>
-                            </tr>
-                            <tr>
-                                <th>Nama Instansi</th>
-                                <td>{{ $cekDataTender->dataTender->nama_instansi }}</td>
-                            </tr>
-                            <tr>
-                                <th>Nilai Penawaran</th>
-                                <td>{{ $cekDataTender->dataTender->nilai_penawaran }}</td>
-                            </tr>
-                            <tr>
-                                <th>Tanggal Penetapan</th>
-                                <td>{{ $cekDataTender->dataTender->tanggal_penetapan }}</td>
-                            </tr>
-                            <tr>
-                                <th>Nilai Kontrak</th>
-                                <td>{{ $cekDataTender->dataTender->nilai_kontrak }}</td>
-                            </tr>
-                            <tr>
-                                <th>Tanggal Kontrak</th>
-                                <td>{{ $cekDataTender->dataTender->tanggal_kontrak }}</td>
-                            </tr>
-                            <tr>
-                                <th>Waktu Pelaksanaan</th>
-                                <td>{{ $cekDataTender->dataTender->waktu_pelaksanaan }}</td>
-                            </tr>
-                            <!-- Tambahkan informasi lain sesuai kebutuhan -->
-                        </tbody>
-                    </table>
+                    @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
 
-                    <!-- Informasi Personil -->
-                    <h5 class="card-title mt-4">Informasi Personil</h5>
-                    <!-- Tampilkan data-data personil sesuai kebutuhan -->
-                    <table class="table table-bordered">
-                        <tbody>
-                            <tr>
-                                <th>Nama Personil</th>
-                                <td>{{ $cekDataTender->cekPersonil->nama_personil }}</td>
-                            </tr>
-                            <tr>
-                                <th>Jabatan Personil</th>
-                                <td>{{ $cekDataTender->cekPersonil->jabatan_personil }}</td>
-                            </tr>
-                            <tr>
-                                <th>Golongan Personil</th>
-                                <td>{{ $cekDataTender->cekPersonil->golongan_personil }}</td>
-                            </tr>
-                            <tr>
-                                <th>NIK Personil</th>
-                                <td>{{ $cekDataTender->cekPersonil->nik_personil }}</td>
-                            </tr>
-                            <tr>
-                                <th>NPWP Personil</th>
-                                <td>{{ $cekDataTender->cekPersonil->npwp_personil }}</td>
-                            </tr>
-                            <tr>
-                                <th>Email Personil</th>
-                                <td>{{ $cekDataTender->cekPersonil->email_personil }}</td>
-                            </tr>
-                            <tr>
-                                <th>Telepon Personil</th>
-                                <td>{{ $cekDataTender->cekPersonil->telepon_personil }}</td>
-                            </tr>
-                            <tr>
-                                <th>Pokja</th>
-                                <td>{{ $cekDataTender->cekPersonil->pokjas->implode('nama', ', ') }}</td>
-                            </tr>
-                            <!-- Tambahkan informasi lain sesuai kebutuhan -->
-                        </tbody>
-                    </table>
+                    <!-- Nama Personil -->
+                    <div class="form-group">
+                        <label for="cek_personil_id">Nama Personil:</label>
+                        <select class="form-control" id="cek_personil_id" name="cek_personil_id" required>
+                            @foreach($cekPersonils as $cekPersonil)
+                            <option value="{{ $cekPersonil->id }}" @if($cekPersonil->id == $cekDataTender->cek_personil_id) selected @endif>{{ $cekPersonil->nama_personil }}</option>
+                            @endforeach
+                        </select>
+                    </div>
 
-
-                    <!-- Ubah Status -->
-                    <div class="form-group mt-4">
-                        <label for="status">Status:</label>
-                        <select class="form-control" id="status" name="status" required>
-                            <option value="DITETAPKAN" {{ $cekDataTender->status === 'DITETAPKAN' ? 'selected' : '' }}>DITETAPKAN</option>
-                            <option value="DIKERJAKAN" {{ $cekDataTender->status === 'DIKERJAKAN' ? 'selected' : '' }}>DIKERJAKAN</option>
-                            <option value="SELESAI" {{ $cekDataTender->status === 'SELESAI' ? 'selected' : '' }}>SELESAI</option>
+                    <!-- Data Tender -->
+                    <div class="form-group">
+                        <label for="data_tender_id">Data Tender:</label>
+                        <select class="form-control" id="data_tender_id" name="data_tender_id" required>
+                            @foreach($dataTenders as $dataTender)
+                            <option value="{{ $dataTender->id }}" @if($dataTender->id == $cekDataTender->data_tender_id) selected @endif>{{ $dataTender->kd_tender }} - {{ $dataTender->nama_paket }}</option>
+                            @endforeach
                         </select>
                     </div>
 
