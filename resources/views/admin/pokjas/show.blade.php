@@ -27,11 +27,6 @@
             </div>
 
             <div class="mb-4">
-                <label for="npwp" class="block text-sm font-medium text-gray-600">NPWP:</label>
-                <p class="mt-1 p-2 w-full border rounded-md">{{ $pokja->npwp }}</p>
-            </div>
-
-            <div class="mb-4">
                 <label for="email" class="block text-sm font-medium text-gray-600">Email:</label>
                 <p class="mt-1 p-2 w-full border rounded-md">{{ $pokja->email }}</p>
             </div>

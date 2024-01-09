@@ -70,6 +70,9 @@
 
                 <!-- Submit Button -->
                 <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mt-4">Simpan</button>
+                <a href="{{ route('admin.cek_personils.index') }}" class="bg-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-400 focus:outline-none focus:shadow-outline-gray active:bg-gray-500">
+                    Batal
+                </a>
             </form>
         </div>
     </div>

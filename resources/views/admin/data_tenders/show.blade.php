@@ -73,13 +73,19 @@
                 </table>
                 <p class="mb-4 text-primary">Informasi detail mengenai data tender.</p>
                 <table class="table table-bordered">
-                    <tbody>
+                    <thead>
                         <tr>
-                            <th>Pokja:</th>
-                            <td>{{ $dataTender->pokjas->implode('nama', ', ') }}</td>
-                            <th>jabatan:</th>
-                            <td>{{ $dataTender->pokjas->implode('jabatan', ', ') }}</td>
+                            <th>Nama</th>
+                            <th>Jabatan</th>
                         </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($dataTender->pokjas as $pokja)
+                        <tr>
+                            <td>{{ $pokja->nama }}</td>
+                            <td>{{ $pokja->jabatan }}</td>
+                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
 

@@ -62,6 +62,9 @@
                     </table>
                 </div>
             </div>
+            <div class="card-footer">
+                {{ $kodePokjas->links() }}
+            </div>
         </div>
     </div>
 

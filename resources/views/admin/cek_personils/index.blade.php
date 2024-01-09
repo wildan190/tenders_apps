@@ -13,7 +13,7 @@
                     <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
                     <!-- Split Button for Adding Data -->
                     <div class="btn-group">
-                    <a href="{{ route('admin.cek_personils.create') }}" class="btn btn-primary">Tambah Data</a>
+                        <a href="{{ route('admin.cek_personils.create') }}" class="btn btn-primary">Tambah Data</a>
                         <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="sr-only">Toggle Dropdown</span>
                         </button>
@@ -67,6 +67,9 @@
                         </tbody>
                     </table>
                 </div>
+            </div>
+            <div class="card-footer">
+                {{ $cekPersonils->links() }}
             </div>
         </div>
     </div>
