@@ -49,11 +49,10 @@
                         <label for="email" class="block text-sm font-medium text-gray-600">Email:</label>
                         <input type="email" class="mt-1 p-2 w-full border rounded-md" id="email" name="email" required placeholder="Masukkan Email">
                     </div>
-                </div>
-
-                <div class="mb-4">
-                    <label for="telepon" class="block text-sm font-medium text-gray-600">Telepon:</label>
-                    <input type="text" class="mt-1 p-2 w-full border rounded-md" id="telepon" name="telepon" required placeholder="Masukkan Telepon">
+                    <div class="w-1/2 pl-2">
+                        <label for="telepon" class="block text-sm font-medium text-gray-600">Telepon:</label>
+                        <input type="text" class="mt-1 p-2 w-full border rounded-md" id="telepon" name="telepon" required placeholder="Masukkan Telepon">
+                    </div>
                 </div>
 
                 <div class="flex justify-between">

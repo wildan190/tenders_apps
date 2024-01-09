@@ -35,7 +35,7 @@
         </div>
         <!-- Tombol Cetak ke PDF -->
         <div class="mt-4">
-            <a href="{{ route('admin.agenda.print', $agendaRapat->id) }}" class="btn btn-primary">Cetak ke PDF</a>
+            <a href="{{ route('admin.agenda.print', $agendaRapat->id) }}" class="btn btn-primary rounded"><i class="fas fa-file-pdf"></i>Cetak ke PDF</a>
         </div>
     </div>
 </x-app-layout>
