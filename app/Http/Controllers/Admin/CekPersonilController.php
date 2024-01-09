@@ -16,7 +16,7 @@ class CekPersonilController extends Controller
     public function index()
     {
         $pokjas = Pokja::all();
-        $cekPersonils = CekPersonil::all();
+        $cekPersonils = CekPersonil::paginate(10);
         return view('admin.cek_personils.index', compact('cekPersonils', 'pokjas'));
     }
 
