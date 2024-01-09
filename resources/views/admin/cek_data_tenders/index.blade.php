@@ -14,7 +14,7 @@
                     <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
                     <!-- Split Button for Adding Data -->
                     <div class="btn-group">
-                    <a href="{{ route('admin.cek_data_tenders.create') }}" class="btn btn-primary">Tambah Data</a>
+                        <a href="{{ route('admin.cek_data_tenders.create') }}" class="btn btn-primary">Tambah Data</a>
                         <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="sr-only">Toggle Dropdown</span>
                         </button>
@@ -41,7 +41,17 @@
                             <tr>
                                 <td>{{ $cekDataTender->cekPersonil->nama_personil }}</td>
                                 <td>{{ $cekDataTender->dataTender->nama_paket }}</td>
-                                <td>{{ $cekDataTender->status }}</td>
+                                <td>
+                                    @if($cekDataTender->status == 'DITETAPKAN')
+                                    <span class="badge badge-primary">{{ $cekDataTender->status }}</span>
+                                    @elseif($cekDataTender->status == 'DIKERJAKAN')
+                                    <span class="badge badge-warning">{{ $cekDataTender->status }}</span>
+                                    @elseif($cekDataTender->status == 'SELESAI')
+                                    <span class="badge badge-success">{{ $cekDataTender->status }}</span>
+                                    @else
+                                    {{ $cekDataTender->status }}
+                                    @endif
+                                </td>
                                 <td>
                                     <a href="{{ route('admin.cek_data_tenders.show', $cekDataTender->id) }}" class="btn btn-info btn-sm">
                                         <i class="fas fa-eye"></i> Lihat

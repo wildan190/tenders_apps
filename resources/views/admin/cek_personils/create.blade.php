@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="container mx-auto p-4">
+    <div class="container mx-auto p-4 overflow-x-auto">
         <!-- Page Heading -->
         <h1 class="text-2xl font-semibold mb-2 text-gray-800">Tambah Data Cek Personil</h1>
         <p class="mb-4">Isi formulir di bawah ini untuk menambahkan data cek personil.</p>
