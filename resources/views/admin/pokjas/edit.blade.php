@@ -21,40 +21,40 @@
                 </div>
                 @endif
 
-                <div class="mb-4 flex">
-                    <div class="w-1/2 pr-2">
-                        <label for="nama" class="block text-sm font-medium text-gray-600">Nama:</label>
-                        <input type="text" class="mt-1 p-2 w-full border rounded-md" id="nama" name="nama" required value="{{ $pokja->nama }}">
+                <div class="grid gap-6 mb-6 md:grid-cols-2">
+                    <div>
+                        <label for="nama" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama:</label>
+                        <input type="text" id="nama" name="nama" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukkan Nama" required value="{{ $pokja->nama }}">
                     </div>
 
-                    <div class="w-1/2 pl-2">
-                        <label for="jabatan" class="block text-sm font-medium text-gray-600">Jabatan:</label>
-                        <input type="text" class="mt-1 p-2 w-full border rounded-md" id="jabatan" name="jabatan" required value="{{ $pokja->jabatan }}">
-                    </div>
-                </div>
-
-                <div class="mb-4 flex">
-                    <div class="w-1/2 pr-2">
-                        <label for="golongan" class="block text-sm font-medium text-gray-600">Golongan:</label>
-                        <input type="text" class="mt-1 p-2 w-full border rounded-md" id="golongan" name="golongan" required value="{{ $pokja->golongan }}">
-                    </div>
-
-                    <div class="w-1/2 pl-2">
-                        <label for="nik" class="block text-sm font-medium text-gray-600">NIK:</label>
-                        <input type="text" class="mt-1 p-2 w-full border rounded-md" id="nik" name="nik" required value="{{ $pokja->nik }}">
+                    <div>
+                        <label for="jabatan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jabatan:</label>
+                        <input type="text" id="jabatan" name="jabatan" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukkan Jabatan" required value="{{ $pokja->jabatan }}">
                     </div>
                 </div>
 
-                <div class="mb-4 flex">
-                    <div class="w-1/2 pl-2">
-                        <label for="email" class="block text-sm font-medium text-gray-600">Email:</label>
-                        <input type="email" class="mt-1 p-2 w-full border rounded-md" id="email" name="email" required value="{{ $pokja->email }}">
+                <div class="grid gap-6 mb-6 md:grid-cols-2">
+                    <div>
+                        <label for="golongan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Golongan:</label>
+                        <input type="text" id="golongan" name="golongan" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukkan Golongan" required value="{{ $pokja->golongan }}">
+                    </div>
+
+                    <div>
+                        <label for="nik" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NIK:</label>
+                        <input type="text" id="nik" name="nik" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukkan NIK" required value="{{ $pokja->nik }}">
+                    </div>
+                </div>
+
+                <div class="grid gap-6 mb-6 md:grid-cols-2">
+                    <div>
+                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email:</label>
+                        <input type="email" id="email" name="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukkan Email" required value="{{ $pokja->email }}">
                     </div>
                 </div>
 
                 <div class="mb-4">
-                    <label for="telepon" class="block text-sm font-medium text-gray-600">Telepon:</label>
-                    <input type="text" class="mt-1 p-2 w-full border rounded-md" id="telepon" name="telepon" required value="{{ $pokja->telepon }}">
+                    <label for="telepon" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Telepon:</label>
+                    <input type="text" id="telepon" name="telepon" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukkan Telepon" required value="{{ $pokja->telepon }}">
                 </div>
 
                 <div class="flex justify-between">
