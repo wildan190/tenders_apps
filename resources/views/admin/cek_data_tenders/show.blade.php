@@ -14,15 +14,11 @@
                     <tbody>
                         <tr>
                             <th>Kode Tender</th>
-                            <td>{{ $cekDataTender->dataTender->kd_tender }}</td>
+                            <td><a href="{{ $cekDataTender->dataTender->link_web }}" target="_blank">{{ $cekDataTender->dataTender->kd_tender }}</a></td>
                         </tr>
                         <tr>
                             <th>Nama Paket</th>
                             <td>{{ $cekDataTender->dataTender->nama_paket }}</td>
-                        </tr>
-                        <tr>
-                            <th>Link Web</th>
-                            <td>{{ $cekDataTender->dataTender->link_web }}</td>
                         </tr>
                         <tr>
                             <th>Kode Pokja</th>
@@ -39,10 +35,6 @@
                         <tr>
                             <th>Nama Paket</th>
                             <td>{{ $cekDataTender->dataTender->nama_paket }}</td>
-                        </tr>
-                        <tr>
-                            <th>Link Web</th>
-                            <td>{{ $cekDataTender->dataTender->link_web }}</td>
                         </tr>
                         <tr>
                             <th>Kode Pokja</th>
@@ -98,10 +90,6 @@
                         <tr>
                             <th>Jabatan Personil</th>
                             <td>{{ $cekDataTender->cekPersonil->jabatan_personil }}</td>
-                        </tr>
-                        <tr>
-                            <th>Golongan Personil</th>
-                            <td>{{ $cekDataTender->cekPersonil->golongan_personil }}</td>
                         </tr>
                         <tr>
                             <th>NIK Personil</th>
