@@ -14,12 +14,20 @@
                     <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
                     <!-- Split Button for Adding Data -->
                     <div class="btn-group">
-                        <a href="{{ route('admin.cek_data_tenders.create') }}" class="btn btn-primary">Tambah Data</a>
+
+                        <form action="{{ route('admin.cek_data_tenders.updateStatusAll') }}" method="POST">
+                            @csrf
+                            <button type="submit" class=" btn btn-warning" style="background-color: orange; border-color: orange; color: white;" id="updateStatusBtn"><i class="fas fa-sync-alt"></i>
+                                Sinkronkan Status
+                            </button>
+                        </form>
+
                         <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="sr-only">Toggle Dropdown</span>
                         </button>
                         <div class="dropdown-menu">
                             <!-- Dropdown menu links -->
+                            <a class="dropdown-item" href="{{ route('admin.cek_data_tenders.create') }}">Tambah Data</a>
                             <a class="dropdown-item" href="{{ route('admin.cek_data_tenders.create') }}">Tambah Manual</a>
                         </div>
                     </div>
@@ -82,7 +90,27 @@
             $('#dataTable').DataTable({
                 "pageLength": 10,
             });
+
+            // Add event listener for the update status button
+            $('#updateStatusBtn').on('click', function() {
+                // Make sure to use the CSRF token in your AJAX request
+                $.ajax({
+                    type: 'POST',
+                    url: '{{ route("admin.cek_data_tenders.updateStatusAll") }}',
+                    data: {
+                        "_token": "{{ csrf_token() }}",
+                    },
+                    success: function(response) {
+                        // Reload the page or perform any other action on success
+                        location.reload();
+                    },
+                    error: function(error) {
+                        console.error('Error updating status:', error);
+                    }
+                });
+            });
         });
     </script>
     @endpush
+
 </x-app-layout>

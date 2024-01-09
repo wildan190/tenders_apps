@@ -123,4 +123,20 @@ class CekDataTenderController extends Controller
 
         $cekDataTender->update(['status' => $status]);
     }
+
+    // app/Http/Controllers/Admin/CekDataTenderController.php
+
+    public function updateStatusAll()
+    {
+        // Get all CekDataTenders
+        $cekDataTenders = CekDataTender::all();
+
+        foreach ($cekDataTenders as $cekDataTender) {
+            // Update status for each CekDataTender
+            $this->updateStatus($cekDataTender);
+        }
+
+        Alert::success('Success', 'Status for all IDs has been updated.');
+        return redirect()->route('admin.cek_data_tenders.index');
+    }
 }

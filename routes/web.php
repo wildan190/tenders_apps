@@ -80,6 +80,8 @@ Route::middleware(['auth', 'verified', 'admin'])->group(function () {
     Route::get('/admin/cek_data_tenders/{id}/edit', [CekDataTenderController::class, 'edit'])->name('admin.cek_data_tenders.edit');
     Route::put('/admin/cek_data_tenders/{id}', [CekDataTenderController::class, 'update'])->name('admin.cek_data_tenders.update');
     Route::delete('/admin/cek_data_tenders/{id}', [CekDataTenderController::class, 'destroy'])->name('admin.cek_data_tenders.destroy');
+    Route::post('admin/cek_data_tenders/update-status-all', [CekDataTenderController::class, 'updateStatusAll'])
+        ->name('admin.cek_data_tenders.updateStatusAll');
 
     // Rute untuk Cek Peralatan
     Route::get('/admin/cek_peralatans', [CekPeralatanController::class, 'index'])->name('admin.cek_peralatans.index');
