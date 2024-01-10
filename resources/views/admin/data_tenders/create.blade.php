@@ -47,11 +47,15 @@
                         <!-- Di dalam form pada create.blade.php -->
                         <div class="form-group col-md-6">
                             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="kode_pokja">Kode Pokja:</label>
-                            <select class="form-control" id="kode_pokja" name="kode_pokja" required>
-                                @foreach($kodePokjas as $kodePokja)
-                                <option value="{{ $kodePokja->id }}">{{ $kodePokja->kode_pokja }} - {{ $kodePokja->keterangan }}</option>
-                                @endforeach
-                            </select>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="selected_kode_pokja" readonly>
+                                <div class="input-group-append">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#kodePokjaModal">
+                                        <i class="fas fa-list"></i> Pilih Kode Pokja
+                                    </button>
+                                </div>
+                            </div>
+                            <input type="hidden" id="kode_pokja" name="kode_pokja" required>
                         </div>
 
                     </div>
@@ -143,6 +147,51 @@
                             </div>
                         </div>
 
+                        <!-- Modal Kode Pokja-->
+                        <div class="modal fade" id="kodePokjaModal" tabindex="-1" role="dialog" aria-labelledby="kodePokjaModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-scrollable" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="kodePokjaModalLabel">Pilih Kode Pokja</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <!-- Table to display Kode Pokja data -->
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Kode Pokja</th>
+                                                    <th>Keterangan</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach($kodePokjas as $kodePokja)
+                                                <tr>
+                                                    <td>{{ $kodePokja->kode_pokja }}</td>
+                                                    <td>{{ $kodePokja->keterangan }}</td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-primary" onclick="selectKodePokja({{ $kodePokja->id }},'{{ $kodePokja->kode_pokja }} - {{ $kodePokja->keterangan }}')">
+                                                            <i class="fas fa-check-circle"></i> Pilih
+                                                        </button>
+                                                        <!---<button type="button" class="bg-red-500 text-white px-4 py-2 rounded-md focus:outline-none focus:shadow-outline-red active:bg-red-800" onclick="removeKodePokja('{{ $kodePokja->kode_pokja }} - {{ $kodePokja->keterangan }}')">
+                                                            <i class="fas fa-trash-alt"></i> Hapus
+                                                        </button>-->
+                                                    </td>
+                                                </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="bg-gray-500 text-white px-4 py-2 rounded-md focus:outline-none focus:shadow-outline-gray active:bg-gray-800" data-dismiss="modal">Tutup</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <!-- Modal untuk memilih pokja -->
                         <div class="modal fade" id="selectPokjaModal" tabindex="-1" role="dialog" aria-labelledby="selectPokjaModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-scrollable" role="document">
@@ -180,16 +229,17 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
 
-                        <!-- Tombol Simpan -->
-                        <div class="flex justify-between">
-                            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md focus:outline-none focus:shadow-outline-blue active:bg-blue-800">
-                                Simpan
-                            </button>
-                            <a href="{{ route('admin.data_tenders.index') }}" class="bg-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-400 focus:outline-none focus:shadow-outline-gray active:bg-gray-500">
-                                Batal
-                            </a>
-                        </div>
+                    <!-- Tombol Simpan -->
+                    <div class="flex justify-between">
+                        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md focus:outline-none focus:shadow-outline-blue active:bg-blue-800">
+                            Simpan
+                        </button>
+                        <a href="{{ route('admin.data_tenders.index') }}" class="bg-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-400 focus:outline-none focus:shadow-outline-gray active:bg-gray-500">
+                            Batal
+                        </a>
+                    </div>
                 </form>
             </div>
         </div>
@@ -209,6 +259,20 @@
         function removePokja(id) {
             // Remove the selected Pokja from the multiple select box
             $('#pokja_id option[value="' + id + '"]').remove();
+        }
+
+        function selectKodePokja(displayText) {
+            var selectedKodePokja = displayText;
+            $('#selected_kode_pokja').val(selectedKodePokja);
+            $('#kode_pokja').val(selectedKodePokja);
+            $('#kodePokjaModal').modal('hide');
+        }
+
+        function removeKodePokja(displayText) {
+            var removedKodePokja = displayText;
+            $('#selected_kode_pokja').val('');
+            $('#kode_pokja').val('');
+            $('#kodePokjaModal').modal('hide');
         }
     </script>
 
