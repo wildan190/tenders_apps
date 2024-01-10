@@ -96,10 +96,6 @@
                         @endforeach
                     </tbody>
                 </table>
-
-
-
-
                 <!-- Tombol Kembali -->
                 <div class="d-flex justify-content-end">
                     <a href="{{ route('admin.data_tenders.index') }}" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Kembali</a>

@@ -95,6 +95,9 @@
                     </table>
                 </div>
             </div>
+            <div class="card-footer">
+                {{ $cekDataTenders->links() }}
+            </div>
         </div>
     </div>
     @push('scripts')
