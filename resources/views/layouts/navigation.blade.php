@@ -1,11 +1,11 @@
-<ul class="navbar-nav bg-gradient-to-r from-blue-700 to-blue-500 sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav bg-gradient-dark sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="https://micropadmanusantara-solutions.web.app" target="_blank">
         <div class="sidebar-brand-icon rotate-n-15">
-            <i class="text-white fab fa-flowbite"></i>
+            <i class="	fab fa-asymmetrik"></i>
         </div>
-        <div class="sidebar-brand-text mx-3 text-white">Micro Padma Nusantara</div>
+        <div class="sidebar-brand-text mx-3 text-white">MPN</div>
     </a>
 
     <!-- Nav Item - Dashboard -->

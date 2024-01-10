@@ -133,53 +133,11 @@
 
                         <div class="form-group col-md-6">
                             <label for="pokja_id">Pilih Pokja:</label>
-                            <div class="input-group">
-                                <select class="form-control" id="pokja_id" name="pokja_id[]" multiple readonly>
-                                    <!-- Selected Pokja will be displayed here -->
-                                </select>
-                                <div class="input-group-append">
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#selectPokjaModal">Pilih</button>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <!-- Modal untuk memilih pokja -->
-                        <div class="modal fade" id="selectPokjaModal" tabindex="-1" role="dialog" aria-labelledby="selectPokjaModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="selectPokjaModalLabel">Pilih Pokja</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <!-- Table to display Pokja data -->
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th>Nama</th>
-                                                    <th>Jabatan</th>
-                                                    <th>Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach($pokjas as $pokja)
-                                                <tr>
-                                                    <td>{{ $pokja->nama }}</td>
-                                                    <td>{{ $pokja->jabatan }}</td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-success" onclick="selectPokja({{ $pokja->id }}, '{{ $pokja->nama }} - {{ $pokja->jabatan }}')">Pilih</button>
-
-                                                    </td>
-                                                </tr>
-                                                @endforeach
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
+                            <select class="form-control" id="pokja_id" name="pokja_id[]" multiple>
+                                @foreach($pokjas as $pokja)
+                                <option value="{{ $pokja->id }}">{{ $pokja->nama }} - {{ $pokja->jabatan }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
 
@@ -196,17 +154,4 @@
             </div>
         </div>
     </div>
-    <script>
-        function selectPokja(id, displayText) {
-            // Add selected Pokja to the multiple select box
-            $('#pokja_id').append('<option value="' + id + '">' + displayText + '</option>');
-
-            // Set the selected option as 'selected'
-            $('#pokja_id option[value="' + id + '"]').prop('selected', true);
-
-            // Close the modal
-            $('#selectPokjaModal').modal('hide');
-        }
-    </script>
-
 </x-app-layout>

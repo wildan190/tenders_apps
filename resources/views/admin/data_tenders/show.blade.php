@@ -77,17 +77,27 @@
                         <tr>
                             <th>Nama</th>
                             <th>Jabatan</th>
+                            <th>Sub Jabatan</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($dataTender->pokjas as $pokja)
+                        @foreach($dataTender->pokjas as $index => $pokja)
                         <tr>
                             <td>{{ $pokja->nama }}</td>
                             <td>{{ $pokja->jabatan }}</td>
+                            <td>
+                                @if($index == 0)
+                                Ketua
+                                @else
+                                Anggota
+                                @endif
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
+
+
 
 
                 <!-- Tombol Kembali -->

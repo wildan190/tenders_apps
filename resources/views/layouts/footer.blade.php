@@ -1,4 +1,4 @@
-<footer class="sticky-footer bg-white">
+<footer class="sticky-footer bg-dark">
     <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
         <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">Micro Padma Nusantara © 2023 <a href="https://micropadmanusantara-solutions.web.app/" target="_blank" class="hover:underline">™</a>. All Rights Reserved.
         </span>

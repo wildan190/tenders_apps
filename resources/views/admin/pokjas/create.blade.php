@@ -58,6 +58,7 @@
 
                 <div class="flex justify-between">
                     <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md focus:outline-none focus:shadow-outline-blue active:bg-blue-800">
+                        <i class="fa fa-save"></i>
                         Simpan
                     </button>
                     <a href="{{ route('admin.pokjas.index') }}" class="bg-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-400 focus:outline-none focus:shadow-outline-gray active:bg-gray-500">

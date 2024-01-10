@@ -51,7 +51,7 @@
                                 <td>{{ $cekPeralatan->pemenang }}</td>
                                 <td>{{ $cekPeralatan->spmk }} s/d {{ $cekPeralatan->spmk_selesai }}</td>
                                 <td>{{ $cekPeralatan->peralatan_syarat }}</td>
-                                <td>{{ $cekPeralatan->peralatan_ditawarkan }}</td>
+                                <td><a href="{{ $cekPeralatan->peralatan_ditawarkan }}">Lihat Data</a></td>
                                 <td>
                                     <a href="{{ route('admin.cek_peralatans.show', $cekPeralatan->id) }}" class="btn btn-info btn-sm">
                                         <i class="fas fa-eye"></i> Lihat
