@@ -26,27 +26,27 @@
                     <div class="row">
                         <!-- Kode Tender -->
                         <div class="form-group col-md-6">
-                            <label for="kd_tender">Kode Tender:</label>
-                            <input type="text" class="form-control" id="kd_tender" name="kd_tender" placeholder="Contoh: TDR123" required>
+                            <label for="kd_tender" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kode Tender:</label>
+                            <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="kd_tender" name="kd_tender" placeholder="Contoh: TDR123" required>
                         </div>
 
                         <!-- Nama Paket -->
                         <div class="form-group col-md-6">
-                            <label for="nama_paket">Nama Paket:</label>
-                            <input type="text" class="form-control" id="nama_paket" name="nama_paket" placeholder="Contoh: Pembangunan Jalan" required>
+                            <label for="nama_paket" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Paket:</label>
+                            <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="nama_paket" name="nama_paket" placeholder="Contoh: Pembangunan Jalan" required>
                         </div>
                     </div>
 
                     <div class="row">
                         <!-- Link Web -->
                         <div class="form-group col-md-6">
-                            <label for="link_web">Link Web:</label>
-                            <input type="text" class="form-control" id="link_web" name="link_web" placeholder="Contoh: http://www.tenderweb.com">
+                            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="link_web">Link Web:</label>
+                            <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="link_web" name="link_web" placeholder="Contoh: http://www.tenderweb.com">
                         </div>
 
                         <!-- Di dalam form pada create.blade.php -->
                         <div class="form-group col-md-6">
-                            <label for="kode_pokja">Kode Pokja:</label>
+                            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="kode_pokja">Kode Pokja:</label>
                             <select class="form-control" id="kode_pokja" name="kode_pokja" required>
                                 @foreach($kodePokjas as $kodePokja)
                                 <option value="{{ $kodePokja->id }}">{{ $kodePokja->kode_pokja }} - {{ $kodePokja->keterangan }}</option>
@@ -59,82 +59,82 @@
                     <div class="row">
                         <!-- Pagu -->
                         <div class="form-group col-md-6">
-                            <label for="pagu">Pagu:</label>
-                            <input type="text" class="form-control" id="pagu" name="pagu" placeholder="Contoh: 1000000000" required>
+                            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="pagu">Pagu:</label>
+                            <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="pagu" name="pagu" placeholder="Contoh: 1000000000" required>
                         </div>
 
                         <!-- HPS -->
                         <div class="form-group col-md-6">
-                            <label for="hps">HPS:</label>
-                            <input type="text" class="form-control" id="hps" name="hps" placeholder="Contoh: 900000000" required>
+                            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="hps">HPS:</label>
+                            <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="hps" name="hps" placeholder="Contoh: 900000000" required>
                         </div>
                     </div>
 
                     <div class="row">
                         <!-- Satuan Kerja -->
                         <div class="form-group col-md-6">
-                            <label for="satuan_kerja">Satuan Kerja:</label>
-                            <input type="text" class="form-control" id="satuan_kerja" name="satuan_kerja" placeholder="Contoh: Dinas Pekerjaan Umum" required>
+                            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="satuan_kerja">Satuan Kerja:</label>
+                            <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="satuan_kerja" name="satuan_kerja" placeholder="Contoh: Dinas Pekerjaan Umum" required>
                         </div>
 
                         <!-- PPK -->
                         <div class="form-group col-md-6">
-                            <label for="ppk">PPK:</label>
-                            <input type="text" class="form-control" id="ppk" name="ppk" placeholder="Contoh: Budi Santoso" required>
+                            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="ppk">PPK:</label>
+                            <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="ppk" name="ppk" placeholder="Contoh: Budi Santoso" required>
                         </div>
                     </div>
 
                     <div class="row">
                         <!-- Nama Instansi -->
                         <div class="form-group col-md-6">
-                            <label for="nama_instansi">Nama Instansi:</label>
-                            <input type="text" class="form-control" id="nama_instansi" name="nama_instansi" placeholder="Contoh: Kantor Pemerintah Kota Surabaya" required>
+                            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="nama_instansi">Nama Instansi:</label>
+                            <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="nama_instansi" name="nama_instansi" placeholder="Contoh: Kantor Pemerintah Kota Surabaya" required>
                         </div>
 
                         <!-- Nilai Penawaran -->
                         <div class="form-group col-md-6">
-                            <label for="nilai_penawaran">Nilai Penawaran:</label>
-                            <input type="text" class="form-control" id="nilai_penawaran" name="nilai_penawaran" placeholder="Contoh: 950000000" required>
+                            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="nilai_penawaran">Nilai Penawaran:</label>
+                            <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="nilai_penawaran" name="nilai_penawaran" placeholder="Contoh: 950000000" required>
                         </div>
                     </div>
 
                     <div class="row">
                         <!-- Tanggal Penetapan -->
                         <div class="form-group col-md-6">
-                            <label for="tanggal_penetapan">Tanggal Penetapan:</label>
-                            <input type="date" class="form-control" id="tanggal_penetapan" name="tanggal_penetapan" required>
+                            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="tanggal_penetapan">Tanggal Penetapan:</label>
+                            <input type="date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="tanggal_penetapan" name="tanggal_penetapan" required>
                         </div>
 
                         <!-- Nilai Kontrak -->
                         <div class="form-group col-md-6">
-                            <label for="nilai_kontrak">Nilai Kontrak:</label>
-                            <input type="text" class="form-control" id="nilai_kontrak" name="nilai_kontrak" placeholder="Contoh: 900000000">
+                            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="nilai_kontrak">Nilai Kontrak:</label>
+                            <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="nilai_kontrak" name="nilai_kontrak" placeholder="Contoh: 900000000">
                         </div>
                     </div>
 
                     <div class="row">
                         <!-- Tanggal Kontrak -->
                         <div class="form-group col-md-6">
-                            <label for="tanggal_kontrak">Tanggal Kontrak:</label>
-                            <input type="date" class="form-control" id="tanggal_kontrak" name="tanggal_kontrak">
+                            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="tanggal_kontrak">Tanggal Kontrak:</label>
+                            <input type="date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="tanggal_kontrak" name="tanggal_kontrak">
                         </div>
 
                         <!-- Waktu Pelaksanaan -->
                         <div class="form-group col-md-6">
-                            <label for="waktu_pelaksanaan">Waktu Pelaksanaan:</label>
-                            <input type="text" class="form-control" id="waktu_pelaksanaan" name="waktu_pelaksanaan" placeholder="Contoh: 12 bulan">
+                            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="waktu_pelaksanaan">Waktu Pelaksanaan:</label>
+                            <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="waktu_pelaksanaan" name="waktu_pelaksanaan" placeholder="Contoh: 12 bulan">
                         </div>
 
                         <!-- tahun -->
                         <div class="form-group col-md-6">
-                            <label for="tahun">Tahun:</label>
-                            <input type="text" class="form-control" id="tahun" name="tahun" placeholder="Contoh: 2024">
+                            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="tahun">Tahun:</label>
+                            <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="tahun" name="tahun" placeholder="Contoh: 2024">
                         </div>
 
                         <div class="form-group col-md-6">
-                            <label for="pokja_id">Pilih Pokja:</label>
+                            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="pokja_id">Pilih Pokja:</label>
                             <div class="input-group">
-                                <select class="form-control" id="pokja_id" name="pokja_id[]" multiple readonly>
+                                <select class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 custom-select" id="pokja_id" name="pokja_id[]" multiple readonly>
                                     <!-- Selected Pokja will be displayed here -->
                                 </select>
                                 <div class="input-group-append">
@@ -143,10 +143,9 @@
                             </div>
                         </div>
 
-
                         <!-- Modal untuk memilih pokja -->
                         <div class="modal fade" id="selectPokjaModal" tabindex="-1" role="dialog" aria-labelledby="selectPokjaModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
+                            <div class="modal-dialog modal-dialog-scrollable" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="selectPokjaModalLabel">Pilih Pokja</h5>
@@ -170,8 +169,8 @@
                                                     <td>{{ $pokja->nama }}</td>
                                                     <td>{{ $pokja->jabatan }}</td>
                                                     <td>
-                                                        <button type="button" class="btn btn-success" onclick="selectPokja({{ $pokja->id }}, '{{ $pokja->nama }} - {{ $pokja->jabatan }}')">Pilih</button>
-
+                                                        <button type="button" class="btn btn-primary" onclick="selectPokja({{ $pokja->id }}, '{{ $pokja->nama }} - {{ $pokja->jabatan }}')"><i class="fas fa-check-circle"></i> Pilih</button>
+                                                        <button type="button" class="bg-red-500 text-white px-4 py-2 rounded-md focus:outline-none focus:shadow-outline-red active:bg-red-800" onclick="removePokja({{ $pokja->id }})"><i class="fas fa-trash-alt"></i> Hapus</button>
                                                     </td>
                                                 </tr>
                                                 @endforeach
@@ -181,17 +180,16 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Tombol Simpan -->
-                    <div class="flex justify-between">
-                        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md focus:outline-none focus:shadow-outline-blue active:bg-blue-800">
-                            Simpan
-                        </button>
-                        <a href="{{ route('admin.data_tenders.index') }}" class="bg-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-400 focus:outline-none focus:shadow-outline-gray active:bg-gray-500">
-                            Batal
-                        </a>
-                    </div>
+                        <!-- Tombol Simpan -->
+                        <div class="flex justify-between">
+                            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md focus:outline-none focus:shadow-outline-blue active:bg-blue-800">
+                                Simpan
+                            </button>
+                            <a href="{{ route('admin.data_tenders.index') }}" class="bg-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-400 focus:outline-none focus:shadow-outline-gray active:bg-gray-500">
+                                Batal
+                            </a>
+                        </div>
                 </form>
             </div>
         </div>
@@ -206,6 +204,11 @@
 
             // Close the modal
             $('#selectPokjaModal').modal('hide');
+        }
+
+        function removePokja(id) {
+            // Remove the selected Pokja from the multiple select box
+            $('#pokja_id option[value="' + id + '"]').remove();
         }
     </script>
 
