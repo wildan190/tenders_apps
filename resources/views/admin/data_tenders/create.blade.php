@@ -48,10 +48,10 @@
                         <div class="form-group col-md-6">
                             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="kode_pokja">Kode Pokja:</label>
                             <div class="input-group">
-                                <input type="text" class="form-control" id="selected_kode_pokja" readonly>
+                                <input type="text" class="block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 custom-select" id="selected_kode_pokja" readonly>
                                 <div class="input-group-append">
                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#kodePokjaModal">
-                                        <i class="fas fa-list"></i> Pilih Kode Pokja
+                                        <i class="fas fa-list"></i> Pilih
                                     </button>
                                 </div>
                             </div>
@@ -194,7 +194,7 @@
 
                         <!-- Modal untuk memilih pokja -->
                         <div class="modal fade" id="selectPokjaModal" tabindex="-1" role="dialog" aria-labelledby="selectPokjaModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-scrollable" role="document">
+                            <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="selectPokjaModalLabel">Pilih Pokja</h5>
@@ -218,13 +218,23 @@
                                                     <td>{{ $pokja->nama }}</td>
                                                     <td>{{ $pokja->jabatan }}</td>
                                                     <td>
-                                                        <button type="button" class="btn btn-primary" onclick="selectPokja({{ $pokja->id }}, '{{ $pokja->nama }} - {{ $pokja->jabatan }}')"><i class="fas fa-check-circle"></i> Pilih</button>
-                                                        <button type="button" class="bg-red-500 text-white px-4 py-2 rounded-md focus:outline-none focus:shadow-outline-red active:bg-red-800" onclick="removePokja({{ $pokja->id }})"><i class="fas fa-trash-alt"></i> Hapus</button>
+                                                        <div class="flex justify-between">
+                                                            <button type="button" class="btn btn-primary btn-sm" onclick="selectPokja({{ $pokja->id }}, '{{ $pokja->nama }} - {{ $pokja->jabatan }}')">
+                                                                <i class="fas fa-check-circle"></i> Pilih
+                                                            </button>
+                                                            <button type="button" class="btn btn-danger btn-sm" onclick="removePokja({{ $pokja->id }})" style="color: #fff; background-color: #dc3545; border-color: #dc3545;">
+                                                                <i class="fas fa-trash-alt"></i> Hapus
+                                                            </button>
+                                                        </div>
                                                     </td>
+
                                                 </tr>
                                                 @endforeach
                                             </tbody>
                                         </table>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="bg-gray-500 text-white px-4 py-2 rounded-md focus:outline-none focus:shadow-outline-gray active:bg-gray-800" data-dismiss="modal">Tutup</button>
                                     </div>
                                 </div>
                             </div>
