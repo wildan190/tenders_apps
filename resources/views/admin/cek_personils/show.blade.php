@@ -7,37 +7,65 @@
         <p class="text-gray-600 mb-4">Informasi detail cek personil.</p>
 
         <!-- Card for Displaying Personil Information -->
+        <!-- Card for Displaying Personil Information -->
         <div class="bg-white rounded-md overflow-hidden shadow-md mb-4">
             <div class="p-4">
                 <h2 class="text-xl font-semibold mb-2">Informasi Personil</h2>
-                <dl class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div class="mb-2">
-                        <dt class="font-semibold text-gray-600">Nama Personil:</dt>
-                        <dd>{{ $cekPersonil->nama_personil }}</dd>
-                    </div>
-                    <div class="mb-2">
-                        <dt class="font-semibold text-gray-600">Jabatan Personil:</dt>
-                        <dd>{{ $cekPersonil->jabatan_personil }}</dd>
-                    </div>
-                    <div class="mb-2">
-                        <dt class="font-semibold text-gray-600">NIK Personil:</dt>
-                        <dd>{{ $cekPersonil->nik_personil }}</dd>
-                    </div>
-                    <div class="mb-2">
-                        <dt class="font-semibold text-gray-600">NPWP Personil:</dt>
-                        <dd>{{ $cekPersonil->npwp_personil }}</dd>
-                    </div>
-                    <div class="mb-2">
-                        <dt class="font-semibold text-gray-600">Email Personil:</dt>
-                        <dd>{{ $cekPersonil->email_personil }}</dd>
-                    </div>
-                    <div class="mb-2">
-                        <dt class="font-semibold text-gray-600">Telepon Personil:</dt>
-                        <dd>{{ $cekPersonil->telepon_personil }}</dd>
-                    </div>
-                </dl>
+
+                <!-- Flowbite-styled table -->
+                <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                        <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
+                            <tr>
+                                <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
+                                    Nama Personil
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Jabatan Personil
+                                </th>
+                                <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
+                                    NIK Personil
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    NPWP Personil
+                                </th>
+                                <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
+                                    Email Personil
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Telepon Personil
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+                                    {{ $cekPersonil->nama_personil }}
+                                </th>
+                                <td class="px-6 py-4">
+                                    {{ $cekPersonil->jabatan_personil }}
+                                </td>
+                                <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
+                                    {{ $cekPersonil->nik_personil }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ $cekPersonil->npwp_personil }}
+                                </td>
+                                <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
+                                    {{ $cekPersonil->email_personil }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ $cekPersonil->telepon_personil }}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- End of Flowbite-styled table -->
+
             </div>
         </div>
+
 
         <!-- Card for Displaying Actions -->
         <div class="bg-white rounded-md overflow-hidden shadow-md">
