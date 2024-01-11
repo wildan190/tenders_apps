@@ -2,7 +2,7 @@
     <div class="container mx-auto mt-4 p-4">
 
         <!-- Page Heading -->
-        <h1 class="text-2xl font-semibold text-gray-800 mb-2">Tambah Data Pokja</h1>
+        <h1 class="h3 mb-2 text-gray-800">Tambah Data Pokja</h1>
         <p class="text-gray-600 mb-4">Isi formulir di bawah ini untuk menambahkan data Pokja.</p>
 
         <!-- Form untuk Tambah Data -->

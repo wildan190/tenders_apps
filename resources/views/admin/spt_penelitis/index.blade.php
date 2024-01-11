@@ -1,11 +1,11 @@
 <!-- resources/views/admin/spt_penelitis/index.blade.php -->
 
 <x-app-layout>
-    <div class="container-fluid">
+    <div class="container mx-auto mt-4 p-4">
 
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">Data SPT Peneliti</h1>
-        <p class="mb-4">Daftar SPT Peneliti yang tersedia.</p>
+        <p class="text-gray-600 mb-4">Daftar SPT Peneliti yang tersedia.</p>
 
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
@@ -28,38 +28,38 @@
                 </div>
             </div>
             <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
+                <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                    <table class="w-full text-sm text-left rtl:text-right text-gray-700 dark:text-gray-400" id="dataTable" width="100%" cellspacing="0">
+                        <thead class="text-xs text-gray-400 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
-                                <th>No</th>
-                                <th>Kode Tender</th>
-                                <th>Nomor SPT</th>
-                                <th>Tahun</th>
-                                <th>Kepala Balai</th>
-                                <th>NIP</th>
-                                <th>Jabatan</th>
-                                <th>Tanggal SPT</th>
-                                <th>Anggota Peneliti</th>
-                                <th>Keterangan</th>
-                                <th>Action</th>
+                                <th scope="col" class="px-6 py-3">No</th>
+                                <th scope="col" class="px-6 py-3">Kode Tender</th>
+                                <th scope="col" class="px-6 py-3">Nomor SPT</th>
+                                <th scope="col" class="px-6 py-3">Tahun</th>
+                                <th scope="col" class="px-6 py-3">Kepala Balai</th>
+                                <th scope="col" class="px-6 py-3">NIP</th>
+                                <th scope="col" class="px-6 py-3">Jabatan</th>
+                                <th scope="col" class="px-6 py-3">Tanggal SPT</th>
+                                <th scope="col" class="px-6 py-3">Anggota Peneliti</th>
+                                <th scope="col" class="px-6 py-3">Keterangan</th>
+                                <th scope="col" class="px-6 py-3">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <!-- Looping data SPT Peneliti -->
                             @foreach ($sptPenelitis as $key => $sptPeneliti)
-                            <tr>
-                                <td>{{ $key + 1 }}</td>
-                                <td>{{ $sptPeneliti->kd_tender }}</td>
-                                <td>{{ $sptPeneliti->nomor_spt }}</td>
-                                <td>{{ $sptPeneliti->tahun }}</td>
-                                <td>{{ $sptPeneliti->kepala_balai }}</td>
-                                <td>{{ $sptPeneliti->nip }}</td>
-                                <td>{{ $sptPeneliti->jabatan }}</td>
-                                <td>{{ $sptPeneliti->tanggal_spt }}</td>
-                                <td>{{ $sptPeneliti->anggota_peneliti }}</td>
-                                <td>{{ $sptPeneliti->keterangan }}</td>
-                                <td>
+                            <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                                <td class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap dark:text-white">{{ $key + 1 }}</td>
+                                <td class="px-6 py-4">{{ $sptPeneliti->kd_tender }}</td>
+                                <td class="px-6 py-4">{{ $sptPeneliti->nomor_spt }}</td>
+                                <td class="px-6 py-4">{{ $sptPeneliti->tahun }}</td>
+                                <td class="px-6 py-4">{{ $sptPeneliti->kepala_balai }}</td>
+                                <td class="px-6 py-4">{{ $sptPeneliti->nip }}</td>
+                                <td class="px-6 py-4">{{ $sptPeneliti->jabatan }}</td>
+                                <td class="px-6 py-4">{{ $sptPeneliti->tanggal_spt }}</td>
+                                <td class="px-6 py-4">{{ $sptPeneliti->anggota_peneliti }}</td>
+                                <td class="px-6 py-4">{{ $sptPeneliti->keterangan }}</td>
+                                <td class="px-6 py-4">
                                     <a href="{{ route('admin.spt_penelitis.show', $sptPeneliti->id) }}" class="btn btn-info btn-sm">
                                         <i class="fas fa-eye"></i> Detail
                                     </a>
