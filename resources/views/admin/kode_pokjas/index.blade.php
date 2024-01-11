@@ -1,5 +1,3 @@
-<!-- resources/views/admin/kode_pokjas/index.blade.php -->
-
 <x-app-layout>
     <div class="container-fluid">
 
@@ -14,7 +12,7 @@
                     <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
                     <!-- Split Button for Adding Data -->
                     <div class="btn-group">
-                    <a href="{{ route('admin.kode_pokjas.create') }}" class="btn btn-primary">Tambah Data</a>
+                        <a href="{{ route('admin.kode_pokjas.create') }}" class="btn btn-primary">Tambah Data</a>
                         <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="sr-only">Toggle Dropdown</span>
                         </button>
@@ -27,25 +25,35 @@
                 </div>
             </div>
             <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
+                <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                    <table class="w-full text-sm text-left rtl:text-right text-gray-700 dark:text-gray-400">
+                        <thead class="text-xs text-gray-400 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
-                                <th>Kode Pokja</th>
-                                <th>Keterangan</th>
-                                <th>Aksi</th> <!-- Tambah kolom untuk aksi -->
+                                <th scope="col" class="px-6 py-3">
+                                    Kode Pokja
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Keterangan
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Aksi
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($kodePokjas as $kodePokja)
-                            <tr>
-                                <td>{{ $kodePokja->kode_pokja }}</td>
-                                <td>{{ $kodePokja->keterangan }}</td>
-                                <td>
+                            <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                                <td class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                    {{ $kodePokja->kode_pokja }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ $kodePokja->keterangan }}
+                                </td>
+                                <td class="px-6 py-4">
                                     <a href="{{ route('admin.kode_pokjas.show', $kodePokja->id) }}" class="btn btn-info btn-sm">
                                         <i class="fas fa-eye"></i> Lihat
                                     </a>
-                                    <a href="{{ route('admin.kode_pokjas.edit', $kodePokja->id) }}" class="btn btn-primary btn-sm">
+                                    <a href="{{ route('admin.kode_pokjas.edit', $kodePokja->id) }}" class="btn btn-warning btn-sm">
                                         <i class="fas fa-edit"></i> Edit
                                     </a>
                                     <form action="{{ route('admin.kode_pokjas.destroy', $kodePokja->id) }}" method="POST" style="display: inline;">
@@ -103,7 +111,7 @@
     <script>
         $(document).ready(function() {
             $('#dataTable').DataTable({
-                "pageLength": 10,
+                "pageLength": 5,
             });
         });
     </script>

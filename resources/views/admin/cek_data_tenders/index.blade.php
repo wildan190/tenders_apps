@@ -1,5 +1,3 @@
-<!-- resources/views/admin/cek_data_tenders/index.blade.php -->
-
 <x-app-layout>
     <div class="container-fluid">
 
@@ -14,7 +12,12 @@
                     <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
                     <!-- Split Button for Adding Data -->
                     <div class="btn-group">
-                    <a href="{{ route('admin.cek_data_tenders.create') }}" class="btn btn-primary">Tambah Data</a>
+                        <form action="{{ route('admin.cek_data_tenders.updateStatusAll') }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-warning" style="background-color: orange; border-color: orange; color: white;" id="updateStatusBtn">
+                                <i class="fas fa-sync-alt"></i> Sinkronkan Status
+                            </button>
+                        </form>
                         <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="sr-only">Toggle Dropdown</span>
                         </button>
@@ -26,23 +29,51 @@
                 </div>
             </div>
             <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
+                <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                    <table class="w-full text-sm text-left rtl:text-right text-gray-700 dark:text-gray-400">
+                        <thead class="text-xs text-gray-400 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
-                                <th>Nama Personil</th>
-                                <th>Nama Paket</th>
-                                <th>Status</th>
-                                <th>Aksi</th>
+                                <th scope="col" class="px-6 py-3">
+                                    Nama Personil
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Nama Paket
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Instansi
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Status
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Aksi
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($cekDataTenders as $cekDataTender)
-                            <tr>
-                                <td>{{ $cekDataTender->cekPersonil->nama_personil }}</td>
-                                <td>{{ $cekDataTender->dataTender->nama_paket }}</td>
-                                <td>{{ $cekDataTender->status }}</td>
-                                <td>
+                            <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                                <td class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                    {{ $cekDataTender->cekPersonil->nama_personil }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ $cekDataTender->dataTender->nama_paket }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ $cekDataTender->dataTender->nama_instansi }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    @if($cekDataTender->status == 'DITETAPKAN')
+                                    <span class="inline-flex items-center bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300"><span class="w-2 h-2 me-1 bg-blue-500 rounded-full"></span>{{ $cekDataTender->status }}</span>
+                                    @elseif($cekDataTender->status == 'DIKERJAKAN')
+                                    <span class="inline-flex items-center bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-yellow-900 dark:text-yellow-300"><span class="w-2 h-2 me-1 bg-yellow-500 rounded-full"></span>{{ $cekDataTender->status }}</span>
+                                    @elseif($cekDataTender->status == 'SELESAI')
+                                    <span class="inline-flex items-center bg-green-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300"><span class="w-2 h-2 me-1 bg-green-500 rounded-full"></span>{{ $cekDataTender->status }}</span>
+                                    @else
+                                    {{ $cekDataTender->status }}
+                                    @endif
+                                </td>
+                                <td class="px-6 py-4">
                                     <a href="{{ route('admin.cek_data_tenders.show', $cekDataTender->id) }}" class="btn btn-info btn-sm">
                                         <i class="fas fa-eye"></i> Lihat
                                     </a>
@@ -64,6 +95,9 @@
                     </table>
                 </div>
             </div>
+            <div class="card-footer">
+                {{ $cekDataTenders->links() }}
+            </div>
         </div>
     </div>
     @push('scripts')
@@ -71,6 +105,25 @@
         $(document).ready(function() {
             $('#dataTable').DataTable({
                 "pageLength": 10,
+            });
+
+            // Add event listener for the update status button
+            $('#updateStatusBtn').on('click', function() {
+                // Make sure to use the CSRF token in your AJAX request
+                $.ajax({
+                    type: 'POST',
+                    url: '{{ route("admin.cek_data_tenders.updateStatusAll") }}',
+                    data: {
+                        "_token": "{{ csrf_token() }}",
+                    },
+                    success: function(response) {
+                        // Reload the page or perform any other action on success
+                        location.reload();
+                    },
+                    error: function(error) {
+                        console.error('Error updating status:', error);
+                    }
+                });
             });
         });
     </script>

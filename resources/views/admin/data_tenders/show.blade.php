@@ -77,19 +77,25 @@
                         <tr>
                             <th>Nama</th>
                             <th>Jabatan</th>
+                            <th>Sub Jabatan</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($dataTender->pokjas as $pokja)
+                        @foreach($dataTender->pokjas as $index => $pokja)
                         <tr>
                             <td>{{ $pokja->nama }}</td>
                             <td>{{ $pokja->jabatan }}</td>
+                            <td>
+                                @if($index == 0)
+                                Ketua
+                                @else
+                                Anggota
+                                @endif
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
-
-
                 <!-- Tombol Kembali -->
                 <div class="d-flex justify-content-end">
                     <a href="{{ route('admin.data_tenders.index') }}" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Kembali</a>

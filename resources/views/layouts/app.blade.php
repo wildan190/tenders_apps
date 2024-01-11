@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>MSN - Tenders App</title>
 
 
     <!-- Custom fonts for this template-->
@@ -17,8 +17,7 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('backend/css/sb-admin-2.min.css') }}" rel="stylesheet">
     
-
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite(['resources/css/app.css','resources/js/app.js'])
 
 </head>
 

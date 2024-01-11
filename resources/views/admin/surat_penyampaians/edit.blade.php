@@ -1,12 +1,12 @@
 <x-app-layout>
-    <div class="container-fluid">
+    <div class="container mx-auto mt-4 p-4">
 
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">Edit Data Surat Penyampaian</h1>
-        <p class="mb-4">Isi formulir di bawah untuk mengedit data Surat Penyampaian.</p>
+        <p class="text-gray-600 mb-4">Isi formulir di bawah untuk mengedit data Surat Penyampaian.</p>
 
         <!-- Form -->
-        <div class="card shadow mb-4">
+        <div class="bg-white shadow-md rounded-md p-4">
             <div class="card-body">
                 <form action="{{ route('admin.surat_penyampaians.update', $suratPenyampian->id) }}" method="POST">
                     @csrf
@@ -25,9 +25,9 @@
 
 
                     <!-- Kode Tender -->
-                    <div class="mb-3 flex flex-col">
-                        <label for="kd_tender" class="mb-1">Kode Tender</label>
-                        <select class="border-b border-gray-300 focus:border-indigo-500 focus:outline-none focus:ring focus:ring-indigo-200 rounded-md p-2" id="kd_tender" name="kd_tender" required>
+                    <div class="grid gap-6 mb-6 md:grid-cols-2">
+                        <label for="kd_tender" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kode Tender</label>
+                        <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="kd_tender" name="kd_tender" required>
                             @foreach ($dataTenders as $dataTender)
                             <option value="{{ $dataTender->id }}" {{ $dataTender->id == $suratPenyampian->kd_tender ? 'selected' : '' }}>
                                 {{ $dataTender->kd_tender }} - {{ $dataTender->nama_paket }}
@@ -37,63 +37,63 @@
                     </div>
 
                     <!-- Nomor Surat Penyampaian -->
-                    <div class="mb-3 flex flex-col">
-                        <label for="nomor_surat_penyampaian" class="mb-1">Nomor Surat Penyampaian</label>
-                        <input type="text" class="border-b border-gray-300 focus:border-indigo-500 focus:outline-none focus:ring focus:ring-indigo-200 rounded-md p-2" id="nomor_surat_penyampaian" name="nomor_surat_penyampaian" value="{{ $suratPenyampian->nomor_surat_penyampaian }}" required>
+                    <div class="grid gap-6 mb-6 md:grid-cols-2">
+                        <label for="nomor_surat_penyampaian" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nomor Surat Penyampaian</label>
+                        <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="nomor_surat_penyampaian" name="nomor_surat_penyampaian" value="{{ $suratPenyampian->nomor_surat_penyampaian }}" required>
                     </div>
 
                     <!-- Tahun -->
-                    <div class="mb-3 flex flex-col">
-                        <label for="tahun" class="mb-1">Tahun</label>
-                        <input type="text" class="border-b border-gray-300 focus:border-indigo-500 focus:outline-none focus:ring focus:ring-indigo-200 rounded-md p-2" id="tahun" name="tahun" value="{{ $suratPenyampian->tahun }}" required>
+                    <div class="grid gap-6 mb-6 md:grid-cols-2">
+                        <label for="tahun" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tahun</label>
+                        <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="tahun" name="tahun" value="{{ $suratPenyampian->tahun }}" required>
                     </div>
 
                     <!-- Sifat -->
-                    <div class="mb-3 flex flex-col">
-                        <label for="sifat" class="mb-1">Sifat</label>
-                        <input type="text" class="border-b border-gray-300 focus:border-indigo-500 focus:outline-none focus:ring focus:ring-indigo-200 rounded-md p-2" id="sifat" name="sifat" value="{{ $suratPenyampian->sifat }}" required>
+                    <div class="grid gap-6 mb-6 md:grid-cols-2">
+                        <label for="sifat" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sifat</label>
+                        <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="sifat" name="sifat" value="{{ $suratPenyampian->sifat }}" required>
                     </div>
 
                     <!-- Destinasi Kepada -->
-                    <div class="mb-3 flex flex-col">
-                        <label for="destinasi_kepada" class="mb-1">Destinasi Kepada</label>
-                        <input type="text" class="border-b border-gray-300 focus:border-indigo-500 focus:outline-none focus:ring focus:ring-indigo-200 rounded-md p-2" id="destinasi_kepada" name="destinasi_kepada" value="{{ $suratPenyampian->destinasi_kepada }}" required>
+                    <div class="grid gap-6 mb-6 md:grid-cols-2">
+                        <label for="destinasi_kepada" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Destinasi Kepada</label>
+                        <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="destinasi_kepada" name="destinasi_kepada" value="{{ $suratPenyampian->destinasi_kepada }}" required>
                     </div>
 
                     <!-- Lampiran -->
-                    <div class="mb-3 flex flex-col">
-                        <label for="lampiran" class="mb-1">Lampiran</label>
-                        <input type="text" class="border-b border-gray-300 focus:border-indigo-500 focus:outline-none focus:ring focus:ring-indigo-200 rounded-md p-2" id="lampiran" name="lampiran" value="{{ $suratPenyampian->lampiran }}" required>
+                    <div class="grid gap-6 mb-6 md:grid-cols-2">
+                        <label for="lampiran" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Lampiran</label>
+                        <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="lampiran" name="lampiran" value="{{ $suratPenyampian->lampiran }}" required>
                     </div>
 
                     <!-- Perihal -->
-                    <div class="mb-3 flex flex-col">
-                        <label for="perihal" class="mb-1">Perihal</label>
-                        <input type="text" class="border-b border-gray-300 focus:border-indigo-500 focus:outline-none focus:ring focus:ring-indigo-200 rounded-md p-2" id="perihal" name="perihal" value="{{ $suratPenyampian->perihal }}" required>
+                    <div class="grid gap-6 mb-6 md:grid-cols-2">
+                        <label for="perihal" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Perihal</label>
+                        <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="perihal" name="perihal" value="{{ $suratPenyampian->perihal }}" required>
                     </div>
 
                     <!-- Kepala Balai -->
-                    <div class="mb-3 flex flex-col">
-                        <label for="kepala_balai" class="mb-1">Kepala Balai</label>
-                        <input type="text" class="border-b border-gray-300 focus:border-indigo-500 focus:outline-none focus:ring focus:ring-indigo-200 rounded-md p-2" id="kepala_balai" name="kepala_balai" value="{{ $suratPenyampian->kepala_balai }}" required>
+                    <div class="grid gap-6 mb-6 md:grid-cols-2">
+                        <label for="kepala_balai" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kepala Balai</label>
+                        <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="kepala_balai" name="kepala_balai" value="{{ $suratPenyampian->kepala_balai }}" required>
                     </div>
 
                     <!-- NIP -->
-                    <div class="mb-3 flex flex-col">
-                        <label for="nip" class="mb-1">NIP</label>
-                        <input type="text" class="border-b border-gray-300 focus:border-indigo-500 focus:outline-none focus:ring focus:ring-indigo-200 rounded-md p-2" id="nip" name="nip" value="{{ $suratPenyampian->nip }}" required>
+                    <div class="grid gap-6 mb-6 md:grid-cols-2">
+                        <label for="nip" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NIP</label>
+                        <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="nip" name="nip" value="{{ $suratPenyampian->nip }}" required>
                     </div>
 
                     <!-- Tanggal Surat -->
-                    <div class="mb-3 flex flex-col">
-                        <label for="tanggal_surat" class="mb-1">Tanggal Surat</label>
-                        <input type="date" class="border-b border-gray-300 focus:border-indigo-500 focus:outline-none focus:ring focus:ring-indigo-200 rounded-md p-2" id="tanggal_surat" name="tanggal_surat" value="{{ $suratPenyampian->tanggal_surat }}" required>
+                    <div class="grid gap-6 mb-6 md:grid-cols-2">
+                        <label for="tanggal_surat" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal Surat</label>
+                        <input type="date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="tanggal_surat" name="tanggal_surat" value="{{ $suratPenyampian->tanggal_surat }}" required>
                     </div>
 
                     <!-- Tanggal Diterima -->
-                    <div class="mb-3 flex flex-col">
-                        <label for="tanggal_diterima" class="mb-1">Tanggal Diterima</label>
-                        <input type="date" class="border-b border-gray-300 focus:border-indigo-500 focus:outline-none focus:ring focus:ring-indigo-200 rounded-md p-2" id="tanggal_diterima" name="tanggal_diterima" value="{{ $suratPenyampian->tanggal_diterima }}" required>
+                    <div class="grid gap-6 mb-6 md:grid-cols-2">
+                        <label for="tanggal_diterima" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal Diterima</label>
+                        <input type="date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="tanggal_diterima" name="tanggal_diterima" value="{{ $suratPenyampian->tanggal_diterima }}" required>
                     </div>
 
                     <div class="flex justify-between">

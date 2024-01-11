@@ -3,6 +3,8 @@
 namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
+use App\Models\CekDataTender;
+use Carbon\Carbon;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
 class Kernel extends ConsoleKernel
@@ -10,11 +12,22 @@ class Kernel extends ConsoleKernel
     /**
      * Define the application's command schedule.
      */
-    protected function schedule(Schedule $schedule): void
+    protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
-        $schedule->command('update:status')->daily();
-        
+        // Pekerjaan yang dijadwalkan untuk dijalankan setiap menit
+        $schedule->call(function () {
+            $this->updateStatusAutomatically();
+        })->everyMinute();
+    }
+
+    private function updateStatusAutomatically()
+    {
+        // Ambil semua data cek data tender
+        $cekDataTenders = CekDataTender::all();
+
+        foreach ($cekDataTenders as $cekDataTender) {
+            $cekDataTender->updateStatus();
+        }
     }
 
     /**
@@ -22,12 +35,11 @@ class Kernel extends ConsoleKernel
      */
     protected function commands(): void
     {
-        $this->load(__DIR__.'/Commands');
+        $this->load(__DIR__ . '/Commands');
 
         require base_path('routes/console.php');
     }
     protected $commands = [
         \App\Console\Commands\UpdateStatusCommand::class,
     ];
-    
 }

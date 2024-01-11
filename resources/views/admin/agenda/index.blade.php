@@ -25,28 +25,28 @@
                 </div>
             </div>
             <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
+                <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                    <table class="w-full text-sm text-left rtl:text-right text-gray-700 dark:text-gray-400" id="dataTable" width="100%" cellspacing="0">
+                        <thead class="text-xs text-gray-400 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
-                                <th>Perihal</th>
-                                <th>Email Peserta</th>
-                                <th>Tanggal</th>
-                                <th>Waktu</th>
-                                <th>Tempat</th>
-                                <th>Deskripsi</th>
-                                <th>Aksi</th>
+                                <th scope="col" class="px-6 py-3">Perihal</th>
+                                <th scope="col" class="px-6 py-3">Email Peserta</th>
+                                <th scope="col" class="px-6 py-3">Tanggal</th>
+                                <th scope="col" class="px-6 py-3">Waktu</th>
+                                <th scope="col" class="px-6 py-3">Tempat</th>
+                                <th scope="col" class="px-6 py-3">Deskripsi</th>
+                                <th scope="col" class="px-6 py-3">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($agendaRapat as $agenda)
-                            <tr>
-                                <td>{{ $agenda->title }}</td>
-                                <td>{{ $agenda->email_peserta }}</td>
-                                <td>{{ $agenda->tanggal }}</td>
-                                <td>{{ $agenda->waktu }}</td>
-                                <td>{{ $agenda->tempat }}</td>
-                                <td>{{ $agenda->deskripsi }}</td>
+                            <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                                <td class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap dark:text-white">{{ $agenda->title }}</td>
+                                <td class="px-6 py-4">{{ $agenda->email_peserta }}</td>
+                                <td class="px-6 py-4">{{ $agenda->tanggal }}</td>
+                                <td class="px-6 py-4">{{ $agenda->waktu }}</td>
+                                <td class="px-6 py-4">{{ $agenda->tempat }}</td>
+                                <td class="px-6 py-4">{{ $agenda->deskripsi }}</td>
                                 <td>
                                     <a href="{{ route('admin.agenda.show', $agenda->id) }}" class="btn btn-info btn-sm">
                                         <i class="fas fa-eye"></i> Lihat

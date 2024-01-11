@@ -1,11 +1,11 @@
 <!-- resources/views/admin/surat_penyampaians/index.blade.php -->
 
 <x-app-layout>
-    <div class="container-fluid">
+    <div class="container mx-auto mt-4 p-4">
 
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">Data Surat Penyampaian</h1>
-        <p class="mb-4">Daftar Surat Penyampaian yang tersedia.</p>
+        <p class="text-gray-600 mb-4">Daftar Surat Penyampaian yang tersedia.</p>
 
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
@@ -28,9 +28,9 @@
                 </div>
             </div>
             <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
+                <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                    <table class="w-full text-sm text-left rtl:text-right text-gray-700 dark:text-gray-400">
+                        <thead class="text-xs text-gray-400 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
                                 <th>ID</th>
                                 <th>Nomor Surat Penyampaian</th>
@@ -48,19 +48,19 @@
                         </thead>
                         <tbody>
                             @foreach($suratPenyampaians as $suratPenyampaiain)
-                            <tr>
-                                <td>{{ $suratPenyampaiain->id }}</td>
-                                <td>{{ $suratPenyampaiain->nomor_surat_penyampaian }}</td>
-                                <td>{{ $suratPenyampaiain->tahun }}</td>
-                                <td>{{ $suratPenyampaiain->sifat }}</td>
-                                <td>{{ $suratPenyampaiain->destinasi_kepada }}</td>
-                                <td>{{ $suratPenyampaiain->lampiran }}</td>
-                                <td>{{ $suratPenyampaiain->perihal }}</td>
-                                <td>{{ $suratPenyampaiain->kepala_balai }}</td>
-                                <td>{{ $suratPenyampaiain->nip }}</td>
-                                <td>{{ $suratPenyampaiain->tanggal_surat }}</td>
-                                <td>{{ $suratPenyampaiain->tanggal_diterima }}</td>
-                                <td>
+                            <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                                <td class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap dark:text-white">{{ $suratPenyampaiain->id }}</td>
+                                <td class="px-6 py-4">{{ $suratPenyampaiain->nomor_surat_penyampaian }}</td>
+                                <td class="px-6 py-4">{{ $suratPenyampaiain->tahun }}</td>
+                                <td class="px-6 py-4">{{ $suratPenyampaiain->sifat }}</td>
+                                <td class="px-6 py-4">{{ $suratPenyampaiain->destinasi_kepada }}</td>
+                                <td class="px-6 py-4">{{ $suratPenyampaiain->lampiran }}</td>
+                                <td class="px-6 py-4">{{ $suratPenyampaiain->perihal }}</td>
+                                <td class="px-6 py-4">{{ $suratPenyampaiain->kepala_balai }}</td>
+                                <td class="px-6 py-4">{{ $suratPenyampaiain->nip }}</td>
+                                <td class="px-6 py-4">{{ $suratPenyampaiain->tanggal_surat }}</td>
+                                <td class="px-6 py-4">{{ $suratPenyampaiain->tanggal_diterima }}</td>
+                                <td class="px-6 py-4">
                                     <a href="{{ route('admin.surat_penyampaians.show', $suratPenyampaiain->id) }}" class="btn btn-info btn-sm">
                                         <i class="fas fa-eye"></i> Detail
                                     </a>

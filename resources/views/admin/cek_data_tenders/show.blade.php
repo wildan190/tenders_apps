@@ -22,22 +22,6 @@
                         </tr>
                         <tr>
                             <th>Kode Pokja</th>
-                            <td>{{ $cekDataTender->dataTender->kode_pokja }}</td>
-                        </tr>
-                        <tr>
-                            <th>Pagu</th>
-                            <td>{{ $cekDataTender->dataTender->pagu }}</td>
-                        </tr>
-                        <tr>
-                            <th>Kode Tender</th>
-                            <td>{{ $cekDataTender->dataTender->kd_tender }}</td>
-                        </tr>
-                        <tr>
-                            <th>Nama Paket</th>
-                            <td>{{ $cekDataTender->dataTender->nama_paket }}</td>
-                        </tr>
-                        <tr>
-                            <th>Kode Pokja</th>
                             <td>{{ $cekDataTender->dataTender->kodePokja->kode_pokja }} - {{ $cekDataTender->dataTender->kodePokja->keterangan }}</td>
                         </tr>
                         <tr>
@@ -107,11 +91,32 @@
                             <th>Telepon Personil</th>
                             <td>{{ $cekDataTender->cekPersonil->telepon_personil }}</td>
                         </tr>
-                        <tr>
-                            <th>Pokja</th>
-                            <td>{{ $cekDataTender->dataTender->pokjas->implode('nama', ', ') }}</td>
-                        </tr>
                         <!-- Tambahkan informasi lain sesuai kebutuhan -->
+                    </tbody>
+                </table>
+                <h5 class="card-title mt-4">Informasi Mengenai Anggota</h5>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Nama</th>
+                            <th>Jabatan</th>
+                            <th>Sub Jabatan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($cekDataTender->dataTender->pokjas as $index => $pokja)
+                        <tr>
+                            <td>{{ $pokja->nama }}</td>
+                            <td>{{ $pokja->jabatan }}</td>
+                            <td>
+                                @if($index == 0)
+                                Ketua
+                                @else
+                                Anggota
+                                @endif
+                            </td>
+                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
                 <h5 class="card-title mt-4">Status</h5>

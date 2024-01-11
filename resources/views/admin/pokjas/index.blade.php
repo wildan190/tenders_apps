@@ -1,12 +1,12 @@
 <x-app-layout>
-    <div class="container-fluid">
+    <div class="container mx-auto mt-4 p-4">
 
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">Data Pokja</h1>
-        <p class="mb-4">Daftar Pokja yang tersedia.</p>
+        <p class="text-gray-600 mb-4">Daftar Pokja yang tersedia.</p>
 
         <!-- DataTales Example -->
-        <div class="card shadow mb-4">
+        <div class="card shadow mb-4 ">
             <div class="card-header py-3">
                 <div class="d-flex justify-content-between">
                     <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
@@ -26,38 +26,66 @@
                 </div>
             </div>
             <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
+                <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                    <table class="w-full text-sm text-left rtl:text-right text-gray-700 dark:text-gray-400">
+                        <thead class="text-xs text-gray-400 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
-                                <th>Nama</th>
-                                <th>Jabatan</th>
-                                <th>Golongan</th>
-                                <th>NIK</th>
-                                <th>Email</th>
-                                <th>Telepon</th>
-                                <th>Aksi</th>
+                                <th scope="col" class="px-6 py-3">
+                                    Nama
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Jabatan
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Golongan
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    NIK
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Email
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Telepon
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Aksi
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($pokjas as $pokja)
-                            <tr>
-                                <td>{{ $pokja->nama }}</td>
-                                <td>{{ $pokja->jabatan }}</td>
-                                <td>{{ $pokja->golongan }}</td>
-                                <td>{{ $pokja->nik }}</td>
-                                <td>{{ $pokja->email }}</td>
-                                <td>{{ $pokja->telepon }}</td>
-                                <td>
-                                    <a href="{{ route('admin.pokjas.show', $pokja->id) }}" class="btn btn-info btn-sm"><i class="fas fa-eye"></i>Lihat</a>
-                                    <a href="{{ route('admin.pokjas.edit', $pokja->id) }}" class="btn btn-primary btn-sm">
+                            <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                                <td class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                    {{ $pokja->nama }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ $pokja->jabatan }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ $pokja->golongan }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ $pokja->nik }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ $pokja->email }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ $pokja->telepon }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    <a href="{{ route('admin.pokjas.show', $pokja->id) }}" class="btn btn-sm btn-info">
+                                        <i class="fas fa-eye"></i> Lihat
+                                    </a>
+                                    <a href="{{ route('admin.pokjas.edit', $pokja->id) }}" class="btn btn-sm btn-warning">
                                         <i class="fas fa-edit"></i> Edit
                                     </a>
                                     <form action="{{ route('admin.pokjas.destroy', $pokja->id) }}" method="POST" style="display: inline;">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data Pokja ini?')" style="color: #fff; background-color: #dc3545; border-color: #dc3545;">
-                                            <i class="fas fa-trash-alt"></i> Hapus
+                                        <button type="submit" style="color: #fff; background-color: #dc3545; border-color: #dc3545;" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data Pokja ini?')">
+                                            <i class="fas fa-trash"></i> Hapus
                                         </button>
                                     </form>
                                 </td>
@@ -66,6 +94,7 @@
                         </tbody>
                     </table>
                 </div>
+
             </div>
             <div class="card-footer">
                 {{ $pokjas->links() }}
@@ -92,8 +121,8 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="importFile">Pilih File</label>
-                            <input type="file" class="form-control-file" id="importFile" name="importFile" required>
+                            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="importFile">Pilih File</label>
+                            <input type="file" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="importFile" name="importFile" required>
                         </div>
 
                         <button type="submit" class="btn btn-primary">Import</button>

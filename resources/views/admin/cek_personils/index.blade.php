@@ -1,4 +1,3 @@
-<!-- resources/views/admin/cek_personils/index.blade.php -->
 <x-app-layout>
     <div class="container-fluid">
 
@@ -25,29 +24,55 @@
                 </div>
             </div>
             <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
+                <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                    <table class="w-full text-sm text-left rtl:text-right text-gray-700 dark:text-gray-400">
+                        <thead class="text-xs text-gray-400 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
-                                <th>Nama Personil</th>
-                                <th>Jabatan Personil</th>
-                                <th>NIK Personil</th>
-                                <th>NPWP Personil</th>
-                                <th>Email Personil</th>
-                                <th>Telepon Personil</th>
-                                <th>Aksi</th>
+                                <th scope="col" class="px-6 py-3">
+                                    Nama Personil
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Jabatan Personil
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    NIK Personil
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    NPWP Personil
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Email Personil
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Telepon Personil
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Aksi
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($cekPersonils as $cekPersonil)
-                            <tr>
-                                <td>{{ $cekPersonil->nama_personil }}</td>
-                                <td>{{ $cekPersonil->jabatan_personil }}</td>
-                                <td>{{ $cekPersonil->nik_personil }}</td>
-                                <td>{{ $cekPersonil->npwp_personil }}</td>
-                                <td>{{ $cekPersonil->email_personil }}</td>
-                                <td>{{ $cekPersonil->telepon_personil }}</td>
-                                <td>
+                            <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                                <td class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                    {{ $cekPersonil->nama_personil }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ $cekPersonil->jabatan_personil }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ $cekPersonil->nik_personil }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ $cekPersonil->npwp_personil }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ $cekPersonil->email_personil }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ $cekPersonil->telepon_personil }}
+                                </td>
+                                <td class="px-6 py-4">
                                     <a href="{{ route('admin.cek_personils.show', $cekPersonil->id) }}" class="btn btn-info btn-sm">
                                         <i class="fas fa-eye"></i> Lihat
                                     </a>

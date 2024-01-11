@@ -1,10 +1,10 @@
 <!-- resources/views/admin/cek_peralatans/index.blade.php -->
 <x-app-layout>
-    <div class="container-fluid">
+    <div class="container mx-auto mt-4 p-4">
 
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">Cek Peralatan</h1>
-        <p class="mb-4">Daftar cek peralatan</p>
+        <p class="text-gray-600 mb-4">Daftar cek peralatan</p>
 
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
@@ -26,33 +26,33 @@
             </div>
 
             <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
+                <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                    <table class="w-full text-sm text-left rtl:text-right text-gray-700 dark:text-gray-400" id="dataTable" width="100%" cellspacing="0">
+                        <thead class="text-xs text-gray-400 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
-                                <th>ID</th>
-                                <th>Kode Pokja</th>
-                                <th>Nama Paket</th>
-                                <th>Tahun Anggaran</th>
-                                <th>Pemenang</th>
-                                <th>SPMK</th>
-                                <th>Peralatan Syarat</th>
-                                <th>Peralatan Ditawarkan</th>
-                                <th>Aksi</th>
+                                <th scope="col" class="px-6 py-3">ID</th>
+                                <th scope="col" class="px-6 py-3">Kode Pokja</th>
+                                <th scope="col" class="px-6 py-3">Nama Paket</th>
+                                <th scope="col" class="px-6 py-3">Tahun Anggaran</th>
+                                <th scope="col" class="px-6 py-3">Pemenang</th>
+                                <th scope="col" class="px-6 py-3">SPMK</th>
+                                <th scope="col" class="px-6 py-3">Peralatan Syarat</th>
+                                <th scope="col" class="px-6 py-3">Peralatan Ditawarkan</th>
+                                <th scope="col" class="px-6 py-3">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($cekPeralatans as $cekPeralatan)
-                            <tr>
-                                <td>{{ $cekPeralatan->id }}</td>
-                                <td>{{ $cekPeralatan->kode_pokja }}</td>
-                                <td>{{ $cekPeralatan->nama_paket }}</td>
-                                <td>{{ $cekPeralatan->tahun_anggaran }}</td>
-                                <td>{{ $cekPeralatan->pemenang }}</td>
-                                <td>{{ $cekPeralatan->spmk }} s/d {{ $cekPeralatan->spmk_selesai }}</td>
-                                <td>{{ $cekPeralatan->peralatan_syarat }}</td>
-                                <td>{{ $cekPeralatan->peralatan_ditawarkan }}</td>
-                                <td>
+                            <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                                <td class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap dark:text-white">{{ $cekPeralatan->id }}</td>
+                                <td class="px-6 py-4">{{ $cekPeralatan->kode_pokja }}</td>
+                                <td class="px-6 py-4">{{ $cekPeralatan->nama_paket }}</td>
+                                <td class="px-6 py-4">{{ $cekPeralatan->tahun_anggaran }}</td>
+                                <td class="px-6 py-4">{{ $cekPeralatan->pemenang }}</td>
+                                <td class="px-6 py-4">{{ $cekPeralatan->spmk }} s/d {{ $cekPeralatan->spmk_selesai }}</td>
+                                <td class="px-6 py-4">{{ $cekPeralatan->peralatan_syarat }}</td>
+                                <td class="px-6 py-4"><a href="{{ $cekPeralatan->peralatan_ditawarkan }}">Lihat Data</a></td>
+                                <td class="px-6 py-4">
                                     <a href="{{ route('admin.cek_peralatans.show', $cekPeralatan->id) }}" class="btn btn-info btn-sm">
                                         <i class="fas fa-eye"></i> Lihat
                                     </a>
