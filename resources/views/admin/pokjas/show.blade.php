@@ -3,6 +3,7 @@
 
         <!-- Page Heading -->
         <h1 class="text-2xl font-semibold text-gray-800 mb-2">Detail Data Pokja</h1>
+        <p class="text-gray-600 mb-4">Detail Data Tender</p>
 
         <!-- Detail Data -->
         <div class="bg-white shadow-md rounded-md p-4">

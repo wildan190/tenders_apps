@@ -1,9 +1,9 @@
 <x-app-layout>
-    <div class="container-fluid">
+    <div class="container mx-auto mt-4 p-4">
 
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">Data Tender</h1>
-        <p class="mb-4">Daftar data tender yang tersedia.</p>
+        <p class="text-gray-600 mb-4">Daftar data tender yang tersedia.</p>
 
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
