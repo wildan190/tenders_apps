@@ -17,7 +17,7 @@ class PokjaController extends Controller
 {
     public function index()
     {
-        $pokjas = Pokja::paginate(3);
+        $pokjas = Pokja::paginate(10);
         return view('admin.pokjas.index', compact('pokjas'));
     }
 

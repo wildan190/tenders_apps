@@ -17,7 +17,7 @@ class DataTenderController extends Controller
     public function index()
     {
         $dataTenders = DataTender::with('kodePokja')->get();
-        $dataTenders = DataTender::paginate(2);
+        $dataTenders = DataTender::paginate(10);
         return view('admin.data_tenders.index', compact('dataTenders'));
     }
 

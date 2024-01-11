@@ -17,7 +17,7 @@ class AgendaRapatController extends Controller
 {
     public function index()
     {
-        $agendaRapat = AgendaRapat::paginate(5);
+        $agendaRapat = AgendaRapat::paginate(10);
         return view('admin.agenda.index', compact('agendaRapat'));
         // Gantilah 'admin.agenda.index' dengan nama view yang sesuai dengan struktur folder dan file view Anda.
     }

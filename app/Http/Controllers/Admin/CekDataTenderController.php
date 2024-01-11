@@ -16,7 +16,7 @@ class CekDataTenderController extends Controller
     public function index()
     {
         $cekDataTenders = CekDataTender::with(['cekPersonil', 'dataTender'])->get();
-        $cekDataTenders = CekDataTender::paginate(4);
+        $cekDataTenders = CekDataTender::paginate(10);
         return view('admin.cek_data_tenders.index', compact('cekDataTenders'));
     }
 

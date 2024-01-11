@@ -16,6 +16,7 @@ class DataSuratKeputusanController extends Controller
     public function index()
     {
         $dataSuratKeputusan = DataSuratKeputusan::with(['dataTender', 'namaPersonil'])->get();
+        $dataSuratKeputusan = DataSuratKeputusan::paginate(10);
         return view('admin.data_surat_keputusan.index', compact('dataSuratKeputusan'));
     }
 

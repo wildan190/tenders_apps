@@ -16,7 +16,7 @@ class CekPeralatanController extends Controller
 {
     public function index()
     {
-        $cekPeralatans = CekPeralatan::paginate(5);
+        $cekPeralatans = CekPeralatan::paginate(10);
         return view('admin.cek_peralatans.index', compact('cekPeralatans'));
     }
 

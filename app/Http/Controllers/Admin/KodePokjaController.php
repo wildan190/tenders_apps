@@ -16,7 +16,7 @@ class KodePokjaController extends Controller
 {
     public function index()
     {
-        $kodePokjas = KodePokja::latest()->paginate(5);
+        $kodePokjas = KodePokja::latest()->paginate(10);
 
         return view('admin.kode_pokjas.index', compact('kodePokjas'));
     }
