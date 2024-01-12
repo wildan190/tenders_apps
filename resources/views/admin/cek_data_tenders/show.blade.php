@@ -111,6 +111,8 @@
                             <td>
                                 @if($index == 0)
                                 Ketua
+                                @elseif($index == 1)
+                                Sekertaris
                                 @else
                                 Anggota
                                 @endif
