@@ -27,7 +27,7 @@
     </x-my-nav-link>
     <!-- Divider -->
     <hr class="sidebar-divider">
-    <x-my-nav-link :active="request()->routeIs('admin.cek_personils.index')" :name="'Cek Personil'" :href="route('admin.cek_personils.index')">
+    <x-my-nav-link :active="request()->routeIs('admin.cek_personils.index')" :name="'Personil'" :href="route('admin.cek_personils.index')">
         <i class="fas fa-users"></i>
     </x-my-nav-link>
     <x-my-nav-link :active="request()->routeIs('admin.cek_data_tenders.index')" :name="'Cek Data Tender'" :href="route('admin.cek_data_tenders.index')">
