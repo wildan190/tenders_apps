@@ -62,10 +62,9 @@ class CekPersonilController extends Controller
 
     public function show($id)
     {
-        $cekPersonils = CekPersonil::findOrFail($id);
-        $cekPersonils = CekPersonil::paginate(10);
+        $cekPersonil = CekPersonil::findOrFail($id);
         //$pokjas = Pokja::all();
-        return view('admin.cek_personils.show', compact('cekPersonils'));
+        return view('admin.cek_personils.show', compact('cekPersonil'));
     }
 
     public function edit($id)
