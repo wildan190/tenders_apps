@@ -57,7 +57,7 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <div class="modal-body">
+                                    <div class="modal-body" class="modal-body" style="max-height: 700px; overflow-y: auto;">
                                         <!-- Tabel Data Tender -->
                                         <table class="table">
                                             <thead>
