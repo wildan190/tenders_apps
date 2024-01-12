@@ -111,10 +111,11 @@ class CekDataTenderController extends Controller
         $now = Carbon::now();
         $tanggalPenetapan = Carbon::parse($dataTender->tanggal_penetapan);
         $tanggalKontrak = Carbon::parse($dataTender->tanggal_kontrak);
+        $waktuPelaksanaan = Carbon::parse($dataTender->waktu_pelaksanaan);
 
         // Logika untuk update status
         $status = null;
-        if ($now->greaterThanOrEqualTo($tanggalKontrak->endOfDay())) {
+        if ($now->greaterThanOrEqualTo($waktuPelaksanaan->endOfDay())) {
             $status = 'SELESAI';
         } elseif ($now->greaterThanOrEqualTo($tanggalKontrak->startOfDay())) {
             $status = 'DIKERJAKAN';
