@@ -13,7 +13,8 @@
             <a class="nav-link dropdown-toggle text-white" href="#" id="userDropdown" role="button"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-white">{{ Auth::user()->name }}</span>
-                <!--<img class="img-profile rounded-circle" src="img/undraw_profile.svg">
+                <!-- Uncomment the following line if you want to display a user profile image -->
+                <!-- <img class="img-profile rounded-circle" src="img/undraw_profile.svg"> -->
             </a>
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu bg-dark dropdown-menu-right shadow animated--grow-in"
