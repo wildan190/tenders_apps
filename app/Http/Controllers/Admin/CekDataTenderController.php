@@ -72,7 +72,7 @@ class CekDataTenderController extends Controller
         $cekDataTender = CekDataTender::findOrFail($id);
 
         $validatedData = $request->validate([
-            // Tambahkan validasi jika diperlukan
+            'cek_personil_id' => 'required|exists:cek_personils,id'
         ]);
 
         $cekDataTender->update($validatedData);
