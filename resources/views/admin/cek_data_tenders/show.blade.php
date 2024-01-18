@@ -9,6 +9,36 @@
         <!-- Detail Cek Data Tender -->
         <div class="card shadow mb-4">
             <div class="card-body">
+            <h5 class="card-title mt-4">Informasi Personil</h5>
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <th>Nama Personil</th>
+                            <td>{{ $cekDataTender->cekPersonil->nama_personil }}</td>
+                        </tr>
+                        <tr>
+                            <th>Jabatan Personil</th>
+                            <td>{{ $cekDataTender->cekPersonil->jabatan_personil }}</td>
+                        </tr>
+                        <tr>
+                            <th>NIK Personil</th>
+                            <td>{{ $cekDataTender->cekPersonil->nik_personil }}</td>
+                        </tr>
+                        <tr>
+                            <th>NPWP Personil</th>
+                            <td>{{ $cekDataTender->cekPersonil->npwp_personil }}</td>
+                        </tr>
+                        <tr>
+                            <th>Email Personil</th>
+                            <td>{{ $cekDataTender->cekPersonil->email_personil }}</td>
+                        </tr>
+                        <tr>
+                            <th>Telepon Personil</th>
+                            <td>{{ $cekDataTender->cekPersonil->telepon_personil }}</td>
+                        </tr>
+                        <!-- Tambahkan informasi lain sesuai kebutuhan -->
+                    </tbody>
+                </table>
                 <h5 class="card-title">Informasi Data Tender</h5>
                 <table class="table table-bordered">
                     <tbody>
@@ -59,37 +89,6 @@
                         <tr>
                             <th>Waktu Pelaksanaan</th>
                             <td>{{ $cekDataTender->dataTender->waktu_pelaksanaan }}</td>
-                        </tr>
-                        <!-- Tambahkan informasi lain sesuai kebutuhan -->
-                    </tbody>
-                </table>
-
-                <h5 class="card-title mt-4">Informasi Personil</h5>
-                <table class="table table-bordered">
-                    <tbody>
-                        <tr>
-                            <th>Nama Personil</th>
-                            <td>{{ $cekDataTender->cekPersonil->nama_personil }}</td>
-                        </tr>
-                        <tr>
-                            <th>Jabatan Personil</th>
-                            <td>{{ $cekDataTender->cekPersonil->jabatan_personil }}</td>
-                        </tr>
-                        <tr>
-                            <th>NIK Personil</th>
-                            <td>{{ $cekDataTender->cekPersonil->nik_personil }}</td>
-                        </tr>
-                        <tr>
-                            <th>NPWP Personil</th>
-                            <td>{{ $cekDataTender->cekPersonil->npwp_personil }}</td>
-                        </tr>
-                        <tr>
-                            <th>Email Personil</th>
-                            <td>{{ $cekDataTender->cekPersonil->email_personil }}</td>
-                        </tr>
-                        <tr>
-                            <th>Telepon Personil</th>
-                            <td>{{ $cekDataTender->cekPersonil->telepon_personil }}</td>
                         </tr>
                         <!-- Tambahkan informasi lain sesuai kebutuhan -->
                     </tbody>

@@ -37,6 +37,12 @@
                                     Nama Personil
                                 </th>
                                 <th scope="col" class="px-6 py-3">
+                                    NIK Personil
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    NPWP Personil
+                                </th>
+                                <th scope="col" class="px-6 py-3">
                                     Nama Paket
                                 </th>
                                 <th scope="col" class="px-6 py-3">
@@ -55,6 +61,12 @@
                             <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
                                 <td class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap dark:text-white">
                                     {{ $cekDataTender->cekPersonil->nama_personil }}
+                                </td>
+                                <td class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                    {{ $cekDataTender->cekPersonil->nik_personil }}
+                                </td>
+                                <td class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                    {{ $cekDataTender->cekPersonil->npwp_personil }}
                                 </td>
                                 <td class="px-6 py-4">
                                     {{ $cekDataTender->dataTender->nama_paket }}
