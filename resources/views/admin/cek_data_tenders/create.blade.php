@@ -64,6 +64,7 @@
                                                 <tr>
                                                     <th>Kode Tender</th>
                                                     <th>Nama Paket</th>
+                                                    <th>Tahun</th>
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
@@ -72,6 +73,7 @@
                                                 <tr>
                                                     <td>{{ $dataTender->kd_tender }}</td>
                                                     <td>{{ $dataTender->nama_paket }}</td>
+                                                    <td>{{ $dataTender->tahun }}</td>
                                                     <td>
                                                         <button type="button" class="btn btn-primary" onclick="selectDataTender('{{ $dataTender->id }}', '{{ $dataTender->kd_tender }} - {{ $dataTender->nama_paket }}')"><i class="fas fa-check-circle"></i> Pilih</button>
                                                     </td>
