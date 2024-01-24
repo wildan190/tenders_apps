@@ -41,6 +41,8 @@ Route::middleware(['auth', 'verified', 'admin'])->group(function () {
     //expor impor
     Route::get('/pokjas/export-template', [PokjaController::class, 'exportTemplate'])->name('admin.pokjas.export-template');
     Route::post('admin/pokjas/import', [PokjaController::class, 'import'])->name('admin.pokjas.import');
+    Route::get('/pokjas/search', [PokjaController::class, 'search'])->name('admin.pokjas.search');
+
 
     // Rute untuk Kode Pokja
     Route::get('/admin/kode_pokjas', [KodePokjaController::class, 'index'])->name('admin.kode_pokjas.index');

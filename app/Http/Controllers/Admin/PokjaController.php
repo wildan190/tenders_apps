@@ -12,12 +12,31 @@ use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\PokjaTemplateExport;
+use Illuminate\Database\Eloquent\Builder;
 
 class PokjaController extends Controller
 {
     public function index()
     {
         $pokjas = Pokja::paginate(10);
+        return view('admin.pokjas.index', compact('pokjas'));
+    }
+
+    public function search(Request $request)
+    {
+        $keyword = $request->input('keyword');
+
+        $pokjas = Pokja::when($keyword, function (Builder $query) use ($keyword) {
+            return $query->where(function ($query) use ($keyword) {
+                $query->where('nama', 'like', '%' . $keyword . '%')
+                      ->orWhere('nik', 'like', '%' . $keyword . '%');
+            });
+        })->paginate(10);
+
+        if ($pokjas->isEmpty()) {
+            Alert::info('Info', 'Data tidak ditemukan.');
+        }
+
         return view('admin.pokjas.index', compact('pokjas'));
     }
 
