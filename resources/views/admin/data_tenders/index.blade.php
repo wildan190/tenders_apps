@@ -78,7 +78,7 @@
                         <tbody>
                             @foreach($dataTenders as $dataTender)
                             <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                                <td class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                <td class="px-6 py-4 font-medium text-primary whitespace-nowrap dark:text-white">
                                     <a href="{{ $dataTender->link_web }}" target="_blank">{{ $dataTender->kd_tender }}</a>
                                 </td>
                                 <td class="px-6 py-4">
