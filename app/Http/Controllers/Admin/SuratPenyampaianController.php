@@ -15,6 +15,7 @@ class SuratPenyampaianController extends Controller
     public function index()
     {
         $suratPenyampaians = SuratPenyampaian::with('dataTender')->get();
+        $suratPenyampaians = SuratPenyampaian::paginate(10);
         return view('admin.surat_penyampaians.index', compact('suratPenyampaians'));
     }
 

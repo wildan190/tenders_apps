@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\CekPeralatanController;
 use App\Http\Controllers\Admin\DataSuratKeputusanController;
 use App\Http\Controllers\Admin\SptPenelitiController;
 use App\Http\Controllers\Admin\SuratPenyampaianController;
+use App\Models\CekDataTender;
 
 Route::get('/', function () {
     return view('dashboard');
@@ -41,6 +42,8 @@ Route::middleware(['auth', 'verified', 'admin'])->group(function () {
     //expor impor
     Route::get('/pokjas/export-template', [PokjaController::class, 'exportTemplate'])->name('admin.pokjas.export-template');
     Route::post('admin/pokjas/import', [PokjaController::class, 'import'])->name('admin.pokjas.import');
+    Route::get('/pokjas/search', [PokjaController::class, 'search'])->name('admin.pokjas.search');
+
 
     // Rute untuk Kode Pokja
     Route::get('/admin/kode_pokjas', [KodePokjaController::class, 'index'])->name('admin.kode_pokjas.index');
@@ -80,6 +83,7 @@ Route::middleware(['auth', 'verified', 'admin'])->group(function () {
     Route::get('/admin/cek_data_tenders/{id}/edit', [CekDataTenderController::class, 'edit'])->name('admin.cek_data_tenders.edit');
     Route::put('/admin/cek_data_tenders/{id}', [CekDataTenderController::class, 'update'])->name('admin.cek_data_tenders.update');
     Route::delete('/admin/cek_data_tenders/{id}', [CekDataTenderController::class, 'destroy'])->name('admin.cek_data_tenders.destroy');
+    Route::get('/cek_data_tenders/search', [CekDataTenderController::class, 'search'])->name('admin.cek_data_tenders.search');
     Route::post('admin/cek_data_tenders/update-status-all', [CekDataTenderController::class, 'updateStatusAll'])
         ->name('admin.cek_data_tenders.updateStatusAll');
 

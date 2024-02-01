@@ -39,4 +39,8 @@ class DataTender extends Model
     {
         return $this->belongsTo(KodePokja::class, 'kode_pokja');
     }
+    public function cekDataTenders()
+    {
+        return $this->hasMany(CekDataTender::class, 'data_tender_id');
+    }
 }

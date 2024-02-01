@@ -15,7 +15,7 @@ class SptPenelitiController extends Controller
 {
     public function index()
     {
-        $sptPenelitis = SptPeneliti::all();
+        $sptPenelitis = SptPeneliti::paginate(10);
         return view('admin.spt_penelitis.index', compact('sptPenelitis'));
     }
 

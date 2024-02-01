@@ -27,15 +27,17 @@
     </x-my-nav-link>
     <!-- Divider -->
     <hr class="sidebar-divider">
-    <x-my-nav-link :active="request()->routeIs('admin.cek_personils.index')" :name="'Cek Personil'" :href="route('admin.cek_personils.index')">
+    <x-my-nav-link :active="request()->routeIs('admin.cek_personils.index')" :name="'Tabel Personil'" :href="route('admin.cek_personils.index')">
         <i class="fas fa-users"></i>
     </x-my-nav-link>
-    <x-my-nav-link :active="request()->routeIs('admin.cek_data_tenders.index')" :name="'Cek Data Tender'" :href="route('admin.cek_data_tenders.index')">
+    <x-my-nav-link :active="request()->routeIs('admin.cek_data_tenders.index')" :name="'Cek Personil'" :href="route('admin.cek_data_tenders.index')">
         <i class="fas fa-file-alt"></i>
     </x-my-nav-link>
     <x-my-nav-link :active="request()->routeIs('admin.cek_peralatans.index')" :name="'Cek Peralatan'" :href="route('admin.cek_peralatans.index')">
         <i class="fas fa-tools"></i>
     </x-my-nav-link>
+    <!-- Divider -->
+    <hr class="sidebar-divider">
     <x-my-nav-link :active="request()->routeIs('admin.data_surat_keputusans.index')" :name="'Surat Keputusan'" :href="route('admin.data_surat_keputusans.index')">
         <i class="fas fa-mail-bulk"></i>
     </x-my-nav-link>
@@ -45,6 +47,8 @@
     <x-my-nav-link :active="request()->routeIs('admin.surat_penyampaians.index')" :name="'Surat Penyampaian'" :href="route('admin.surat_penyampaians.index')">
         <i class="	fas fa-flag"></i>
     </x-my-nav-link>
+    <!-- Divider -->
+    <hr class="sidebar-divider">
     <x-my-nav-link :active="request()->routeIs('admin.agenda.index')" :name="'Agenda Rapat'" :href="route('admin.agenda.index')">
         <i class="fas fa-calendar-alt"></i>
     </x-my-nav-link>

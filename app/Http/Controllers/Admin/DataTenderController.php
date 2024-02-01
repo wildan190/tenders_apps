@@ -17,7 +17,7 @@ class DataTenderController extends Controller
     public function index()
     {
         $dataTenders = DataTender::with('kodePokja')->get();
-        $dataTenders = DataTender::paginate(2);
+        $dataTenders = DataTender::paginate(10);
         return view('admin.data_tenders.index', compact('dataTenders'));
     }
 
@@ -44,7 +44,7 @@ class DataTenderController extends Controller
             'tanggal_penetapan' => 'required|date',
             'nilai_kontrak' => 'required|numeric',
             'tanggal_kontrak' => 'required|date',
-            'waktu_pelaksanaan' => 'required|string|max:255',
+            'waktu_pelaksanaan' => 'required|date',
             'tahun' => 'required|string|max:255',
             'pokja_id' => 'required|array',
         ]);
@@ -107,7 +107,7 @@ class DataTenderController extends Controller
             'tanggal_penetapan' => 'required|date',
             'nilai_kontrak' => 'required|numeric',
             'tanggal_kontrak' => 'required|date',
-            'waktu_pelaksanaan' => 'required|string|max:255',
+            'waktu_pelaksanaan' => 'required|date',
             'tahun' => 'required|string|max:255',
             'pokja_id' => 'required|exists:pokjas,id',
         ]);
