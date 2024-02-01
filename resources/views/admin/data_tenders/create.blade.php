@@ -149,7 +149,7 @@
 
                         <!-- Modal Kode Pokja-->
                         <div class="modal fade" id="kodePokjaModal" tabindex="-1" role="dialog" aria-labelledby="kodePokjaModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-scrollable" role="document">
+                            <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="kodePokjaModalLabel">Pilih Kode Pokja</h5>
