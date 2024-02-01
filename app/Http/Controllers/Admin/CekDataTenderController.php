@@ -10,6 +10,8 @@ use App\Models\DataTender;
 use Carbon\Carbon;
 use Illuminate\Validation\Rule;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\DB;
 
 class CekDataTenderController extends Controller
 {
@@ -20,6 +22,24 @@ class CekDataTenderController extends Controller
         return view('admin.cek_data_tenders.index', compact('cekDataTenders'));
     }
 
+    public function search(Request $request)
+    {
+        $keyword = $request->input('keyword');
+
+        $cekDataTenders = CekDataTender::when($keyword, function (Builder $query) use ($keyword) {
+            return $query->where(function ($query) use ($keyword) {
+                $query->where('cek_personil_id', 'like', '%' . $keyword . '%')
+                    ->orWhere('status', 'like', '%' . $keyword . '%');
+            });
+        })->paginate(10);
+
+        if ($cekDataTenders->isEmpty()) {
+            Alert::info('Info', 'Data tidak ditemukan.');
+        }
+
+        return view('admin.cek_data_tenders.index', compact('cekDataTender'));
+    }
+
     public function create()
     {
         $cekPersonils = CekPersonil::all();
@@ -28,30 +48,40 @@ class CekDataTenderController extends Controller
     }
 
     public function store(Request $request)
-    {
-        $validatedData = $request->validate([
-            'cek_personil_id' => 'required|exists:cek_personils,id',
-            'data_tender_id' => [
-                'required',
-                'exists:data_tenders,id',
-                Rule::unique('cek_data_tenders')->where(function ($query) use ($request) {
-                    // Ambil data tanggal_penetapan dari DataTender
-                    $tanggalPenetapan = DataTender::findOrFail($request->data_tender_id)->tanggal_penetapan;
+{
+    $validatedData = $request->validate([
+        'cek_personil_id.*' => 'required|exists:cek_personils,id',
+        'data_tender_id.*' => [
+            'required',
+            'exists:data_tenders,id',
+            Rule::unique('cek_data_tenders', 'data_tender_id')->where(function ($query) use ($request) {
+                // Using first() to get a single instance
+                $dataTender = DataTender::findOrFail($request->data_tender_id)->first();
 
-                    // Jika tanggal_penetapan sudah lewat, validasi akan gagal
-                    return Carbon::parse($tanggalPenetapan)->isFuture();
-                }),
-            ],
-        ]);
+                // Check if data_tender_id has valid future tanggal_penetapan
+                return $dataTender && Carbon::parse($dataTender->tanggal_penetapan)->isFuture();
+            }),
+        ],
+    ]);
 
-        $cekDataTender = CekDataTender::create($validatedData);
+    // Assuming cek_personil_id and data_tender_id are arrays
+    foreach ($validatedData['cek_personil_id'] as $index => $cekPersonilId) {
+        $data = [
+            'cek_personil_id' => $cekPersonilId,
+            'data_tender_id' => $validatedData['data_tender_id'][$index],
+            // Add other fields if needed
+        ];
+
+        $cekDataTender = CekDataTender::create($data);
 
         // Update status
-        $this->updateStatus($cekDataTender);
-
-        Alert::success('Success', 'Data cek data tender berhasil disimpan.');
-        return redirect()->route('admin.cek_data_tenders.index');
+        $cekDataTender->updateStatus();
     }
+
+    Alert::success('Success', 'Data cek data tender berhasil disimpan.');
+    return redirect()->route('admin.cek_data_tenders.index');
+}
+
 
     public function show($id)
     {

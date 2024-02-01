@@ -12,7 +12,7 @@ class CekDataTender extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['cek_personil_id', 'data_tender_id', 'status'];
+    protected $fillable = ['cek_personil_id', 'data_tender_id', 'status',];
 
     public function cekPersonil()
     {
@@ -20,9 +20,10 @@ class CekDataTender extends Model
     }
 
     public function dataTender()
-    {
-        return $this->belongsTo(DataTender::class);
-    }
+{
+    return $this->belongsTo(DataTender::class, 'data_tender_id');
+}
+    
     public function updateStatus()
     {
         $dataTender = $this->dataTender;
