@@ -44,7 +44,7 @@
                     <tbody>
                         <tr>
                             <th>Kode Tender</th>
-                            <td><a href="{{ $cekDataTender->dataTender->link_web }}" target="_blank">{{ $cekDataTender->dataTender->kd_tender }}</a></td>
+                            <td class="text-primary"><a href="{{ $cekDataTender->dataTender->link_web }}" target="_blank">{{ $cekDataTender->dataTender->kd_tender }}</a></td>
                         </tr>
                         <tr>
                             <th>Nama Paket</th>
