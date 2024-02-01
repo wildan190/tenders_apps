@@ -14,7 +14,7 @@
                     <tbody>
                         <tr>
                             <th>Kode Pokja</th>
-                            <td><a href="{{$dataTender->link_web}}">{{ $cekPeralatan->kode_pokja }}</td>
+                            <td>{{ $cekPeralatan->kode_pokja }}</td>
                         </tr>
                         <tr>
                             <th>Nama Paket</th>
@@ -42,7 +42,7 @@
                         </tr>
                         <tr>
                             <th>Peralatan Ditawarkan</th>
-                            <td>{{ $cekPeralatan->peralatan_ditawarkan }}</td>
+                            <td class="text-primary"><a href="{{ $cekPeralatan->peralatan_ditawarkan }}" target="_blank">Lihat Data</td>
                         </tr>
                         <!-- Tambahkan informasi lain sesuai kebutuhan -->
                     </tbody>
