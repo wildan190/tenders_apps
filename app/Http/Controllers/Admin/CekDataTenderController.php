@@ -75,7 +75,7 @@ class CekDataTenderController extends Controller
         $cekDataTender = CekDataTender::create($data);
 
         // Update status
-        $cekDataTender->updateStatus();
+        //$cekDataTender->updateStatus();
     }
 
     Alert::success('Success', 'Data cek data tender berhasil disimpan.');
