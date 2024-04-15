@@ -176,9 +176,6 @@
                                                         <button type="button" class="btn btn-primary" onclick="selectKodePokja({{ $kodePokja->id }},'{{ $kodePokja->kode_pokja }} - {{ $kodePokja->keterangan }}')">
                                                             <i class="fas fa-check-circle"></i> Pilih
                                                         </button>
-                                                        <!---<button type="button" class="bg-red-500 text-white px-4 py-2 rounded-md focus:outline-none focus:shadow-outline-red active:bg-red-800" onclick="removeKodePokja('{{ $kodePokja->kode_pokja }} - {{ $kodePokja->keterangan }}')">
-                                                            <i class="fas fa-trash-alt"></i> Hapus
-                                                        </button>-->
                                                     </td>
                                                 </tr>
                                                 @endforeach

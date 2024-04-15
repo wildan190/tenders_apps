@@ -1,5 +1,3 @@
-<!-- resources/views/admin/data_surat_keputusan/index.blade.php -->
-
 <x-app-layout>
     <div class="container mx-auto mt-4 p-4">
 
@@ -34,7 +32,7 @@
                         <tbody>
                             @foreach($dataSuratKeputusan as $suratKeputusan)
                             <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                                <td class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap dark:text-white">{{ $suratKeputusan->kd_tender }}</td>
+                                <td class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap dark:text-white">{{ $suratKeputusan->dataTender->kd_tender }}</td>
                                 <td class="px-6 py-4">{{ $suratKeputusan->nomor_sk }}</td>
                                 <td class="px-6 py-4">{{ $suratKeputusan->nomor_surat }}</td>
                                 <td class="px-6 py-4">{{ $suratKeputusan->tahun }}</td>

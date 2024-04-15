@@ -1,5 +1,3 @@
-<!-- resources/views/admin/data_surat_keputusan/show.blade.php -->
-
 <x-app-layout>
     <div class="container-fluid">
 

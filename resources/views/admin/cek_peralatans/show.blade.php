@@ -1,5 +1,3 @@
-<!-- resources/views/admin/cek_peralatans/show.blade.php -->
-
 <x-app-layout>
     <div class="container-fluid">
         <!-- Page Heading -->

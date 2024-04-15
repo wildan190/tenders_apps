@@ -34,6 +34,10 @@
                                     </button>
                                 </div>
                                 <div class="modal-body" style="max-height: 700px; overflow-y: auto;">
+
+                                    <input type="text" class="form-control mb-3" id="searchInput" placeholder="Cari..." onkeyup="searchTable()">
+
+                                    <!-- Table -->
                                     <table class="table">
                                         <thead>
                                             <tr>
@@ -106,6 +110,27 @@
         function removeEntry(button) {
             var entryDiv = button.closest('.entry');
             entryDiv.remove();
+        }
+
+        function searchTable() {
+            var input, filter, table, tbody, tr, td, i, txtValue;
+            input = document.getElementById("searchInput");
+            filter = input.value.toUpperCase();
+            table = document.querySelector("#dataTenderModal table");
+            tbody = table.getElementsByTagName("tbody");
+            tr = tbody[0].getElementsByTagName("tr");
+
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[1];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
         }
     </script>
 

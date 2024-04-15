@@ -1,5 +1,3 @@
-<!-- resources/views/admin/spt_penelitis/export_pdf.blade.php -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
