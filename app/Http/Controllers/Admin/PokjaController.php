@@ -4,19 +4,23 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Imports\PokjaImport;
-use App\Exports\PokjaTemplateExport;
 use App\Models\Pokja;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Cache;
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
 use Maatwebsite\Excel\Facades\Excel;
-use RealRashid\SweetAlert\Facades\Alert;
+use App\Exports\PokjaTemplateExport;
+use Illuminate\Database\Eloquent\Builder;
 
 class PokjaController extends Controller
 {
     public function index()
     {
-        $pokjas = Pokja::paginate(10);
+        $pokjas = Cache::remember('pokjas', now()->addMinutes(10), function () {
+            return Pokja::paginate(10);
+        });
+
         return view('admin.pokjas.index', compact('pokjas'));
     }
 
@@ -24,12 +28,12 @@ class PokjaController extends Controller
     {
         $keyword = $request->input('keyword');
 
-        $pokjas = Pokja::query()
-            ->when($keyword, function ($query) use ($keyword) {
-                $query->where('nama', 'like', '%' . $keyword . '%')
-                      ->orWhere('nik', 'like', '%' . $keyword . '%');
-            })
-            ->paginate(10);
+        $pokjas = Cache::remember('search-' . $keyword, now()->addMinutes(5), function () use ($keyword) {
+            return Pokja::when($keyword, function (Builder $query) use ($keyword) {
+                return $query->where('nama', 'like', '%' . $keyword . '%')
+                             ->orWhere('nik', 'like', '%' . $keyword . '%');
+            })->paginate(10);
+        });
 
         if ($pokjas->isEmpty()) {
             Alert::info('Info', 'Data tidak ditemukan.');
@@ -46,11 +50,9 @@ class PokjaController extends Controller
     public function store(Request $request)
     {
         $validatedData = $this->validateRequest($request);
-
         Pokja::create($validatedData);
-
+        Cache::forget('pokjas'); // Hapus cache 'pokjas'
         Alert::success('Success', 'Data Pokja berhasil ditambahkan.')->persistent(true, true);
-
         return redirect()->route('admin.pokjas.index');
     }
 
@@ -69,13 +71,10 @@ class PokjaController extends Controller
     public function update(Request $request, $id)
     {
         $pokja = Pokja::findOrFail($id);
-
         $validatedData = $this->validateRequest($request, $id);
-
         $pokja->update($validatedData);
-
+        Cache::forget('pokjas'); // Hapus cache 'pokjas'
         Alert::success('Success', 'Data Pokja berhasil diperbarui.')->persistent(true, true);
-
         return redirect()->route('admin.pokjas.index');
     }
 
@@ -83,9 +82,8 @@ class PokjaController extends Controller
     {
         $pokja = Pokja::findOrFail($id);
         $pokja->delete();
-
+        Cache::forget('pokjas'); // Hapus cache 'pokjas'
         Alert::success('Success', 'Data Pokja berhasil dihapus.')->persistent(true, true);
-
         return redirect()->route('admin.pokjas.index');
     }
 
@@ -101,19 +99,17 @@ class PokjaController extends Controller
 
     public function import(Request $request)
     {
-        $validator = Validator::make($request->all(), [
+        $request->validate([
             'importFile' => 'required|mimes:xlsx,xls',
         ]);
-
-        if ($validator->fails()) {
-            Alert::error('Error', 'File yang diunggah harus berformat Excel (xlsx/xls).');
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
 
         $file = $request->file('importFile');
 
         try {
             Excel::import(new PokjaImport, $file);
+
+            Cache::forget('pokjas'); // Hapus cache 'pokjas'
+
             Alert::success('Success', 'Data Pokja berhasil diimport.');
         } catch (\Exception $e) {
             Alert::error('Error', 'Terjadi kesalahan saat mengimport data Pokja.');
@@ -124,16 +120,23 @@ class PokjaController extends Controller
 
     protected function validateRequest(Request $request, $id = null)
     {
-        return $request->validate([
+        $idCondition = $id ? ',' . $id : '';
+
+        $rules = [
             'nama' => 'required',
             'jabatan' => 'required',
             'golongan' => 'required',
-            'nik' => 'required|unique:pokjas,nik,' . $id,
-            'email' => 'required|email|unique:pokjas,email,' . $id,
+            'nik' => 'required|unique:pokjas,nik' . $idCondition,
+            'email' => 'required|email|unique:pokjas,email' . $idCondition,
             'telepon' => 'required',
-        ], [
+        ];
+
+        $messages = [
             'nik.unique' => 'NIK sudah digunakan.',
             'email.unique' => 'Email sudah digunakan.',
-        ]);
+        ];
+
+        return $request->validate($rules, $messages);
     }
 }
+
