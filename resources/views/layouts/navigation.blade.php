@@ -25,6 +25,9 @@
     <x-my-nav-link :active="request()->routeIs('admin.data_tenders.index')" :name="'Data Tender'" :href="route('admin.data_tenders.index')">
         <i class="fas fa-project-diagram"></i>
     </x-my-nav-link>
+    <x-my-nav-link :active="request()->routeIs('admin.tenders.index')" :name="'File Upload'" :href="route('admin.tenders.index')">
+        <i class="fas fa-cloud"></i>
+    </x-my-nav-link>
     <!-- Divider -->
     <hr class="sidebar-divider">
     <x-my-nav-link :active="request()->routeIs('admin.cek_personils.index')" :name="'Tabel Personil'" :href="route('admin.cek_personils.index')">
