@@ -1,5 +1,3 @@
-<!-- resources/views/admin/data_surat_keputusan/edit.blade.php -->
-
 <x-app-layout>
     <div class="container mx-auto mt-4 p-4">
 

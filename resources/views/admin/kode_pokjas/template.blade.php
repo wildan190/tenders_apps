@@ -1,4 +1,3 @@
-<!-- resources/views/admin/kode_pokjas/template.blade.php -->
 <table>
     <thead>
         <tr>

@@ -1,4 +1,3 @@
-<!-- resources/views/admin/cek_peralatans/create.blade.php -->
 <x-app-layout>
     <div class="container mx-auto mt-4 p-4">
 

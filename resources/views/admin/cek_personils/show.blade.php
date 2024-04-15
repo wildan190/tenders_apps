@@ -1,4 +1,3 @@
-<!-- resources/views/admin/cek_personils/show.blade.php -->
 <x-app-layout>
     <div class="container mx-auto">
 

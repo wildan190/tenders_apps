@@ -85,16 +85,17 @@ class AgendaRapatController extends Controller
     }
 
     protected function validationRules($id = null)
-    {
-        $rules = [
-            'email_peserta' => 'required|email|unique:agenda_rapats,email_peserta,' . $id,
-            'tanggal' => 'required|date',
-            'waktu' => 'required',
-            'tempat' => 'required',
-            'title' => 'required',
-            'deskripsi' => 'required',
-        ];
+{
+    $rules = [
+        'email_peserta' => 'required|email|unique:agenda_rapats,email_peserta,' . ($id ? $id : 'NULL') . ',id',
+        'tanggal' => 'required|date',
+        'waktu' => 'required',
+        'tempat' => 'required',
+        'title' => 'required',
+        'deskripsi' => 'required',
+    ];
 
-        return $rules;
-    }
+    return $rules;
+}
+
 }

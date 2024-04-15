@@ -1,4 +1,3 @@
-<!-- resources/views/admin/cek_peralatans/index.blade.php -->
 <x-app-layout>
     <div class="container mx-auto mt-4 p-4">
 
@@ -45,7 +44,7 @@
                             @foreach($cekPeralatans as $cekPeralatan)
                             <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
                                 <td class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap dark:text-white">{{ $cekPeralatan->id }}</td>
-                                <td class="px-6 py-4">{{ $cekPeralatan->kode_pokja }}</td>
+                                <td class="px-6 py-4">{{ $cekPeralatan->kodePokja->kode_pokja }}</td>
                                 <td class="px-6 py-4">{{ $cekPeralatan->nama_paket }}</td>
                                 <td class="px-6 py-4">{{ $cekPeralatan->tahun_anggaran }}</td>
                                 <td class="px-6 py-4">{{ $cekPeralatan->pemenang }}</td>

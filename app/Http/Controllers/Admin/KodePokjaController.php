@@ -7,14 +7,17 @@ use App\Models\KodePokja;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
-use App\Exports\kodePokjaTemplateExport;
+use App\Exports\KodePokjaTemplateExport;
 use App\Imports\KodePokjaImport;
+use Illuminate\Support\Facades\Cache;
 
 class KodePokjaController extends Controller
 {
     public function index()
     {
-        $kodePokjas = KodePokja::latest()->paginate(10);
+        $kodePokjas = Cache::remember('kode_pokjas', 600, function () {
+            return KodePokja::latest()->paginate(10);
+        });
 
         return view('admin.kode_pokjas.index', compact('kodePokjas'));
     }
@@ -26,8 +29,8 @@ class KodePokjaController extends Controller
 
     public function show($id)
     {
-        $kodePokjas = KodePokja::findOrFail($id);
-        return view('admin.kode_pokjas.show', compact('kodePokjas'));
+        $kodePokja = KodePokja::findOrFail($id);
+        return view('admin.kode_pokjas.show', compact('kodePokja'));
     }
 
     public function exportTemplate()
@@ -88,14 +91,22 @@ class KodePokjaController extends Controller
 
         Alert::success('Success', 'Data Kode Pokja berhasil dihapus.');
 
+        Cache::forget('kode_pokjas');
+
         return redirect()->route('admin.kode_pokjas.index');
     }
 
     protected function validationRules($id = null)
     {
-        return [
-            'kode_pokja' => 'required|unique:kode_pokjas,kode_pokja,' . $id,
+        $rules = [
+            'kode_pokja' => 'required|unique:kode_pokjas,kode_pokja',
             'keterangan' => 'required',
         ];
+
+        if ($id !== null) {
+            $rules['kode_pokja'] .= ',' . $id;
+        }
+
+        return $rules;
     }
 }
