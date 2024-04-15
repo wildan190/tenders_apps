@@ -11,7 +11,6 @@ use Carbon\Carbon;
 use Illuminate\Validation\Rule;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Support\Facades\DB;
 
 class CekDataTenderController extends Controller
 {
@@ -48,40 +47,33 @@ class CekDataTenderController extends Controller
     }
 
     public function store(Request $request)
-{
-    $validatedData = $request->validate([
-        'cek_personil_id.*' => 'required|exists:cek_personils,id',
-        'data_tender_id.*' => [
-            'required',
-            'exists:data_tenders,id',
-            Rule::unique('cek_data_tenders', 'data_tender_id')->where(function ($query) use ($request) {
-                // Using first() to get a single instance
-                $dataTender = DataTender::findOrFail($request->data_tender_id)->first();
+    {
+        $validatedData = $request->validate([
+            'cek_personil_id.*' => 'required|exists:cek_personils,id',
+            'data_tender_id.*' => [
+                'required',
+                'exists:data_tenders,id',
+                Rule::unique('cek_data_tenders', 'data_tender_id')->where(function ($query) use ($request) {
+                    $dataTender = DataTender::findOrFail($request->data_tender_id)->first();
+                    return $dataTender && Carbon::parse($dataTender->tanggal_penetapan)->isFuture();
+                }),
+            ],
+        ]);
 
-                // Check if data_tender_id has valid future tanggal_penetapan
-                return $dataTender && Carbon::parse($dataTender->tanggal_penetapan)->isFuture();
-            }),
-        ],
-    ]);
+        foreach ($validatedData['cek_personil_id'] as $index => $cekPersonilId) {
+            $data = [
+                'cek_personil_id' => $cekPersonilId,
+                'data_tender_id' => $validatedData['data_tender_id'][$index],
+            ];
 
-    // Assuming cek_personil_id and data_tender_id are arrays
-    foreach ($validatedData['cek_personil_id'] as $index => $cekPersonilId) {
-        $data = [
-            'cek_personil_id' => $cekPersonilId,
-            'data_tender_id' => $validatedData['data_tender_id'][$index],
-            // Add other fields if needed
-        ];
+            $cekDataTender = CekDataTender::create($data);
 
-        $cekDataTender = CekDataTender::create($data);
+            $cekDataTender->updateStatus();
+        }
 
-        // Update status
-        $cekDataTender->updateStatus();
+        Alert::success('Success', 'Data cek data tender berhasil disimpan.');
+        return redirect()->route('admin.cek_data_tenders.index');
     }
-
-    Alert::success('Success', 'Data cek data tender berhasil disimpan.');
-    return redirect()->route('admin.cek_data_tenders.index');
-}
-
 
     public function show($id)
     {
@@ -106,8 +98,6 @@ class CekDataTenderController extends Controller
         ]);
 
         $cekDataTender->update($validatedData);
-
-        // Update status
         $this->updateStatus($cekDataTender);
 
         Alert::success('Success', 'Data cek data tender berhasil diperbarui.');
@@ -123,27 +113,15 @@ class CekDataTenderController extends Controller
         return redirect()->route('admin.cek_data_tenders.index');
     }
 
-    public function updateStatusAutomatically()
-    {
-        $cekDataTenders = CekDataTender::all();
-
-        foreach ($cekDataTenders as $cekDataTender) {
-            // Lakukan pembaruan status
-            $this->updateStatus($cekDataTender);
-        }
-    }
-
     private function updateStatus(CekDataTender $cekDataTender)
     {
         $dataTender = $cekDataTender->dataTender;
 
-        // Menggunakan Carbon untuk manipulasi tanggal
         $now = Carbon::now();
         $tanggalPenetapan = Carbon::parse($dataTender->tanggal_penetapan);
         $tanggalKontrak = Carbon::parse($dataTender->tanggal_kontrak);
         $waktuPelaksanaan = Carbon::parse($dataTender->waktu_pelaksanaan);
 
-        // Logika untuk update status
         $status = null;
         if ($now->greaterThanOrEqualTo($waktuPelaksanaan->endOfDay())) {
             $status = 'SELESAI';
@@ -156,15 +134,11 @@ class CekDataTenderController extends Controller
         $cekDataTender->update(['status' => $status]);
     }
 
-    
-
     public function updateStatusAll()
     {
-        // Get all CekDataTenders
         $cekDataTenders = CekDataTender::all();
 
         foreach ($cekDataTenders as $cekDataTender) {
-            // Update status for each CekDataTender
             $this->updateStatus($cekDataTender);
         }
 
