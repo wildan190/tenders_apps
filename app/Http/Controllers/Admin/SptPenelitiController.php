@@ -1,7 +1,5 @@
 <?php
 
-// app/Http/Controllers/Admin/SptPenelitiController.php
-
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;

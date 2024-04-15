@@ -37,7 +37,7 @@ class CekDataTenderController extends Controller
             Alert::info('Info', 'Data tidak ditemukan.');
         }
 
-        return view('admin.cek_data_tenders.index', compact('cekDataTender'));
+        return view('admin.cek_data_tenders.index', compact('cekDataTenders'));
     }
 
     public function create()
@@ -75,7 +75,7 @@ class CekDataTenderController extends Controller
         $cekDataTender = CekDataTender::create($data);
 
         // Update status
-        //$cekDataTender->updateStatus();
+        $cekDataTender->updateStatus();
     }
 
     Alert::success('Success', 'Data cek data tender berhasil disimpan.');
@@ -156,7 +156,7 @@ class CekDataTenderController extends Controller
         $cekDataTender->update(['status' => $status]);
     }
 
-    // app/Http/Controllers/Admin/CekDataTenderController.php
+    
 
     public function updateStatusAll()
     {

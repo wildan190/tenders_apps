@@ -1,7 +1,5 @@
 <?php
 
-// app/Http/Controllers/Admin/DataTenderController.php
-
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
@@ -16,8 +14,7 @@ class DataTenderController extends Controller
 {
     public function index()
     {
-        $dataTenders = DataTender::with('kodePokja')->get();
-        $dataTenders = DataTender::paginate(10);
+        $dataTenders = DataTender::with('kodePokja')->paginate(10);
         return view('admin.data_tenders.index', compact('dataTenders'));
     }
 
@@ -44,16 +41,13 @@ class DataTenderController extends Controller
             'tanggal_penetapan' => 'required|date',
             'nilai_kontrak' => 'required|numeric',
             'tanggal_kontrak' => 'required|date',
-            'waktu_pelaksanaan' => 'required|date',
+            'waktu_pelaksanaan' => 'required|string',
             'tahun' => 'required|string|max:255',
             'pokja_id' => 'required|array',
         ]);
 
-        $dataTenders = DataTender::create($validatedData);
-
-        foreach ($request->input('pokja_id') as $pokjaId) {
-            $dataTenders->pokjas()->attach($pokjaId);
-        }
+        $dataTender = DataTender::create($validatedData);
+        $dataTender->pokjas()->attach($request->input('pokja_id'));
 
         Alert::success('Success', 'Data tender berhasil disimpan.');
         return redirect()->route('admin.data_tenders.index');
@@ -62,7 +56,6 @@ class DataTenderController extends Controller
     public function getMembers(Request $request)
     {
         $pokjaId = $request->input('pokja_id');
-
         $pokja = Pokja::find($pokjaId);
 
         if (!$pokja) {
@@ -70,7 +63,6 @@ class DataTenderController extends Controller
         }
 
         $members = $pokja->anggota->pluck('nama', 'id');
-
         return response()->json($members);
     }
 

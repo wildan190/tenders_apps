@@ -18,7 +18,7 @@
                         <dl class="row">
                             <div class="col-sm-6">
                                 <dt>Kode Tender</dt>
-                                <dd>{{ $kd_tender_value }}</dd>
+                                <dd>{{ $kdTenderValue }}</dd>
 
                                 <dt>Nomor Surat Penyampaian</dt>
                                 <dd>{{ $suratPenyampian->nomor_surat_penyampaian }}</dd>

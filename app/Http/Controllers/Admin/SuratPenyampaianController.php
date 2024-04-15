@@ -1,12 +1,12 @@
 <?php
 
-// app/Http/Controllers/Admin/SuratPenyampaianController.php
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\SuratPenyampaian;
 use App\Models\DataTender;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use PDF;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -14,8 +14,7 @@ class SuratPenyampaianController extends Controller
 {
     public function index()
     {
-        $suratPenyampaians = SuratPenyampaian::with('dataTender')->get();
-        $suratPenyampaians = SuratPenyampaian::paginate(10);
+        $suratPenyampaians = SuratPenyampaian::with('dataTender')->paginate(10);
         return view('admin.surat_penyampaians.index', compact('suratPenyampaians'));
     }
 
@@ -27,22 +26,9 @@ class SuratPenyampaianController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'kd_tender' => 'required|exists:data_tenders,id',
-            'nomor_surat_penyampaian' => 'required|string',
-            'tahun' => 'required|numeric',
-            'sifat' => 'required|string',
-            'destinasi_kepada' => 'required|string',
-            'lampiran' => 'required|string',
-            'perihal' => 'required|string',
-            //'ppk' => 'required|string',
-            'kepala_balai' => 'required|string',
-            'nip' => 'required|string',
-            'tanggal_surat' => 'required|date',
-            'tanggal_diterima' => 'required|date',
-        ]);
+        $validatedData = $this->validateRequest($request);
 
-        SuratPenyampaian::create($request->all());
+        SuratPenyampaian::create($validatedData);
 
         Alert::success('Success', 'Surat Penyampaian created successfully!');
 
@@ -53,18 +39,17 @@ class SuratPenyampaianController extends Controller
     {
         $suratPenyampian = SuratPenyampaian::with('dataTender')->findOrFail($id);
 
-        // Ambil nilai kd_tender dari relasi dataTender
-        $kd_tender_value = $suratPenyampian->dataTender->kd_tender;
+        $kdTenderValue = $suratPenyampian->dataTender->kd_tender;
 
-        return view('admin.surat_penyampaians.show', compact('suratPenyampian', 'kd_tender_value'));
+        return view('admin.surat_penyampaians.show', compact('suratPenyampian', 'kdTenderValue'));
     }
 
     public function exportPdf($id)
     {
         $suratPenyampian = SuratPenyampaian::findOrFail($id);
-        $kd_tender_value = $suratPenyampian->dataTender->kd_tender;
+        $kdTenderValue = $suratPenyampian->dataTender->kd_tender;
 
-        $pdf = PDF::loadView('admin.surat_penyampaians.export-pdf', compact('suratPenyampian', 'kd_tender_value'));
+        $pdf = PDF::loadView('admin.surat_penyampaians.export-pdf', compact('suratPenyampian', 'kdTenderValue'));
 
         return $pdf->download('surat_penyampian_' . $id . '.pdf');
     }
@@ -79,7 +64,29 @@ class SuratPenyampaianController extends Controller
 
     public function update(Request $request, $id)
     {
-        $request->validate([
+        $validatedData = $this->validateRequest($request);
+
+        $suratPenyampian = SuratPenyampaian::findOrFail($id);
+        $suratPenyampian->update($validatedData);
+
+        Alert::success('Success', 'Surat Penyampaian updated successfully!');
+
+        return redirect()->route('admin.surat_penyampaians.index');
+    }
+
+    public function destroy($id)
+    {
+        $suratPenyampian = SuratPenyampaian::findOrFail($id);
+        $suratPenyampian->delete();
+
+        Alert::success('Success', 'Surat Penyampaian deleted successfully!');
+
+        return redirect()->route('admin.surat_penyampaians.index');
+    }
+
+    protected function validateRequest(Request $request)
+    {
+        return $request->validate([
             'kd_tender' => 'required|exists:data_tenders,id',
             'nomor_surat_penyampaian' => 'required|string',
             'tahun' => 'required|numeric',
@@ -92,22 +99,5 @@ class SuratPenyampaianController extends Controller
             'tanggal_surat' => 'required|date',
             'tanggal_diterima' => 'required|date',
         ]);
-
-        $suratPenyampian = SuratPenyampaian::findOrFail($id);
-        $suratPenyampian->update($request->all());
-
-        Alert::success('Success', 'Surat Penyampaian updated successfully!');
-
-        return redirect()->route('admin.surat_penyampaians.index');
-    }
-
-
-    public function destroy(SuratPenyampaian $suratPenyampian)
-    {
-        $suratPenyampian->delete();
-
-        Alert::success('Success', 'Surat Penyampaian deleted successfully!');
-
-        return redirect()->route('admin.surat_penyampaians.index');
     }
 }

@@ -1,15 +1,14 @@
 <?php
 
-// app/Http/Controllers/Admin/CekPersonilController.php
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\CekPersonil;
 use App\Models\Pokja;
-use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CekPersonilController extends Controller
 {
@@ -28,49 +27,39 @@ class CekPersonilController extends Controller
 
     public function store(Request $request)
     {
-        $requestData = $request->all();
+        $request->validate([
+            'nama_personil.*' => 'required|string|max:255',
+            'jabatan_personil.*' => 'required|string|max:255',
+            'nik_personil.*' => 'required|string|max:255|unique:cek_personils,nik_personil',
+            'npwp_personil.*' => 'required|string|max:255|unique:cek_personils,npwp_personil',
+            'email_personil.*' => 'required|email|max:255|unique:cek_personils,email_personil',
+            'telepon_personil.*' => 'required|string|max:255',
+        ]);
 
-        // Validasi setiap entri formulir
-        foreach ($requestData['nama_personil'] as $key => $namaPersonil) {
-            $validatedData = Validator::make([
+        foreach ($request->nama_personil as $key => $namaPersonil) {
+            CekPersonil::create([
                 'nama_personil' => $namaPersonil,
-                'jabatan_personil' => $requestData['jabatan_personil'][$key],
-                'nik_personil' => $requestData['nik_personil'][$key],
-                'npwp_personil' => $requestData['npwp_personil'][$key],
-                'email_personil' => $requestData['email_personil'][$key],
-                'telepon_personil' => $requestData['telepon_personil'][$key],
-            ], [
-                'nama_personil' => 'required|string|max:255',
-                'jabatan_personil' => 'required|string|max:255',
-                'nik_personil' => 'required|string|max:255',
-                'npwp_personil' => 'required|string|max:255',
-                'email_personil' => 'required|email|max:255',
-                'telepon_personil' => 'required|string|max:255',
-            ])->validate();
-
-            // Simpan setiap entri formulir
-            CekPersonil::create($validatedData);
+                'jabatan_personil' => $request->jabatan_personil[$key],
+                'nik_personil' => $request->nik_personil[$key],
+                'npwp_personil' => $request->npwp_personil[$key],
+                'email_personil' => $request->email_personil[$key],
+                'telepon_personil' => $request->telepon_personil[$key],
+            ]);
         }
 
         Alert::success('Success', 'Data cek personil berhasil disimpan.');
         return redirect()->route('admin.cek_personils.index');
     }
 
-
-
-
-
     public function show($id)
     {
         $cekPersonil = CekPersonil::findOrFail($id);
-        //$pokjas = Pokja::all();
         return view('admin.cek_personils.show', compact('cekPersonil'));
     }
 
     public function edit($id)
     {
         $cekPersonil = CekPersonil::findOrFail($id);
-        //$pokjas = Pokja::all();
         return view('admin.cek_personils.edit', compact('cekPersonil'));
     }
 
@@ -79,23 +68,27 @@ class CekPersonilController extends Controller
         $cekPersonil = CekPersonil::findOrFail($id);
 
         $request->validate([
-            'nama_personil' => 'required',
-            'jabatan_personil' => 'required',
-            //'golongan_personil' => 'required',
+            'nama_personil' => 'required|string|max:255',
+            'jabatan_personil' => 'required|string|max:255',
             'nik_personil' => [
                 'required',
+                'string',
+                'max:255',
                 Rule::unique('cek_personils')->ignore($cekPersonil->id),
             ],
             'npwp_personil' => [
                 'required',
+                'string',
+                'max:255',
                 Rule::unique('cek_personils')->ignore($cekPersonil->id),
             ],
             'email_personil' => [
                 'required',
                 'email',
+                'max:255',
                 Rule::unique('cek_personils')->ignore($cekPersonil->id),
             ],
-            'telepon_personil' => 'required',
+            'telepon_personil' => 'required|string|max:255',
         ]);
 
         $cekPersonil->update($request->all());

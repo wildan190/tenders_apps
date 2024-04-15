@@ -45,9 +45,7 @@ class DataSuratKeputusanController extends Controller
         }
 
         DataSuratKeputusan::create($request->all());
-
         Alert::success('Success', 'Data Surat Keputusan berhasil ditambahkan.');
-
         return redirect()->route('admin.data_surat_keputusans.index');
     }
 
@@ -80,16 +78,12 @@ class DataSuratKeputusanController extends Controller
         $dataSuratKeputusan->update($request->all());
 
         Alert::success('Success', 'Data Surat Keputusan berhasil diperbarui.');
-
         return redirect()->route('admin.data_surat_keputusans.index');
     }
 
     public function show($id)
     {
-        // Ambil data surat keputusan berdasarkan ID
         $dataSuratKeputusan = DataSuratKeputusan::with('dataTender')->findOrFail($id);
-
-        // Tampilkan halaman show dengan data surat keputusan
         return view('admin.data_surat_keputusan.show', compact('dataSuratKeputusan'));
     }
 
@@ -99,7 +93,6 @@ class DataSuratKeputusanController extends Controller
         $dataSuratKeputusan->delete();
 
         Alert::success('Success', 'Data Surat Keputusan berhasil dihapus.');
-
         return redirect()->route('admin.data_surat_keputusans.index');
     }
 
@@ -107,9 +100,7 @@ class DataSuratKeputusanController extends Controller
     public function exportPDF($id)
     {
         $dataSuratKeputusan = DataSuratKeputusan::findOrFail($id);
-
         $pdf = PDF::loadView('admin.data_surat_keputusan.export_pdf', compact('dataSuratKeputusan'));
-
         return $pdf->stream('surat_keputusan.pdf');
     }
 }

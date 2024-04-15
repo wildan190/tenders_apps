@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             PokjaSeeder::class,
             KodePokjaSeeder::class,
+            CekPersonilSeeder::class,
             // Add more seeders if needed
         ]);
     }
