@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Admin\AgendaRapatController;
 use App\Http\Controllers\Admin\KodePokjaController;
 use App\Http\Controllers\Admin\PokjaController;
@@ -12,12 +13,10 @@ use App\Http\Controllers\Admin\CekPeralatanController;
 use App\Http\Controllers\Admin\DataSuratKeputusanController;
 use App\Http\Controllers\Admin\SptPenelitiController;
 use App\Http\Controllers\Admin\SuratPenyampaianController;
-
-Route::get('/', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+use App\Http\Controllers\Admin\TenderController;
 
 Route::middleware(['auth', 'verified', 'admin'])->group(function () {
+
     // Rute untuk Agenda Rapat
     Route::get('/admin/agenda', [AgendaRapatController::class, 'index'])->name('admin.agenda.index');
     Route::get('/admin/agenda/create', [AgendaRapatController::class, 'create'])->name('admin.agenda.create');
@@ -124,12 +123,23 @@ Route::middleware(['auth', 'verified', 'admin'])->group(function () {
     Route::put('/admin/surat_penyampaians/{id}', [SuratPenyampaianController::class, 'update'])->name('admin.surat_penyampaians.update');
     Route::delete('/admin/surat_penyampaians/{id}', [SuratPenyampaianController::class, 'destroy'])->name('admin.surat_penyampaians.destroy');
     Route::get('/admin/surat_penyampaians/{id}/export_pdf', [SuratPenyampaianController::class, 'exportPDF'])->name('admin.surat_penyampaians.export_pdf');
+
+    // Route untuk menampilkan semua Tender (index)
+    Route::get('/admin/tenders', [TenderController::class, 'index'])->name('admin.tenders.index');
+    Route::get('/admin/tenders/create', [TenderController::class, 'create'])->name('admin.tenders.create');
+    Route::post('/admin/tenders', [TenderController::class, 'store'])->name('admin.tenders.store');
+    Route::get('/admin/tenders/{id}', [TenderController::class, 'show'])->name('admin.tenders.show');
+    Route::get('/admin/tenders/{id}/edit', [TenderController::class, 'edit'])->name('admin.tenders.edit');
+    Route::put('/admin/tenders/{id}', [TenderController::class, 'update'])->name('admin.tenders.update');
+    Route::delete('/admin/tenders/{id}', [TenderController::class, 'destroy'])->name('admin.tenders.destroy');
 });
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });
 
 require __DIR__ . '/auth.php';

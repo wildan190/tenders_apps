@@ -8,7 +8,6 @@ use App\Models\Pokja;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use RealRashid\SweetAlert\Facades\Alert;
-use Illuminate\Support\Facades\Validator;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\PokjaTemplateExport;
 use Illuminate\Database\Eloquent\Builder;
@@ -51,7 +50,7 @@ class PokjaController extends Controller
     {
         $validatedData = $this->validateRequest($request);
         Pokja::create($validatedData);
-        Cache::forget('pokjas'); // Hapus cache 'pokjas'
+        Cache::forget('pokjas');
         Alert::success('Success', 'Data Pokja berhasil ditambahkan.')->persistent(true, true);
         return redirect()->route('admin.pokjas.index');
     }
@@ -73,7 +72,7 @@ class PokjaController extends Controller
         $pokja = Pokja::findOrFail($id);
         $validatedData = $this->validateRequest($request, $id);
         $pokja->update($validatedData);
-        Cache::forget('pokjas'); // Hapus cache 'pokjas'
+        Cache::forget('pokjas');
         Alert::success('Success', 'Data Pokja berhasil diperbarui.')->persistent(true, true);
         return redirect()->route('admin.pokjas.index');
     }
@@ -82,7 +81,7 @@ class PokjaController extends Controller
     {
         $pokja = Pokja::findOrFail($id);
         $pokja->delete();
-        Cache::forget('pokjas'); // Hapus cache 'pokjas'
+        Cache::forget('pokjas');
         Alert::success('Success', 'Data Pokja berhasil dihapus.')->persistent(true, true);
         return redirect()->route('admin.pokjas.index');
     }
@@ -108,7 +107,7 @@ class PokjaController extends Controller
         try {
             Excel::import(new PokjaImport, $file);
 
-            Cache::forget('pokjas'); // Hapus cache 'pokjas'
+            Cache::forget('pokjas');
 
             Alert::success('Success', 'Data Pokja berhasil diimport.');
         } catch (\Exception $e) {

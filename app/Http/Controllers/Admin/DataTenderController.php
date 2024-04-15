@@ -8,7 +8,6 @@ use App\Models\KodePokja;
 use App\Models\Pokja;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
-use Illuminate\Validation\Rule;
 
 class DataTenderController extends Controller
 {
