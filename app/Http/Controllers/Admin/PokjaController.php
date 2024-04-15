@@ -1,18 +1,16 @@
 <?php
 
-// app/Http/Controllers/Admin/PokjaController.php
-
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Imports\PokjaImport;
-use App\Models\Pokja;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Http\Request;
-use RealRashid\SweetAlert\Facades\Alert;
-use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\PokjaTemplateExport;
-use Illuminate\Database\Eloquent\Builder;
+use App\Models\Pokja;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
+use Maatwebsite\Excel\Facades\Excel;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PokjaController extends Controller
 {
@@ -26,12 +24,12 @@ class PokjaController extends Controller
     {
         $keyword = $request->input('keyword');
 
-        $pokjas = Pokja::when($keyword, function (Builder $query) use ($keyword) {
-            return $query->where(function ($query) use ($keyword) {
+        $pokjas = Pokja::query()
+            ->when($keyword, function ($query) use ($keyword) {
                 $query->where('nama', 'like', '%' . $keyword . '%')
                       ->orWhere('nik', 'like', '%' . $keyword . '%');
-            });
-        })->paginate(10);
+            })
+            ->paginate(10);
 
         if ($pokjas->isEmpty()) {
             Alert::info('Info', 'Data tidak ditemukan.');
@@ -101,57 +99,41 @@ class PokjaController extends Controller
         return view('admin.pokjas.import');
     }
 
-    public function field(Request $request)
-    {
-        return [
-            'nama' => $request->input('nama'),
-            'jabatan' => $request->input('jabatan'),
-            'golongan' => $request->input('golongan'),
-            'nik' => $request->input('nik'),
-            //'npwp' => $request->input('npwp'),
-            'email' => $request->input('email'),
-            'telepon' => $request->input('telepon'),
-        ];
-    }
-
-
     public function import(Request $request)
     {
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'importFile' => 'required|mimes:xlsx,xls',
         ]);
+
+        if ($validator->fails()) {
+            Alert::error('Error', 'File yang diunggah harus berformat Excel (xlsx/xls).');
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
 
         $file = $request->file('importFile');
 
         try {
             Excel::import(new PokjaImport, $file);
             Alert::success('Success', 'Data Pokja berhasil diimport.');
-            return redirect()->back();
         } catch (\Exception $e) {
             Alert::error('Error', 'Terjadi kesalahan saat mengimport data Pokja.');
-            return redirect()->back();
         }
-    }
 
+        return redirect()->back();
+    }
 
     protected function validateRequest(Request $request, $id = null)
     {
-        $rules = [
+        return $request->validate([
             'nama' => 'required',
             'jabatan' => 'required',
             'golongan' => 'required',
             'nik' => 'required|unique:pokjas,nik,' . $id,
-            //'npwp' => 'required|unique:pokjas,npwp,' . $id,
             'email' => 'required|email|unique:pokjas,email,' . $id,
             'telepon' => 'required',
-        ];
-
-        $messages = [
+        ], [
             'nik.unique' => 'NIK sudah digunakan.',
-            //'npwp.unique' => 'NPWP sudah digunakan.',
             'email.unique' => 'Email sudah digunakan.',
-        ];
-
-        return $request->validate($rules, $messages);
+        ]);
     }
 }
